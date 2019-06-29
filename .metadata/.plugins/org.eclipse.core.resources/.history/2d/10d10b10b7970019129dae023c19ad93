@@ -1,0 +1,5 @@
+package com.adotaPet.api.resource;
+
+public class OngService {
+
+}

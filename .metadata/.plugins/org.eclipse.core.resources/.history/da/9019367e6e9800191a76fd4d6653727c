@@ -1,0 +1,5 @@
+package com.adotaPet.api.domain;
+
+public class Raca {
+
+}

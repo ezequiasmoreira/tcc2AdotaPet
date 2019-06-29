@@ -1,0 +1,26 @@
+package com.adotaPet.api.service;
+
+import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.adotaPet.api.domain.Ong;
+import com.adotaPet.api.repository.OngRepository;
+import com.example.demo.domain.Categoria;
+import com.example.demo.repository.CategoriaRepository;
+
+@Service
+public class DBService {
+	
+	@Autowired
+	private OngRepository OngRepository;
+	
+	public void instanciateTestDataBase() {
+		OngRepository ong1 = new Ong(7, 10,"Ong Cocal", "Cocal LTDA","62.769.648/0001-84",
+				"Avenida Brasil",500,"Centro");
+				
+		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7,cat8));
+	}
+
+}

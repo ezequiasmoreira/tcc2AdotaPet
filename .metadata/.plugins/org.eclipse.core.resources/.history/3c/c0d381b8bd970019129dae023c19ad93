@@ -1,0 +1,5 @@
+spring.profiles.active=test
+#spring.profiles.active=dev
+
+server.port=${port:8081}
+

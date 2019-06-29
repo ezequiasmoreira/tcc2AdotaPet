@@ -1,0 +1,5 @@
+package com.adotaPet.api.repository;
+
+public class OngRepository {
+
+}
