@@ -1,0 +1,74 @@
+package com.adotaPet.api.domain;
+
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.adotaPet.api.domain.enums.Perfil;
+import com.adotaPet.api.domain.enums.Sexo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+public class Pessoa extends Endereco {
+	
+private static final long serialVersionUID = 1L;
+
+	private String nome;
+	private Integer sexo;
+	private Integer perfil;
+	private String cpf;
+	private String rg;
+	private String login;
+	private String senha;
+	private String telefone;
+	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="ong_id")
+	private Ong ong;
+	
+	
+	public Pessoa() {
+	}
+	
+	public Pessoa(Integer id, Integer codigo, String logradouro, String numero, String complemento, String bairro, String cep, Cidade cidade,
+			String nome, Sexo sexo, Perfil perfil, String cpf, String rg, String login, String senha, String telefone ) {
+		super();
+		
+		setId(id);
+		setCodigo(codigo);
+		setLogradouro(logradouro);
+		setNumero(numero);
+		setComplemento(complemento);
+		setBairro(bairro);
+		setCep(cep);
+		setCidade(cidade);
+		setRazao_Social(razao_Social);
+		setNome_Fantasia(nome_Fantasia);
+		setCnpj(cnpj);		
+	}
+	public String getRazao_Social() {
+		return razao_Social;
+	}
+	public void setRazao_Social(String razao_Social) {
+		this.razao_Social = razao_Social;
+	}
+	public String getNome_Fantasia() {
+		return nome_Fantasia;
+	}
+	public void setNome_Fantasia(String nome_Fantasia) {
+		this.nome_Fantasia = nome_Fantasia;
+	}
+	public String getCnpj() {
+		return cnpj;
+	}
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+	
+	@Override
+	public String toString() {
+		return  this.razao_Social;
+	}
+	
+}

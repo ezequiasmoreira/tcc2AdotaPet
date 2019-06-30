@@ -1,9 +1,9 @@
 package com.adotaPet.api.dto;
 
 import com.adotaPet.api.domain.Cidade;
-import com.adotaPet.api.domain.Ong;
+import com.adotaPet.api.domain.Pessoa;
 
-public class OngDTO {
+public class PessoaDTO {
 	
 	private Integer id;
 	private Integer codigo;
@@ -12,26 +12,77 @@ public class OngDTO {
 	private String complemento;
 	private String bairro;
 	private String cep;
-	private String razao_Social;
-	private String nome_Fantasia;
-	private String cnpj;
 	private Cidade cidade;
-	
-	public OngDTO() {
+	private String nome;
+	private Integer sexo;
+	private Integer perfil;
+	private String cpf;
+	private String rg;
+	private String telefone;
+	public PessoaDTO() {
 	}
 	
-	public OngDTO(Ong obj) {
+	public PessoaDTO(Pessoa obj) {
 		id = obj.getId();
 		codigo = obj.getCodigo();
 		logradouro = obj.getLogradouro();
 		numero = obj.getNumero();
 		complemento = obj.getComplemento();
 		bairro = obj.getBairro();
-		cep = obj.getCep();		
-		razao_Social = obj.getRazao_Social();
-		nome_Fantasia = obj.getNome_Fantasia();
-		cnpj = obj.getCnpj();
-		cidade = obj.getCidade();
+		cep = obj.getCep();	
+		nome = obj.getNome();
+		perfil = obj.getPerfil();
+		cpf = obj.getCpf();
+		rg = obj.getRg();
+		telefone = obj.getTelefone();
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Integer getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(Integer sexo) {
+		this.sexo = sexo;
+	}
+
+	public Integer getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(Integer perfil) {
+		this.perfil = perfil;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getRg() {
+		return rg;
+	}
+
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
+	
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 	public Integer getId() {
@@ -88,30 +139,6 @@ public class OngDTO {
 
 	public void setCep(String cep) {
 		this.cep = cep;
-	}
-
-	public String getRazao_Social() {
-		return razao_Social;
-	}
-
-	public void setRazao_Social(String razao_Social) {
-		this.razao_Social = razao_Social;
-	}
-
-	public String getNome_Fantasia() {
-		return nome_Fantasia;
-	}
-
-	public void setNome_Fantasia(String nome_Fantasia) {
-		this.nome_Fantasia = nome_Fantasia;
-	}
-
-	public String getCnpj() {
-		return cnpj;
-	}
-
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
 	}
 	
 	public Cidade getCidade() {

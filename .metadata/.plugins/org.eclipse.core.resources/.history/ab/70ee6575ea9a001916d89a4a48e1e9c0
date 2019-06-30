@@ -3,7 +3,7 @@ package com.adotaPet.api.dto;
 import com.adotaPet.api.domain.Cidade;
 import com.adotaPet.api.domain.Ong;
 
-public class OngDTO {
+public class PessoaDTO {
 	
 	private Integer id;
 	private Integer codigo;
@@ -17,10 +17,10 @@ public class OngDTO {
 	private String cnpj;
 	private Cidade cidade;
 	
-	public OngDTO() {
+	public PessoaDTO() {
 	}
 	
-	public OngDTO(Ong obj) {
+	public PessoaDTO(Ong obj) {
 		id = obj.getId();
 		codigo = obj.getCodigo();
 		logradouro = obj.getLogradouro();
@@ -31,7 +31,6 @@ public class OngDTO {
 		razao_Social = obj.getRazao_Social();
 		nome_Fantasia = obj.getNome_Fantasia();
 		cnpj = obj.getCnpj();
-		cidade = obj.getCidade();
 	}
 
 	public Integer getId() {
