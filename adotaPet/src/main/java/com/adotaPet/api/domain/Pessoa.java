@@ -6,7 +6,6 @@ import javax.persistence.ManyToOne;
 
 import com.adotaPet.api.domain.enums.Perfil;
 import com.adotaPet.api.domain.enums.Sexo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Pessoa extends Endereco {
@@ -22,12 +21,10 @@ private static final long serialVersionUID = 1L;
 	private String senha;
 	private String telefone;
 	
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="ong_id")
 	private Ong ong;
-	
-	
+		
 	public Pessoa() {
 	}
 	

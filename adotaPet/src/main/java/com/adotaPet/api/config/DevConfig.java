@@ -1,5 +1,7 @@
 package com.adotaPet.api.config;
 
+import java.text.ParseException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +22,7 @@ public class DevConfig {
 	private String strategy;
 	
 	@Bean
-	public boolean instanciateDataBase() {
+	public boolean instanciateDataBase() throws ParseException {
 		//System.out.println(strategy);
 		if (!"create".equals(strategy)) {
 			return false;

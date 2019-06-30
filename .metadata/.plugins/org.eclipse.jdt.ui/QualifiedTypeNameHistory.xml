@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
-<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
-<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 <fullyQualifiedTypeName name="net.bytebuddy.dynamic.DynamicType.Builder.FieldDefinition.Optional"/>
 <fullyQualifiedTypeName name="javassist.tools.rmi.ObjectNotFoundException"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.exceptions.DataIntegrityException"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.OngService"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.DBService"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.repository.OngRepository"/>
-<fullyQualifiedTypeName name="javax.persistence.Entity"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.dto.OngDTO"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.RacaService"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.dto.RacaDTO"/>
@@ -17,7 +14,6 @@
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Raca"/>
 <fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.resource.OngResource"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.domain.Ong"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.repository.DoencaRepository"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.repository.AnimalRepository"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
@@ -30,7 +26,23 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Animal"/>
-<fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AnimalGenero"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AnimalStatus"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.Porte"/>
+<fullyQualifiedTypeName name="java.lang.Boolean"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.repository.EstadoRepository"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.repository.CidadeRepository"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.service.CidadeService"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.Cidade"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.Estado"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.Endereco"/>
+<fullyQualifiedTypeName name="javax.persistence.Entity"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.Ong"/>
+<fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.repository.PessoaRepository"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.Pessoa"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.Sexo"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.Perfil"/>
 </qualifiedTypeNameHistroy>
