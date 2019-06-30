@@ -75,27 +75,27 @@ public class AnimalDTO {
 		this.porte = porte;
 	}
 
-	public boolean getVacinado() {
+	public char getVacinado() {
 		return vacinado;
 	}
 
-	public void setVacinado(boolean vacinado) {
+	public void setVacinado(char vacinado) {
 		this.vacinado = vacinado;
 	}
 
-	public boolean getVermifugado() {
+	public char getVermifugado() {
 		return vermifugado;
 	}
 
-	public void setVermifugado(boolean vermifugado) {
+	public void setVermifugado(char vermifugado) {
 		this.vermifugado = vermifugado;
 	}
 
-	public boolean getCastrado() {
+	public char getCastrado() {
 		return castrado;
 	}
 
-	public void setCastrado(boolean castrado) {
+	public void setCastrado(char castrado) {
 		this.castrado = castrado;
 	}
 
