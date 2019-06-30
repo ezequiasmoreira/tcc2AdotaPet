@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.adotaPet.api.domain.Animal;
-import com.adotaPet.api.domain.Cidade;
 import com.adotaPet.api.domain.Doenca;
-import com.adotaPet.api.domain.Estado;
 import com.adotaPet.api.domain.Ong;
 import com.adotaPet.api.domain.Raca;
 import com.adotaPet.api.domain.enums.AnimalGenero;
@@ -37,16 +35,18 @@ public class DBService {
 	@Autowired
 	private AnimalRepository animalRepository;
 	@Autowired
-	private OngService ongService;	
+	private OngService ongService;
+	@Autowired
+	private DoencaService doencaService;	
 	
 	public void instanciateTestDataBase() {
 		
 		Estado est1 = new Estado(null,"Minas Gerais");
-		Estado est2 = new Estado(null,"Santa Catarina");
+		Estado est2 = new Estado(null,"São Paulo");
 		
-		Cidade c1 = new Cidade(null,"Mantena",est1);
-		Cidade c2 = new Cidade(null,"Criciuma",est2);
-		Cidade c3 = new Cidade(null,"Florianipolis",est2);
+		Cidade c1 = new Cidade(null,"Uberlandia",est1);
+		Cidade c2 = new Cidade(null,"São paulo",est2);
+		Cidade c3 = new Cidade(null,"Campinas",est2);
 		
 		est1.getCidades().addAll(Arrays.asList(c1));
 		est2.getCidades().addAll(Arrays.asList(c2,c3));

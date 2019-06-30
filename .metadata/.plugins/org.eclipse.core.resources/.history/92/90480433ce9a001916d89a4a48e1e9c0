@@ -6,28 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.adotaPet.api.domain.Animal;
-import com.adotaPet.api.domain.Cidade;
 import com.adotaPet.api.domain.Doenca;
-import com.adotaPet.api.domain.Estado;
 import com.adotaPet.api.domain.Ong;
 import com.adotaPet.api.domain.Raca;
 import com.adotaPet.api.domain.enums.AnimalGenero;
 import com.adotaPet.api.domain.enums.AnimalStatus;
 import com.adotaPet.api.domain.enums.Porte;
 import com.adotaPet.api.repository.AnimalRepository;
-import com.adotaPet.api.repository.CidadeRepository;
 import com.adotaPet.api.repository.DoencaRepository;
-import com.adotaPet.api.repository.EstadoRepository;
 import com.adotaPet.api.repository.OngRepository;
 import com.adotaPet.api.repository.RacaRepository;
 
 @Service
 public class DBService {
 	
-	@Autowired
-	private EstadoRepository estadoRepository;
-	@Autowired
-	private CidadeRepository cidadeRepository;
 	@Autowired
 	private OngRepository ongRepository;
 	@Autowired
@@ -37,23 +29,12 @@ public class DBService {
 	@Autowired
 	private AnimalRepository animalRepository;
 	@Autowired
-	private OngService ongService;	
+	private OngService ongService;
+	@Autowired
+	private DoencaService doencaService;
+	
 	
 	public void instanciateTestDataBase() {
-		
-		Estado est1 = new Estado(null,"Minas Gerais");
-		Estado est2 = new Estado(null,"Santa Catarina");
-		
-		Cidade c1 = new Cidade(null,"Mantena",est1);
-		Cidade c2 = new Cidade(null,"Criciuma",est2);
-		Cidade c3 = new Cidade(null,"Florianipolis",est2);
-		
-		est1.getCidades().addAll(Arrays.asList(c1));
-		est2.getCidades().addAll(Arrays.asList(c2,c3));
-				
-		estadoRepository.saveAll(Arrays.asList(est1,est2));
-		cidadeRepository.saveAll(Arrays.asList(c1,c2,c3));
-		
 		Ong ong1 = new Ong(null, 10,"Ong Cocal", "Cocal LTDA","62.769.648/0001-84",
 				"Avenida Brasil",500,"Centro");
 		Ong ong2 = new Ong(null, 10,"Ong pata branca", "Pata branca LTDA","98.013.581/0001-09",
