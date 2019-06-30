@@ -11,7 +11,6 @@ import com.adotaPet.api.domain.Ong;
 import com.adotaPet.api.domain.Raca;
 import com.adotaPet.api.domain.enums.AnimalGenero;
 import com.adotaPet.api.domain.enums.AnimalStatus;
-import com.adotaPet.api.domain.enums.Porte;
 import com.adotaPet.api.repository.AnimalRepository;
 import com.adotaPet.api.repository.DoencaRepository;
 import com.adotaPet.api.repository.OngRepository;
@@ -61,14 +60,14 @@ public class DBService {
 		
 		doencaRepository.saveAll(Arrays.asList(doenca1,doenca2,doenca3,doenca4,doenca5,doenca6));
 		
-		Animal animal1 = new Animal(null, 5,"Belinha", AnimalGenero.FEMEA, Porte.PEQUENO, 'S', 'N', 'S', ong10, AnimalStatus.DISPONIVEL, raca1);
+		Animal animal1 = new Animal(null, 5,"Belinha", AnimalGenero.FEMEA, 'P', 'S', 'N', 'S', ong10, AnimalStatus.DISPONIVEL, raca1);
 		animal1.getDoencas().addAll(Arrays.asList(doenca1,doenca4));
-		Animal animal2 = new Animal(null, 8,"Charopinho", AnimalGenero.MACHO, Porte.PEQUENO, 'S', 'S', 'N', ong10, AnimalStatus.PROCESSAMENTO, raca1);
-		Animal animal3 = new Animal(null, 9,"Chulinho", AnimalGenero.MACHO, Porte.MEDIO, 'N', 'N', 'S', ong11, AnimalStatus.ADOTADO, raca2);
+		Animal animal2 = new Animal(null, 8,"Charopinho", AnimalGenero.MACHO, 'P', 'S', 'S', 'N', ong10, AnimalStatus.PROCESSAMENTO, raca1);
+		Animal animal3 = new Animal(null, 9,"Chulinho", AnimalGenero.MACHO, 'P', 'N', 'N', 'S', ong11, AnimalStatus.ADOTADO, raca2);
 		animal3.getDoencas().addAll(Arrays.asList(doenca2,doenca3,doenca5,doenca6));
-		Animal animal4 = new Animal(null, 10,"Lindinha", AnimalGenero.FEMEA, Porte.MEDIO, 'N', 'S', 'N', ong11, AnimalStatus.ADOTADO, raca4);
+		Animal animal4 = new Animal(null, 10,"Lindinha", AnimalGenero.FEMEA, 'G', 'N', 'S', 'N', ong11, AnimalStatus.ADOTADO, raca4);
 		animal4.getDoencas().addAll(Arrays.asList(doenca1,doenca2,doenca3,doenca4,doenca5));
-		Animal animal5 = new Animal(null, 15,"Chulinho", AnimalGenero.FEMEA, Porte.GRANDE, 'N', 'N', 'S', ong11, AnimalStatus.DISPONIVEL, raca5);
+		Animal animal5 = new Animal(null, 15,"Chulinho", AnimalGenero.FEMEA, 'G', 'N', 'N', 'S', ong11, AnimalStatus.DISPONIVEL, raca5);
 		animal5.getDoencas().addAll(Arrays.asList(doenca6));
 		animalRepository.saveAll(Arrays.asList(animal1,animal2,animal3,animal4,animal5));
 		

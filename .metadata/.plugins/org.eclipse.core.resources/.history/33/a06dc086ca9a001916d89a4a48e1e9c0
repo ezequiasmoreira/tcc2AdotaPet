@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.enums.AnimalGenero;
 import com.adotaPet.api.domain.enums.AnimalStatus;
-import com.adotaPet.api.domain.enums.Porte;
 import com.adotaPet.api.dto.AnimalDTO;
 import com.adotaPet.api.repository.AnimalRepository;
 import com.adotaPet.api.service.exceptions.DataIntegrityException;
@@ -63,7 +62,7 @@ public class AnimalService {
 	}
 	
 	public Animal fromDTO(AnimalDTO objDto) {
-		return new Animal(objDto.getId(),objDto.getCodigo(),objDto.getNome(),AnimalGenero.toEnum(objDto.getGenero()),Porte.toEnum(objDto.getPorte()),
+		return new Animal(objDto.getId(),objDto.getCodigo(),objDto.getNome(),AnimalGenero.toEnum(objDto.getGenero()),objDto.getPorte(),
 				objDto.getVacinado(),objDto.getVermifugado(),objDto.getCastrado(),objDto.getOng(),		
 				AnimalStatus.toEnum(objDto.getStatus()),objDto.getRaca());
 	}

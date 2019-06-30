@@ -11,7 +11,7 @@ public class AnimalDTO {
 	private Integer codigo;
 	private String nome;
 	private Integer genero;
-	private Integer porte;
+	private char porte;
 	private char vacinado;
 	private char vermifugado;
 	private char castrado;	
@@ -67,11 +67,11 @@ public class AnimalDTO {
 		this.genero = genero;
 	}
 
-	public Integer getPorte() {
+	public char getPorte() {
 		return porte;
 	}
 
-	public void setPorte(Integer porte) {
+	public void setPorte(char porte) {
 		this.porte = porte;
 	}
 

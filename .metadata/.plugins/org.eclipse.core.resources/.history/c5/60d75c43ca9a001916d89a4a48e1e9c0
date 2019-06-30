@@ -11,7 +11,6 @@ import javax.persistence.ManyToOne;
 
 import com.adotaPet.api.domain.enums.AnimalGenero;
 import com.adotaPet.api.domain.enums.AnimalStatus;
-import com.adotaPet.api.domain.enums.Porte;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.io.Serializable;
@@ -29,7 +28,7 @@ private static final long serialVersionUID = 1L;
 	private Integer codigo;
 	private String nome;
 	private Integer genero;
-	private Integer porte;
+	private char porte;
 	private char vacinado;
 	private char vermifugado;
 	private char castrado;	
@@ -54,14 +53,14 @@ private static final long serialVersionUID = 1L;
 	public Animal() {
 	}
 	
-	public Animal(Integer id, Integer codigo, String nome, AnimalGenero genero, Porte porte, char vacinado, char vermifugado,
+	public Animal(Integer id, Integer codigo, String nome, AnimalGenero genero, char porte, char vacinado, char vermifugado,
 			char castrado, Ong ong, AnimalStatus status, Raca raca) {
 		super();
 		this.id = id;
 		this.codigo = codigo;
 		this.nome = nome;
 		this.genero = genero.getCod();
-		this.porte = porte.getCod();
+		this.porte = porte;
 		this.vacinado = vacinado;
 		this.vermifugado = vermifugado;
 		this.castrado = castrado;
@@ -109,11 +108,11 @@ private static final long serialVersionUID = 1L;
 		this.genero = genero;
 	}
 
-	public Integer getPorte() {
+	public char getPorte() {
 		return porte;
 	}
 
-	public void setPorte(Integer porte) {
+	public void setPorte(char porte) {
 		this.porte = porte;
 	}
 
