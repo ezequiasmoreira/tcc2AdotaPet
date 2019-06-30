@@ -46,7 +46,7 @@ public class OngService {
 			repo.deleteById(id);
 		}
 		catch (DataIntegrityViolationException e) {
-			throw new DataIntegrityException("Não é possível excluir uma categoria que possui produtos");
+			throw new DataIntegrityException("Não é possível excluir a ong");
 		}
 	}
 	
@@ -63,12 +63,15 @@ public class OngService {
 		return new Ong(
 				objDto.getId(), 
 				objDto.getCodigo(),
+				objDto.getLogradouro(),
+				objDto.getNumero(),
+				objDto.getComplemento(),
+				objDto.getBairro(),
+				objDto.getCep(),
+				objDto.getCidade(),
 				objDto.getRazao_Social(),
 				objDto.getNome_Fantasia(),
-				objDto.getCnpj(),
-				objDto.getRua(),
-				objDto.getNumero(),
-				objDto.getBairro()
+				objDto.getCnpj()
 				);
 	}
 	

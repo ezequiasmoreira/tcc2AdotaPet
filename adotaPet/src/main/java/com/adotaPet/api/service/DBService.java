@@ -54,10 +54,10 @@ public class DBService {
 		estadoRepository.saveAll(Arrays.asList(est1,est2));
 		cidadeRepository.saveAll(Arrays.asList(c1,c2,c3));
 		
-		Ong ong1 = new Ong(null, 10,"Ong Cocal", "Cocal LTDA","62.769.648/0001-84",
-				"Avenida Brasil",500,"Centro");
-		Ong ong2 = new Ong(null, 10,"Ong pata branca", "Pata branca LTDA","98.013.581/0001-09",
-				"Avenida 7 de setembro",21,"Vila nova");
+		Ong ong1 = new Ong(null, 10,"Avenida Sebastião Toledo dos santos","785","Proximo a moradas da colina","Maria ceu","88806-620",
+				c2,"Ong LTDA","Ong do bem","62.769.648/0001-84");
+		Ong ong2 = new Ong(null, 11,"Libano jose gomes","45","Proximo ao pisofer","Santa luzia","88806-000",
+				c3,"Ong LTDA","Cao amigo","98.013.581/0001-09");
 				
 		ongRepository.saveAll(Arrays.asList(ong1,ong2));
 		

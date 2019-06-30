@@ -1,0 +1,56 @@
+package com.adotaPet.api.domain;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
+
+@Entity
+public class Ong extends Endereco implements Serializable {
+	
+private static final long serialVersionUID = 1L;
+		
+	private String razao_Social;
+	private String nome_Fantasia;
+	private String cnpj;
+	
+	public Ong() {
+	}
+	
+	public Ong(Integer id, Integer codigo, String razao_Social, String nome_Fantasia, String cnpj, String rua,
+			Integer numero, String bairro) {
+		super();
+		
+		this.razao_Social = razao_Social;
+		this.nome_Fantasia = nome_Fantasia;
+		this.cnpj = cnpj;
+		
+	}
+	
+	
+	
+	public String getRazao_Social() {
+		return razao_Social;
+	}
+	public void setRazao_Social(String razao_Social) {
+		this.razao_Social = razao_Social;
+	}
+	public String getNome_Fantasia() {
+		return nome_Fantasia;
+	}
+	public void setNome_Fantasia(String nome_Fantasia) {
+		this.nome_Fantasia = nome_Fantasia;
+	}
+	public String getCnpj() {
+		return cnpj;
+	}
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+	
+	@Override
+	public String toString() {
+		return  this.razao_Social;
+	}
+}

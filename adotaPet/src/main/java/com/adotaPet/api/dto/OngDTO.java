@@ -1,25 +1,21 @@
 package com.adotaPet.api.dto;
 
-import javax.validation.constraints.NotEmpty;
-
-import org.hibernate.validator.constraints.Length;
-
+import com.adotaPet.api.domain.Cidade;
 import com.adotaPet.api.domain.Ong;
 
 public class OngDTO {
 	
-	private Integer id;	
-	@NotEmpty(message="Preenchimento obrigatório")	
+	private Integer id;
 	private Integer codigo;
-	@NotEmpty(message="Preenchimento obrigatório")	
-	@Length(min=5, max=80, message="O tamanho deve ser entre 5 e 80 caracteres")
+	private String logradouro;
+	private String numero;
+	private String complemento;
+	private String bairro;
+	private String cep;
 	private String razao_Social;
 	private String nome_Fantasia;
-	@NotEmpty(message="Preenchimento obrigatório")
 	private String cnpj;
-	private String rua;
-	private Integer numero;
-	private String bairro;	
+	private Cidade cidade;
 	
 	public OngDTO() {
 	}
@@ -27,10 +23,80 @@ public class OngDTO {
 	public OngDTO(Ong obj) {
 		id = obj.getId();
 		codigo = obj.getCodigo();
+		logradouro = obj.getLogradouro();
+		numero = obj.getNumero();
+		complemento = obj.getComplemento();
+		bairro = obj.getBairro();
+		cep = obj.getCep();		
 		razao_Social = obj.getRazao_Social();
+		nome_Fantasia = obj.getNome_Fantasia();
 		cnpj = obj.getCnpj();
 	}
-	
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getLogradouro() {
+		return logradouro;
+	}
+
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public String getRazao_Social() {
+		return razao_Social;
+	}
+
+	public void setRazao_Social(String razao_Social) {
+		this.razao_Social = razao_Social;
+	}
+
 	public String getNome_Fantasia() {
 		return nome_Fantasia;
 	}
@@ -46,48 +112,13 @@ public class OngDTO {
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
-
-	public String getRua() {
-		return rua;
+	
+	public Cidade getCidade() {
+		return cidade;
 	}
 
-	public void setRua(String rua) {
-		this.rua = rua;
-	}
-
-	public Integer getNumero() {
-		return numero;
-	}
-
-	public void setNumero(Integer numero) {
-		this.numero = numero;
-	}
-
-	public String getBairro() {
-		return bairro;
-	}
-
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public Integer getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
-	public String getRazao_Social() {
-		return razao_Social;
-	}
-	public void setRazao_Social(String razao_Social) {
-		this.razao_Social = razao_Social;
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
 	}
 	
 	
