@@ -41,8 +41,8 @@ public class DBService {
 	
 	public void instanciateTestDataBase() {
 		
-		Estado est1 = new Estado(null,"Minas Gerais",31);
-		Estado est2 = new Estado(null,"Santa Catarina",42);
+		Estado est1 = new Estado(null,"Minas Gerais");
+		Estado est2 = new Estado(null,"Santa Catarina");
 		
 		Cidade c1 = new Cidade(null,"Mantena",est1);
 		Cidade c2 = new Cidade(null,"Criciuma",est2);

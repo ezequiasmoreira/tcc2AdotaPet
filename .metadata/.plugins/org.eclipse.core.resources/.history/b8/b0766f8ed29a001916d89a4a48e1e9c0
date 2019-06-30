@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.adotaPet.api.domain.Estado;
+import com.adotaPet.api.domain.Estado;
 import com.adotaPet.api.dto.EstadoDTO;
 import com.adotaPet.api.service.EstadoService;
 

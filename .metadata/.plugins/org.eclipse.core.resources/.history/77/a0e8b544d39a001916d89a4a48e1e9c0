@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.Estado;
 import com.adotaPet.api.repository.EstadoRepository;
 
