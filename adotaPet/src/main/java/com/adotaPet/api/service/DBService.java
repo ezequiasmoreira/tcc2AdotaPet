@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import com.adotaPet.api.domain.Acompanhamento;
 import com.adotaPet.api.domain.Adocao;
 import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.Cidade;
@@ -16,12 +17,15 @@ import com.adotaPet.api.domain.Estado;
 import com.adotaPet.api.domain.Ong;
 import com.adotaPet.api.domain.Pessoa;
 import com.adotaPet.api.domain.Raca;
+import com.adotaPet.api.domain.enums.AcompanhamentoSituacao;
+import com.adotaPet.api.domain.enums.AcompanhamentoStatus;
 import com.adotaPet.api.domain.enums.AdocaoStatus;
 import com.adotaPet.api.domain.enums.AnimalGenero;
 import com.adotaPet.api.domain.enums.AnimalStatus;
 import com.adotaPet.api.domain.enums.Perfil;
 import com.adotaPet.api.domain.enums.Porte;
 import com.adotaPet.api.domain.enums.Sexo;
+import com.adotaPet.api.repository.AcompanhamentoRepository;
 import com.adotaPet.api.repository.AdocaoRepository;
 import com.adotaPet.api.repository.AnimalRepository;
 import com.adotaPet.api.repository.CidadeRepository;
@@ -50,6 +54,8 @@ public class DBService {
 	private PessoaRepository pessoaRepository;
 	@Autowired
 	private AdocaoRepository adocaoRepository;
+	@Autowired
+	private AcompanhamentoRepository acompanhamentoRepository;
 	@Autowired
 	private OngService ongService;	
 	
@@ -118,6 +124,14 @@ public class DBService {
 		Adocao adocao3 = new Adocao(null, 4, sdf.parse("25/05/2019 18:00"), sdf.parse("25/05/2019 18:03"), AdocaoStatus.REJEITADO, p2, null, "Perfil indisponvel para adocao", ong1, animal1);
 		Adocao adocao4 = new Adocao(null, 5, sdf.parse("28/06/2019 14:00"), null, AdocaoStatus.ANALISE, p1, p3, null, ong1, animal1);
 		adocaoRepository.saveAll(Arrays.asList(adocao1,adocao2,adocao3,adocao4));
+		
+		Acompanhamento acom1 =new Acompanhamento(null, 1, "Acompamento após 1 mês de adoção", AcompanhamentoStatus.ABERTO,AcompanhamentoSituacao.ANALISE, null, sdf.parse("02/07/2019 10:00"), null, adocao1);
+		Acompanhamento acom2 =new Acompanhamento(null, 2, "Acompanhamento do chulinho", AcompanhamentoStatus.AGENDADO, AcompanhamentoSituacao.ANALISE, "Tentando contato", sdf.parse("12/07/2019 10:20"), null, adocao2);
+		Acompanhamento acom3 =new Acompanhamento(null, 3, "Acompanhamento do chulinho segunda tentativa", AcompanhamentoStatus.FINALIZADO, AcompanhamentoSituacao.OTIMO, null,  sdf.parse("13/07/2019 11:20"), sdf.parse("13/07/2019 11:30"), adocao2);	
+		
+		acompanhamentoRepository.saveAll(Arrays.asList(acom1,acom2,acom3));
+		
+				
 	}
 
 }

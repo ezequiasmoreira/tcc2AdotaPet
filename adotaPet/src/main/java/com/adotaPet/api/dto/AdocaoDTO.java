@@ -2,12 +2,6 @@ package com.adotaPet.api.dto;
 
 import java.util.Date;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotEmpty;
-
-import org.hibernate.validator.constraints.Length;
-
 import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.Ong;
 import com.adotaPet.api.domain.Pessoa;
