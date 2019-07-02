@@ -11,11 +11,13 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.adotaPet.api.domain.Animal;
+import com.adotaPet.api.domain.Doenca;
 import com.adotaPet.api.domain.enums.AnimalGenero;
 import com.adotaPet.api.domain.enums.AnimalStatus;
 import com.adotaPet.api.domain.enums.Porte;
 import com.adotaPet.api.dto.AnimalDTO;
 import com.adotaPet.api.repository.AnimalRepository;
+import com.adotaPet.api.repository.DoencaRepository;
 import com.adotaPet.api.service.exceptions.DataIntegrityException;
 import com.adotaPet.api.service.exceptions.ObjectNotFoundException;
 
@@ -25,6 +27,8 @@ public class AnimalService {
 
 	@Autowired
 	private AnimalRepository repo;
+	@Autowired
+	private DoencaRepository doencaRepository;
 
 	public Animal find(Integer id) {
 		Optional<Animal> obj = repo.findById(id);
@@ -57,6 +61,10 @@ public class AnimalService {
 		return repo.findAll();
 	}
 	
+	public List<Animal> findByOng(Integer ongId) {
+		return repo.findOng(ongId);
+	}
+	
 	public Page<Animal> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
@@ -66,6 +74,12 @@ public class AnimalService {
 		return new Animal(objDto.getId(),objDto.getCodigo(),objDto.getNome(),AnimalGenero.toEnum(objDto.getGenero()),Porte.toEnum(objDto.getPorte()),
 				objDto.getVacinado(),objDto.getVermifugado(),objDto.getCastrado(),objDto.getOng(),		
 				AnimalStatus.toEnum(objDto.getStatus()),objDto.getRaca());
+	}
+	
+	public Page<Animal> search(String nome, List<Integer> ids, Integer page, Integer linesPerPage, String orderBy, String direction) {
+		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
+		List<Doenca> doencas = doencaRepository.findAllById(ids);
+		return repo.findDistinctByNomeContainingAndDoencasIn(nome, doencas, pageRequest);	
 	}
 	
 	private void updateData(Animal newObj, Animal obj) {		

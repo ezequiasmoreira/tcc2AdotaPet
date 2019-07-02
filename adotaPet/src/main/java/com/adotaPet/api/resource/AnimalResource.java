@@ -19,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.dto.AnimalDTO;
+import com.adotaPet.api.resource.utils.URL;
 import com.adotaPet.api.service.AnimalService;
 
 import javassist.tools.rmi.ObjectNotFoundException;
@@ -63,20 +64,24 @@ public class AnimalResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<List<AnimalDTO>> findAll() {
-		List<Animal> list = service.findAll();
+	@RequestMapping(value="/ong/{id}",method=RequestMethod.GET)
+	public ResponseEntity<List<AnimalDTO>> findAll(@PathVariable Integer id) {
+		List<Animal> list = service.findByOng(id);
 		List<AnimalDTO> listDto = list.stream().map(obj -> new AnimalDTO(obj)).collect(Collectors.toList());  
 		return ResponseEntity.ok().body(listDto);
 	}
 	
-	@RequestMapping(value="/page", method=RequestMethod.GET)
+	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<Page<AnimalDTO>> findPage(
+			@RequestParam(value="nome", defaultValue="") String nome, 
+			@RequestParam(value="doencas", defaultValue="") String doencas, 
 			@RequestParam(value="page", defaultValue="0") Integer page, 
 			@RequestParam(value="linesPerPage", defaultValue="24") Integer linesPerPage, 
 			@RequestParam(value="orderBy", defaultValue="nome") String orderBy, 
 			@RequestParam(value="direction", defaultValue="ASC") String direction) {
-		Page<Animal> list = service.findPage(page, linesPerPage, orderBy, direction);
+		String nomeDecoded = URL.decodeParam(nome);
+		List<Integer> ids = URL.decodeIntList(doencas);
+		Page<Animal> list = service.search(nomeDecoded, ids, page, linesPerPage, orderBy, direction);
 		Page<AnimalDTO> listDto = list.map(obj -> new AnimalDTO(obj));  
 		return ResponseEntity.ok().body(listDto);
 	}
