@@ -14,9 +14,7 @@
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Raca"/>
 <fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.resource.OngResource"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.repository.DoencaRepository"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.repository.AnimalRepository"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.domain.Doenca"/>
 <fullyQualifiedTypeName name="javax.persistence.OneToMany"/>
 <fullyQualifiedTypeName name="antlr.collections.List"/>
 <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonIgnore"/>
@@ -24,7 +22,6 @@
 <fullyQualifiedTypeName name="javax.persistence.ManyToMany"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.domain.Animal"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AnimalGenero"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AnimalStatus"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.Porte"/>
@@ -53,4 +50,8 @@
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Acompanhamento"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AcompanhamentoSituacao"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.repository.DoencaRepository"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.Animal"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.Doenca"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.resource.utils.URL"/>
 </qualifiedTypeNameHistroy>
