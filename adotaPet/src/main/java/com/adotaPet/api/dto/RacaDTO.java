@@ -9,11 +9,8 @@ import com.adotaPet.api.domain.Raca;
 
 public class RacaDTO {
 	
-	private Integer id;	
-	@NotEmpty(message="Preenchimento obrigatório")	
+	private Integer id;		
 	private Integer codigo;
-	@NotEmpty(message="Preenchimento obrigatório")	
-	@Length(min=5, max=80, message="O tamanho deve ser entre 5 e 80 caracteres")
 	private String descricao;
 	private Ong ong;
 	

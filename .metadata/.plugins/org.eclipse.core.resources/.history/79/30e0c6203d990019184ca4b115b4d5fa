@@ -1,5 +1,0 @@
-package com.adotaPet.api.domain.enums;
-
-public enum AnimalGenero {
-
-}
