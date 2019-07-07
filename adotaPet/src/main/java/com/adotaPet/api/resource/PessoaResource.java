@@ -71,13 +71,16 @@ public class PessoaResource {
 		return ResponseEntity.ok().body(listDto);
 	}
 	
-	@RequestMapping(value="/page", method=RequestMethod.GET)
+	
+	@RequestMapping(value="/ong/{id}",method=RequestMethod.GET)
 	public ResponseEntity<Page<PessoaDTO>> findPage(
+			@PathVariable Integer id, 
 			@RequestParam(value="page", defaultValue="0") Integer page, 
 			@RequestParam(value="linesPerPage", defaultValue="24") Integer linesPerPage, 
 			@RequestParam(value="orderBy", defaultValue="nome") String orderBy, 
 			@RequestParam(value="direction", defaultValue="ASC") String direction) {
-		Page<Pessoa> list = service.findPage(page, linesPerPage, orderBy, direction);
+		
+		Page<Pessoa> list = service.search(id, page, linesPerPage, orderBy, direction);
 		Page<PessoaDTO> listDto = list.map(obj -> new PessoaDTO(obj));  
 		return ResponseEntity.ok().body(listDto);
 	}

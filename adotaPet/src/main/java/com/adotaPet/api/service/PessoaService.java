@@ -12,7 +12,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.Cidade;
+import com.adotaPet.api.domain.Doenca;
 import com.adotaPet.api.domain.Ong;
 import com.adotaPet.api.domain.Pessoa;
 import com.adotaPet.api.domain.enums.Perfil;
@@ -114,6 +116,10 @@ public class PessoaService {
 				objDto.getTelefone(),
 				objDto.getOngId() == null ? null : new Ong (objDto.getOngId(),null, null, null, null, null, null, null, null, null, null)
 				);
+	}
+	public Page<Pessoa> search(Integer ongId, Integer page, Integer linesPerPage, String orderBy, String direction) {
+		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);		
+		return repo.obterPessoaPorOng(ongId,pageRequest);	
 	}
 	
 	private void updateData(Pessoa newObj, Pessoa obj) {
