@@ -91,9 +91,13 @@ public class PessoaService {
 	}
 	public Pessoa fromDTO(PessoaNewDTO objDto) {
 		Cidade cidade = new Cidade(objDto.getCidadeId(), null, null);
+		Integer codigo = objDto.getOngId() == null ? null : repo.obterCodigo(objDto.getOngId());
+		if (codigo == null && objDto.getOngId() != null) {
+			codigo = 1;
+		}
 		return new Pessoa(
 				null,
-				objDto.getCodigo(),
+				codigo,
 				objDto.getLogradouro(),
 				objDto.getNumero(),
 				objDto.getComplemento(),
