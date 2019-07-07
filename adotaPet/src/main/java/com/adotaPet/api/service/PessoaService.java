@@ -3,6 +3,8 @@ package com.adotaPet.api.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -10,10 +12,14 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import com.adotaPet.api.domain.Cidade;
+import com.adotaPet.api.domain.Ong;
 import com.adotaPet.api.domain.Pessoa;
 import com.adotaPet.api.domain.enums.Perfil;
 import com.adotaPet.api.domain.enums.Sexo;
 import com.adotaPet.api.dto.PessoaDTO;
+import com.adotaPet.api.dto.PessoaNewDTO;
+import com.adotaPet.api.repository.CidadeRepository;
 import com.adotaPet.api.repository.PessoaRepository;
 import com.adotaPet.api.service.exceptions.DataIntegrityException;
 import com.adotaPet.api.service.exceptions.ObjectNotFoundException;
@@ -31,6 +37,7 @@ public class PessoaService {
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Pessoa.class.getName()));
 	}
 	
+	@Transactional
 	public Pessoa insert(Pessoa obj) {
 		obj.setId(null);
 		return repo.save(obj);
@@ -80,6 +87,28 @@ public class PessoaService {
 				null,
 				objDto.getTelefone(),
 				null
+				);
+	}
+	public Pessoa fromDTO(PessoaNewDTO objDto) {
+		Cidade cidade = new Cidade(objDto.getCidadeId(), null, null);
+		return new Pessoa(
+				null,
+				objDto.getCodigo(),
+				objDto.getLogradouro(),
+				objDto.getNumero(),
+				objDto.getComplemento(),
+				objDto.getBairro(),
+				objDto.getCep(),
+				cidade,
+				objDto.getNome(),
+				Sexo.toEnum(objDto.getSexo()),
+				objDto.getOngId() == null ? Perfil.USUARIO : Perfil.VOLUNTARIO,
+				objDto.getCpf(),
+				objDto.getRg(),
+				objDto.getLogin(),
+				objDto.getSenha(),
+				objDto.getTelefone(),
+				objDto.getOngId() == null ? null : new Ong (objDto.getOngId(),null, null, null, null, null, null, null, null, null, null)
 				);
 	}
 	

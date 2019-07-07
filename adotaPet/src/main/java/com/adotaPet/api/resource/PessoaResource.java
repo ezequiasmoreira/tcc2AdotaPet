@@ -19,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.adotaPet.api.domain.Pessoa;
 import com.adotaPet.api.dto.PessoaDTO;
+import com.adotaPet.api.dto.PessoaNewDTO;
 import com.adotaPet.api.service.PessoaService;
 
 import javassist.tools.rmi.ObjectNotFoundException;
@@ -39,7 +40,7 @@ public class PessoaResource {
 	
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@Valid @RequestBody PessoaDTO objDto) {
+	public ResponseEntity<Void> insert(@Valid @RequestBody PessoaNewDTO objDto) {
 		Pessoa obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
