@@ -12,19 +12,17 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.Cidade;
-import com.adotaPet.api.domain.Doenca;
 import com.adotaPet.api.domain.Ong;
 import com.adotaPet.api.domain.Pessoa;
 import com.adotaPet.api.domain.enums.Perfil;
 import com.adotaPet.api.domain.enums.Sexo;
 import com.adotaPet.api.dto.PessoaDTO;
 import com.adotaPet.api.dto.PessoaNewDTO;
-import com.adotaPet.api.repository.CidadeRepository;
 import com.adotaPet.api.repository.PessoaRepository;
 import com.adotaPet.api.service.exceptions.DataIntegrityException;
 import com.adotaPet.api.service.exceptions.ObjectNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 @Service
@@ -32,6 +30,8 @@ public class PessoaService {
 
 	@Autowired
 	private PessoaRepository repo;
+	@Autowired
+	private BCryptPasswordEncoder pe;
 
 	public Pessoa find(Integer id) {
 		Optional<Pessoa> obj = repo.findById(id);
@@ -111,8 +111,8 @@ public class PessoaService {
 				objDto.getOngId() == null ? Perfil.USUARIO : Perfil.VOLUNTARIO,
 				objDto.getCpf(),
 				objDto.getRg(),
-				objDto.getLogin(),
-				objDto.getSenha(),
+				objDto.getEmail(),
+				pe.encode(objDto.getSenha()),
 				objDto.getTelefone(),
 				objDto.getOngId() == null ? null : new Ong (objDto.getOngId(),null, null, null, null, null, null, null, null, null, null)
 				);

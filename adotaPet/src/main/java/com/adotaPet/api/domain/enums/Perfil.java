@@ -2,7 +2,7 @@ package com.adotaPet.api.domain.enums;
 
 public enum Perfil {
 	MASTER(1, "ROLE_MASTER"),
-	ADMIN(2, "ROLE_ADMN"),
+	ADMIN(2, "ROLE_ADMIN"),
 	VOLUNTARIO(3, "ROLE_VOLUNTARIO"),
 	USUARIO(4, "ROLE_USUARIO");
 	

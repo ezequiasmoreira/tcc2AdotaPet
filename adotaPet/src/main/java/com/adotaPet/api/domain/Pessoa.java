@@ -1,11 +1,19 @@
 package com.adotaPet.api.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.adotaPet.api.domain.enums.Perfil;
 import com.adotaPet.api.domain.enums.Sexo;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 
 @Entity
 public class Pessoa extends Endereco {
@@ -14,10 +22,15 @@ private static final long serialVersionUID = 1L;
 
 	private String nome;
 	private Integer sexo;
+	
 	private Integer perfil;
+	@ElementCollection(fetch=FetchType.EAGER)
+	@CollectionTable(name="PERFIS")
+	private Set<Integer> perfis = new HashSet<>();
+	
 	private String cpf;
 	private String rg;
-	private String login;
+	private String email;
 	private String senha;
 	private String telefone;
 	
@@ -26,10 +39,11 @@ private static final long serialVersionUID = 1L;
 	private Ong ong;
 		
 	public Pessoa() {
+		addPerfil(Perfil.USUARIO);
 	}
 	
 	public Pessoa(Integer id, Integer codigo, String logradouro, String numero, String complemento, String bairro, String cep, Cidade cidade,
-			String nome, Sexo sexo, Perfil perfil, String cpf, String rg, String login, String senha, String telefone,Ong ong ) {
+			String nome, Sexo sexo, Perfil perfil, String cpf, String rg, String email, String senha, String telefone,Ong ong ) {
 		super();
 		
 		setId(id);
@@ -45,12 +59,19 @@ private static final long serialVersionUID = 1L;
 		this.perfil = perfil.getCod();
 		this.cpf = cpf;
 		this.rg= rg;
-		this.login = login;
+		this.email = email;
 		this.senha = senha;
 		this.telefone = telefone;
 		this.ong = ong;
+		addPerfil(Perfil.USUARIO);
 	}
-
+	
+	public Set<Perfil> getPerfis() {
+		return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
+	}
+	public void addPerfil(Perfil perfil) {
+		perfis.add(perfil.getCod());
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -91,12 +112,12 @@ private static final long serialVersionUID = 1L;
 		this.rg = rg;
 	}
 
-	public String getLogin() {
-		return login;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setLogin(String email) {
+		this.email = email;
 	}
 
 	public String getSenha() {

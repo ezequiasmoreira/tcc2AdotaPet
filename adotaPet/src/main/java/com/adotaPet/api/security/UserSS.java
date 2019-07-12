@@ -26,6 +26,7 @@ public class UserSS implements UserDetails {
 		this.id = id;
 		this.email = email;
 		this.senha = senha;
+		System.out.println("teste");
 		this.authorities = perfis.stream().map(x -> new SimpleGrantedAuthority(x.getDescricao())).collect(Collectors.toList());
 	}
 

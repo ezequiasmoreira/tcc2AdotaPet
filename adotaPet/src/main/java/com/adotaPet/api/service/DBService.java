@@ -3,6 +3,7 @@ package com.adotaPet.api.service;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -57,7 +58,9 @@ public class DBService {
 	@Autowired
 	private AcompanhamentoRepository acompanhamentoRepository;
 	@Autowired
-	private OngService ongService;	
+	private OngService ongService;
+	@Autowired
+	private BCryptPasswordEncoder pe;
 	
 	public void instanciateTestDataBase() throws ParseException {
 		
@@ -91,10 +94,20 @@ public class DBService {
 		
 		racaRepository.saveAll(Arrays.asList(raca1,raca2,raca3,raca4,raca5));
 		
-		Pessoa p1 = new Pessoa(null, 5, "Avenida sete de setembro", "45", "Proximo ao ebenezer", "Treze de junho", "35290-000", c1, "Pedro", Sexo.MASCULINO, Perfil.USUARIO, "108.963.205-96", "895632145", "Pedro@hotmail.com", "123", "98564712",null);
-		Pessoa p2 = new Pessoa(null, 51, "Santo amaro", "80", "Apt 87", "Centro", "35290-200", c1, "Sandra", Sexo.FEMININO, Perfil.VOLUNTARIO, "108.963.205-50", "8957895145", "sandra@hotmail.com", "147", "98564877712",ong1);
-		Pessoa p3 = new Pessoa(null, 59, "Lacerda campos", "7850", null, "Bela vista", "88697-896", c3, "Camilo", Sexo.MASCULINO, Perfil.ADMIN, "108.963.205-89", "895788745", "camilo@hotmail.com", "caca", "9856482",ong1);
-		Pessoa p4 = new Pessoa(null, 100, "Libano jose gomes", "785", "casa 45", "Santa luzia", "88806-620", c2, "Ezequias", Sexo.MASCULINO, Perfil.MASTER, "107.458.987-87", "789456123", "ezequiasmoreira@hotmail.com", "0123", "98410553",null);
+		Pessoa p1 = new Pessoa(null, 5, "Avenida sete de setembro", "45", "Proximo ao ebenezer", "Treze de junho", "35290-000", c1, "Pedro", Sexo.MASCULINO, Perfil.USUARIO, "108.963.205-96", "895632145", "pedro@hotmail.com", pe.encode("123"), "98564712",null);
+		p1.addPerfil(Perfil.USUARIO);
+		
+		Pessoa p2 = new Pessoa(null, 51, "Santo amaro", "80", "Apt 87", "Centro", "35290-200", c1, "Sandra", Sexo.FEMININO, Perfil.VOLUNTARIO, "108.963.205-50", "8957895145", "sandra@hotmail.com", pe.encode("147"), "98564877712",ong1);
+		p2.addPerfil(Perfil.VOLUNTARIO);
+		p2.addPerfil(Perfil.USUARIO);
+		
+		Pessoa p3 = new Pessoa(null, 59, "Lacerda campos", "7850", null, "Bela vista", "88697-896", c3, "Camilo", Sexo.MASCULINO, Perfil.ADMIN, "108.963.205-89", "895788745", "camilo@hotmail.com", pe.encode("caca"), "9856482",ong1);
+		p3.addPerfil(Perfil.USUARIO);
+		p3.addPerfil(Perfil.VOLUNTARIO);
+		p3.addPerfil(Perfil.ADMIN);
+		
+		Pessoa p4 = new Pessoa(null, 100, "Libano jose gomes", "785", "casa 45", "Santa luzia", "88806-620", c2, "Ezequias", Sexo.MASCULINO, Perfil.MASTER, "107.458.987-87", "789456123", "ezequiasmoreira@hotmail.com", pe.encode("0123"), "98410553",null);
+		p4.addPerfil(Perfil.MASTER);
 		
 		pessoaRepository.saveAll(Arrays.asList(p1,p2,p3,p4));
 		

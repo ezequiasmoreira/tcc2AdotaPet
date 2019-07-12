@@ -25,5 +25,8 @@ public interface PessoaRepository extends JpaRepository<Pessoa, Integer> {
 	@Query("SELECT obj FROM Pessoa obj WHERE obj.ong.id = :ongId ")
 	Page<Pessoa> obterPessoaPorOng(@Param("ongId") Integer ongId, Pageable pageRequest);
 	
+	@Transactional(readOnly=true)
+	Pessoa findByEmail(String email);
+	
 
 }
