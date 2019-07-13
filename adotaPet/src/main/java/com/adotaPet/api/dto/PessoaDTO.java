@@ -19,6 +19,7 @@ public class PessoaDTO {
 	private String cpf;
 	private String rg;
 	private String telefone;
+	
 	public PessoaDTO() {
 	}
 	

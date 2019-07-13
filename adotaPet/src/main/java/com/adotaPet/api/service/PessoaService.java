@@ -67,9 +67,7 @@ public class PessoaService {
 	}
 	
 	public Pessoa update(Pessoa obj) {
-		Pessoa newObj = find(obj.getId());
-		updateData(newObj, obj);
-		return repo.save(newObj);
+		return repo.save(obj);
 	}
 	
 	public void delete(Integer id) {
@@ -185,8 +183,28 @@ public class PessoaService {
 		return repo.obterPessoaPorOng(ongId,pageRequest);	
 	}
 	
-	private void updateData(Pessoa newObj, Pessoa obj) {
-		newObj.setCodigo(obj.getCodigo());
-		newObj.setCpf(obj.getCpf());
+		
+	public Pessoa updateData (PessoaNewDTO obj,Integer id) {
+		Pessoa pessoa = repo.findPessoaId(id);
+		if (obj.getId() == null) {
+			throw new AuthorizationException("Não foi possivel atualizar o usuário");
+		}
+		
+		Cidade cidade = obj.getCidadeId()==null ? pessoa.getCidade() : new Cidade(obj.getCidadeId(), null, null);
+		
+		pessoa.setId(obj.getId());
+		pessoa.setCpf( obj.getCpf()==null ? pessoa.getCpf() : obj.getCpf());
+		pessoa.setSexo( obj.getSexo()==null ? pessoa.getSexo() : obj.getSexo());
+		pessoa.setRg( obj.getRg()==null ? pessoa.getRg() : obj.getRg());
+		pessoa.setNumero( obj.getNumero()==null ? pessoa.getNumero() : obj.getNumero());
+		pessoa.setNome( obj.getNome()==null ? pessoa.getNome() : obj.getNome());
+		pessoa.setLogradouro( obj.getLogradouro()==null ? pessoa.getLogradouro() : obj.getLogradouro());
+		pessoa.setCpf( obj.getCpf()==null ? pessoa.getCpf() :  obj.getCpf() );
+		pessoa.setComplemento( obj.getComplemento()==null ? pessoa.getComplemento() : obj.getComplemento());
+		pessoa.setCidade(cidade);
+		pessoa.setCep( obj.getCep()==null ? pessoa.getCep() : obj.getCep());
+		pessoa.setBairro(obj.getBairro()==null ? pessoa.getBairro() : obj.getBairro());
+		
+		return pessoa;
 	}
 }

@@ -48,10 +48,10 @@ public class PessoaResource {
 			.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
-	
+	@PreAuthorize("hasAnyRole('USUARIO')")
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> update(@Valid @RequestBody PessoaDTO objDto, @PathVariable Integer id) throws ObjectNotFoundException {
-		Pessoa obj = service.fromDTO(objDto);
+	public ResponseEntity<Void> update(@Valid @RequestBody PessoaNewDTO objDto, @PathVariable Integer id) throws ObjectNotFoundException {
+		Pessoa obj = service.updateData(objDto,id);
 		obj.setId(id);
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();

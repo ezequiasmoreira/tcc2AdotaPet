@@ -7,6 +7,7 @@ import com.adotaPet.api.service.validation.PessoaInsert;
 public class PessoaNewDTO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
+	private Integer id;
 	private Integer codigo;
 	private String logradouro;
 	private String numero;
@@ -26,6 +27,14 @@ public class PessoaNewDTO implements Serializable {
 	
 	
 	public PessoaNewDTO() {
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getEmail() {
