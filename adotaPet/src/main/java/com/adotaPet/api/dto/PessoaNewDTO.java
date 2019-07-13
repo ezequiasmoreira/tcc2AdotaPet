@@ -2,6 +2,8 @@ package com.adotaPet.api.dto;
 
 import java.io.Serializable;
 
+import com.adotaPet.api.service.validation.PessoaInsert;
+@PessoaInsert
 public class PessoaNewDTO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

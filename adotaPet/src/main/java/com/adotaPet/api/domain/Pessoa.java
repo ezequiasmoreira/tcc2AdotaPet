@@ -13,6 +13,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 
 @Entity
@@ -30,7 +31,10 @@ private static final long serialVersionUID = 1L;
 	
 	private String cpf;
 	private String rg;
+	
+	@Column(unique=true)
 	private String email;
+	
 	private String senha;
 	private String telefone;
 	

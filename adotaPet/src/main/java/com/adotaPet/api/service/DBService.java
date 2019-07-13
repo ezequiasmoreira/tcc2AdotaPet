@@ -108,6 +108,9 @@ public class DBService {
 		
 		Pessoa p4 = new Pessoa(null, 100, "Libano jose gomes", "785", "casa 45", "Santa luzia", "88806-620", c2, "Ezequias", Sexo.MASCULINO, Perfil.MASTER, "107.458.987-87", "789456123", "ezequiasmoreira@hotmail.com", pe.encode("0123"), "98410553",null);
 		p4.addPerfil(Perfil.MASTER);
+		p4.addPerfil(Perfil.USUARIO);
+		p4.addPerfil(Perfil.VOLUNTARIO);
+		p4.addPerfil(Perfil.ADMIN);
 		
 		pessoaRepository.saveAll(Arrays.asList(p1,p2,p3,p4));
 		
