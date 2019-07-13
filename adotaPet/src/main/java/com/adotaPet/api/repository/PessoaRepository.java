@@ -1,5 +1,7 @@
 package com.adotaPet.api.repository;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,6 +24,14 @@ public interface PessoaRepository extends JpaRepository<Pessoa, Integer> {
 	Page<Pessoa> obterPessoaPorOng(@Param("ongId") Integer ongId, Pageable pageRequest);
 	
 	@Transactional(readOnly=true)
+	@Query("SELECT obj FROM Pessoa obj WHERE obj.ong.id = :ongId ")
+	public List<Pessoa> listPessoasOng(@Param("ongId") Integer ongId);
+	
+	@Transactional(readOnly=true)
+	@Query("SELECT obj FROM Pessoa obj WHERE obj.id = :id ")
+	Pessoa findPessoaId(@Param("id") Integer id);
+	
+	@Transactional(readOnly=true)
 	Pessoa findByEmail(String email);
 	
 	@Transactional(readOnly=true)
@@ -29,5 +39,6 @@ public interface PessoaRepository extends JpaRepository<Pessoa, Integer> {
 	
 	@Transactional(readOnly=true)
 	Pessoa findByRg(String rg);
+	
 	
 }

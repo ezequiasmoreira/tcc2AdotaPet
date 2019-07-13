@@ -20,6 +20,8 @@ import com.adotaPet.api.domain.enums.Sexo;
 import com.adotaPet.api.dto.PessoaDTO;
 import com.adotaPet.api.dto.PessoaNewDTO;
 import com.adotaPet.api.repository.PessoaRepository;
+import com.adotaPet.api.security.UserSS;
+import com.adotaPet.api.service.exceptions.AuthorizationException;
 import com.adotaPet.api.service.exceptions.DataIntegrityException;
 import com.adotaPet.api.service.exceptions.ObjectNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -34,6 +36,25 @@ public class PessoaService {
 	private BCryptPasswordEncoder pe;
 
 	public Pessoa find(Integer id) {
+		UserSS user = UserService.authenticated();
+		if (user==null || !user.hasRole(Perfil.MASTER) && !id.equals(user.getId())) {
+			if(user.hasRole(Perfil.ADMIN)) {				
+				Pessoa usuarioAdmin = repo.findPessoaId(user.getId());
+				Pessoa usuario = repo.findPessoaId(id);
+				if ((usuario.getOng() == null) || (usuarioAdmin.getOng() == null)) {
+					throw new AuthorizationException("Acesso negado");
+				}
+				if (usuarioAdmin.getOng().getId() != (usuario.getOng().getId())) {
+					throw new AuthorizationException("Acesso negado");
+				}
+			}
+			if((user.hasRole(Perfil.VOLUNTARIO) || (user.hasRole(Perfil.USUARIO))) &&(!user.hasRole(Perfil.ADMIN))) {
+				if(!id.equals(user.getId())){
+					throw new AuthorizationException("Não possui permissão");
+				}
+				
+			}
+		}
 		Optional<Pessoa> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Pessoa.class.getName()));
@@ -62,6 +83,20 @@ public class PessoaService {
 	}
 	
 	public List<Pessoa> findAll() {
+		UserSS user = UserService.authenticated();
+		if (user==null ) {
+			throw new AuthorizationException("Usuario não identificado favor fazer o login");
+		}
+		if (!user.hasRole(Perfil.MASTER) && !user.hasRole(Perfil.ADMIN)) {
+			throw new AuthorizationException("Acesso negado para o nivel de permição");
+		}
+		if (!user.hasRole(Perfil.MASTER) && user.hasRole(Perfil.ADMIN)) {
+			Pessoa usuarioAdmin = repo.findPessoaId(user.getId());
+			if(usuarioAdmin.getOng() == null) {
+				throw new AuthorizationException("Ong não indentificada para usuario admin");
+			}
+			return repo.listPessoasOng(usuarioAdmin.getOng().getId());
+		}
 		return repo.findAll();
 	}
 	
