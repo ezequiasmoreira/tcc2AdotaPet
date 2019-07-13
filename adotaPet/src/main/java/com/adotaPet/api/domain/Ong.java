@@ -1,5 +1,6 @@
 package com.adotaPet.api.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
@@ -9,6 +10,7 @@ private static final long serialVersionUID = 1L;
 
 	private String razao_Social;
 	private String nome_Fantasia;
+	@Column(unique=true)
 	private String cnpj;
 	
 	public Ong() {

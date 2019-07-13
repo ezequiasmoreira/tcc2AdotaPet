@@ -2,7 +2,8 @@ package com.adotaPet.api.dto;
 
 import com.adotaPet.api.domain.Cidade;
 import com.adotaPet.api.domain.Ong;
-
+import com.adotaPet.api.service.validation.OngInsert;
+@OngInsert
 public class OngDTO {
 	
 	private Integer id;

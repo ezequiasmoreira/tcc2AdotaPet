@@ -7,6 +7,7 @@ import javax.persistence.ManyToOne;
 
 import com.adotaPet.api.domain.enums.Perfil;
 import com.adotaPet.api.domain.enums.Sexo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -29,13 +30,14 @@ private static final long serialVersionUID = 1L;
 	@CollectionTable(name="PERFIS")
 	private Set<Integer> perfis = new HashSet<>();
 	
+	@Column(unique=true)
 	private String cpf;
-	private String rg;
-	
+	@Column(unique=true)
+	private String rg;	
 	@Column(unique=true)
 	private String email;
-	
-	private String senha;
+	@JsonIgnore
+	private String senha;	
 	private String telefone;
 	
 	@ManyToOne

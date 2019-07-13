@@ -36,6 +36,11 @@ public class PessoaInsertValidator implements ConstraintValidator<PessoaInsert, 
 			list.add(new FieldMessage("cpf", "Cpf já existente"));
 		}
 		
+		Pessoa pessoaRg = repo.findByRg(objDto.getRg()); 
+		if(pessoaRg != null) {
+			list.add(new FieldMessage("rg", "Rg já existente"));
+		}
+		
 		for (FieldMessage e : list) {
 			context.disableDefaultConstraintViolation();
 			context.buildConstraintViolationWithTemplate(e.getMessage()).addPropertyNode(e.getFieldName())
