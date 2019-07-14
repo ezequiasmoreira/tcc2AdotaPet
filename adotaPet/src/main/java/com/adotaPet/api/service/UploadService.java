@@ -43,7 +43,7 @@ public class UploadService {
 			
 			String fileName = prefix + user.getId() + ".jpg";	
 			
-			byte[] bytes = multipartFile.getBytes();
+			byte[] bytes = imageService.toByteArray(jpgImage);
 			
 			
             Path path = Paths.get(caminho + fileName);            
@@ -51,6 +51,6 @@ public class UploadService {
 		} catch (IOException e) {
 			throw new FileException("Erro ao converter URL para URI");
 		}
-	}
+	}	
 
 }

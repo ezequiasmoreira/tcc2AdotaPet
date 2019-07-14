@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.adotaPet.api.service.exceptions.FileException;
+import com.sun.image.codec.jpeg.JPEGCodec;
+import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 @Service
 public class ImageService {
@@ -65,5 +67,11 @@ public class ImageService {
 	
 	public BufferedImage resize(BufferedImage sourceImg, int size) {
 		return Scalr.resize(sourceImg, Scalr.Method.ULTRA_QUALITY, size);
+	}
+	public byte[] toByteArray(BufferedImage image) throws IOException {
+	    ByteArrayOutputStream baos = new ByteArrayOutputStream();            
+	    JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(baos);
+	    encoder.encode(image);            
+	    return baos.toByteArray();
 	}
 }
