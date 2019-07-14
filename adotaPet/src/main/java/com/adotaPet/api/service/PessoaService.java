@@ -1,16 +1,20 @@
 package com.adotaPet.api.service;
 
+
+
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
-
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.adotaPet.api.domain.Cidade;
 import com.adotaPet.api.domain.Ong;
@@ -24,7 +28,6 @@ import com.adotaPet.api.security.UserSS;
 import com.adotaPet.api.service.exceptions.AuthorizationException;
 import com.adotaPet.api.service.exceptions.DataIntegrityException;
 import com.adotaPet.api.service.exceptions.ObjectNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 @Service
@@ -32,8 +35,13 @@ public class PessoaService {
 
 	@Autowired
 	private PessoaRepository repo;
+	
 	@Autowired
 	private BCryptPasswordEncoder pe;
+	
+	@Autowired
+	private UploadService uploadService;
+	
 
 	public Pessoa find(Integer id) {
 		UserSS user = UserService.authenticated();
@@ -206,5 +214,12 @@ public class PessoaService {
 		pessoa.setBairro(obj.getBairro()==null ? pessoa.getBairro() : obj.getBairro());
 		
 		return pessoa;
+	}
+	public URI uploadProfilePicture(MultipartFile multipartFile) {
+		UserSS user = UserService.authenticated();
+		if (user == null) {
+			throw new AuthorizationException("Acesso negado");
+		}
+		return uploadService.uploadFile(multipartFile);
 	}
 }

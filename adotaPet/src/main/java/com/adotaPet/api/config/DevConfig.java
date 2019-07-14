@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.adotaPet.api.service.DBService;
+import com.adotaPet.api.service.EmailService;
+import com.adotaPet.api.service.SmtpEmailService;
 
 
 @Configuration
@@ -29,6 +31,11 @@ public class DevConfig {
 		}
 		dbService.instanciateTestDataBase();
 		return true;
+	}
+	
+	@Bean
+	public EmailService emailService() {
+		return new SmtpEmailService();
 	}
 
 }

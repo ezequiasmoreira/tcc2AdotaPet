@@ -31,7 +31,6 @@
 <fullyQualifiedTypeName name="com.adotaPet.api.service.CidadeService"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Cidade"/>
 <fullyQualifiedTypeName name="com.amazonaws.services.codecommit.model.TipOfSourceReferenceIsDifferentException"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.Perfil"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Ong"/>
 <fullyQualifiedTypeName name="javax.transaction.Transactional"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
@@ -55,9 +54,10 @@
 <fullyQualifiedTypeName name="javax.persistence.Column"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.validation.PessoaInsert"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.validation.OngInsert"/>
-<fullyQualifiedTypeName name="org.springframework.security.access.prepost.PreAuthorize"/>
 <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonIgnore"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.security.UserSS"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.exceptions.AuthorizationException"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Pessoa"/>
+<fullyQualifiedTypeName name="org.springframework.security.access.prepost.PreAuthorize"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.Perfil"/>
 </qualifiedTypeNameHistroy>
