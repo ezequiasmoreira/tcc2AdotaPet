@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AnimalStatus"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.Porte"/>
-<fullyQualifiedTypeName name="java.lang.Boolean"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.repository.EstadoRepository"/>
-<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
-<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Estado"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Endereco"/>
 <fullyQualifiedTypeName name="javax.persistence.Entity"/>
@@ -41,9 +35,7 @@
 <fullyQualifiedTypeName name="com.adotaPet.api.service.AuthService"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.UserService"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.dto.EmailDTO"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.service.EmailService"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.MockEmailService"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="javax.persistence.FetchType"/>
 <fullyQualifiedTypeName name="javax.persistence.CollectionTable"/>
 <fullyQualifiedTypeName name="java.util.Set"/>
@@ -60,4 +52,12 @@
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Pessoa"/>
 <fullyQualifiedTypeName name="org.springframework.security.access.prepost.PreAuthorize"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.Perfil"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.service.EmailService"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.service.SmtpEmailService"/>
+<fullyQualifiedTypeName name="java.nio.file.Path"/>
+<fullyQualifiedTypeName name="com.amazonaws.services.cloudfront.model.Paths"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.service.exceptions.FileException"/>
+<fullyQualifiedTypeName name="java.net.URI"/>
+<fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartFile"/>
 </qualifiedTypeNameHistroy>

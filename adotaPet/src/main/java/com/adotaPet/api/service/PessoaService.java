@@ -42,7 +42,6 @@ public class PessoaService {
 	@Autowired
 	private UploadService uploadService;
 	
-
 	public Pessoa find(Integer id) {
 		UserSS user = UserService.authenticated();
 		if (user==null || !user.hasRole(Perfil.MASTER) && !id.equals(user.getId())) {
@@ -215,11 +214,7 @@ public class PessoaService {
 		
 		return pessoa;
 	}
-	public URI uploadProfilePicture(MultipartFile multipartFile) {
-		UserSS user = UserService.authenticated();
-		if (user == null) {
-			throw new AuthorizationException("Acesso negado");
-		}
+	public URI uploadProfilePicture(MultipartFile multipartFile) {		
 		return uploadService.uploadFile(multipartFile);
 	}
 }
