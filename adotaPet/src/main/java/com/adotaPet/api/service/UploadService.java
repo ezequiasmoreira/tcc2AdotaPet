@@ -43,8 +43,7 @@ public class UploadService {
 			
 			String fileName = prefix + user.getId() + ".jpg";	
 			
-			byte[] bytes = imageService.toByteArray(jpgImage);
-			
+			byte[] bytes = imageService.toByteArray(jpgImage);			
 			
             Path path = Paths.get(caminho + fileName);            
 			return  Files.write(path, bytes).toUri();
