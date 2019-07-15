@@ -86,11 +86,11 @@ public class DBService {
 		
 		Ong ong10 =  ongService.find(1);
 		Ong ong11 =  ongService.find(2);
-		Raca raca1 = new Raca(null,1,"Pastor Alemão",ong10);
-		Raca raca2 = new Raca(null,4,"Buldogue",ong10);
-		Raca raca3 = new Raca(null,12,"Chihuahua",ong10);
-		Raca raca4 = new Raca(null,20,"Dalmata",ong11);
-		Raca raca5 = new Raca(null,22,"Pinscher",ong11);
+		Raca raca1 = new Raca(null,1,"Pastor Alemão");
+		Raca raca2 = new Raca(null,4,"Buldogue");
+		Raca raca3 = new Raca(null,12,"Chihuahua");
+		Raca raca4 = new Raca(null,20,"Dalmata");
+		Raca raca5 = new Raca(null,22,"Pinscher");
 		
 		racaRepository.saveAll(Arrays.asList(raca1,raca2,raca3,raca4,raca5));
 		

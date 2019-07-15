@@ -63,14 +63,13 @@ public class RacaService {
 		return new Raca(
 				objDto.getId(), 
 				objDto.getCodigo(),
-				objDto.getDescricao(),
-				objDto.getOng()
+				objDto.getDescricao()
 				);
 	}
 	
 	private void updateData(Raca newObj, Raca obj) {
 		newObj.setCodigo(obj.getCodigo());
 		newObj.setDescricao(obj.getDescricao());
-		newObj.setOng(obj.getOng());
+		
 	}
 }

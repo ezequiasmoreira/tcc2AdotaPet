@@ -23,28 +23,14 @@ private static final long serialVersionUID = 1L;
 	private Integer codigo;
 	private String descricao;
 	
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name="ong_id")
-	private Ong ong;
-	
 	public Raca() {
 	}
 
-	public Raca(Integer id, Integer codigo, String descricao,Ong ong) {
+	public Raca(Integer id, Integer codigo, String descricao) {
 		super();
 		this.id = id;
 		this.codigo = codigo;
 		this.descricao = descricao;
-		this.ong = ong;
-	}
-
-	public Ong getOng() {
-		return ong;
-	}
-
-	public void setOng(Ong ong) {
-		this.ong = ong;
 	}
 
 	public Integer getId() {

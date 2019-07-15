@@ -31,14 +31,13 @@ public class RacaResource {
 	
 	@Autowired
 	private RacaService service;
-	@PreAuthorize("hasAnyRole('MASTER') ")
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Raca> find(@PathVariable Integer id) throws ObjectNotFoundException {
 		Raca obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	//@PreAuthorize("hasAnyRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('MASTER')")
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody RacaDTO objDto) {
 		Raca obj = service.fromDTO(objDto);

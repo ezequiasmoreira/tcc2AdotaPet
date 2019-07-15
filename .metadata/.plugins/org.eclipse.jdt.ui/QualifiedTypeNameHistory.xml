@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.adotaPet.api.domain.Estado"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.domain.Endereco"/>
-<fullyQualifiedTypeName name="javax.persistence.Entity"/>
-<fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.repository.PessoaRepository"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.Sexo"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Adocao"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AdocaoStatus"/>
@@ -60,4 +55,9 @@
 <fullyQualifiedTypeName name="com.adotaPet.api.service.exceptions.FileException"/>
 <fullyQualifiedTypeName name="java.net.URI"/>
 <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartFile"/>
+<fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Value"/>
+<fullyQualifiedTypeName name="java.io.InputStream"/>
+<fullyQualifiedTypeName name="java.io.FileInputStream"/>
+<fullyQualifiedTypeName name="java.io.ByteArrayOutputStream"/>
 </qualifiedTypeNameHistroy>
