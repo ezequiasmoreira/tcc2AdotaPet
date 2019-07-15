@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +38,7 @@ public class DoencaResource {
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	//@PreAuthorize("hasAnyRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('MASTER')")
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody DoencaDTO objDto) {
 		Doenca obj = service.fromDTO(objDto);
@@ -47,7 +48,7 @@ public class DoencaResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	//@PreAuthorize("hasAnyRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('MASTER')")
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody DoencaDTO objDto, @PathVariable Integer id) throws ObjectNotFoundException {
 		Doenca obj = service.fromDTO(objDto);
@@ -56,7 +57,7 @@ public class DoencaResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-	//@PreAuthorize("hasAnyRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('MASTER')")
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) throws ObjectNotFoundException {
 		service.delete(id);

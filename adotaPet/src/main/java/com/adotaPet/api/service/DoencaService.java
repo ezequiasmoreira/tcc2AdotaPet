@@ -63,14 +63,12 @@ public class DoencaService {
 		return new Doenca(
 				objDto.getId(), 
 				objDto.getCodigo(),
-				objDto.getDescricao(),
-				objDto.getOng()
+				objDto.getDescricao()
 				);
 	}
 	
 	private void updateData(Doenca newObj, Doenca obj) {
 		newObj.setCodigo(obj.getCodigo());
 		newObj.setDescricao(obj.getDescricao());
-		newObj.setOng(obj.getOng());
 	}
 }

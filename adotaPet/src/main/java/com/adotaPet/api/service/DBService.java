@@ -1,13 +1,12 @@
 package com.adotaPet.api.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import com.adotaPet.api.domain.Acompanhamento;
 import com.adotaPet.api.domain.Adocao;
@@ -114,12 +113,12 @@ public class DBService {
 		
 		pessoaRepository.saveAll(Arrays.asList(p1,p2,p3,p4));
 		
-		Doenca doenca1 = new Doenca(null,1,"Alergia alimentar",ong10);
-		Doenca doenca2 = new Doenca(null,2,"Depressão",ong10);
-		Doenca doenca3 = new Doenca(null,3,"Erlichiose",ong10);
-		Doenca doenca4 = new Doenca(null,4,"Insuficiência renal",ong11);
-		Doenca doenca5 = new Doenca(null,5,"Obesidade",ong11);
-		Doenca doenca6 = new Doenca(null,6,"Otite",ong11);
+		Doenca doenca1 = new Doenca(null,1,"Alergia alimentar");
+		Doenca doenca2 = new Doenca(null,2,"Depressão");
+		Doenca doenca3 = new Doenca(null,3,"Erlichiose");
+		Doenca doenca4 = new Doenca(null,4,"Insuficiência renal");
+		Doenca doenca5 = new Doenca(null,5,"Obesidade");
+		Doenca doenca6 = new Doenca(null,6,"Otite");
 		
 		doencaRepository.saveAll(Arrays.asList(doenca1,doenca2,doenca3,doenca4,doenca5,doenca6));
 		

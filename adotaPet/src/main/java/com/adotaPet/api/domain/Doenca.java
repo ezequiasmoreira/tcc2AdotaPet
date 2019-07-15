@@ -1,19 +1,17 @@
 package com.adotaPet.api.domain;
 
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Doenca implements Serializable {
@@ -25,12 +23,7 @@ private static final long serialVersionUID = 1L;
 	private Integer id;
 	private Integer codigo;
 	private String descricao;
-	
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name="ong_id")
-	private Ong ong;
-	
+		
 	@JsonIgnore
 	@ManyToMany(mappedBy="doencas")
 	private List<Animal> animais = new ArrayList<>();
@@ -38,12 +31,11 @@ private static final long serialVersionUID = 1L;
 	public Doenca() {
 	}
 
-	public Doenca(Integer id, Integer codigo, String descricao,Ong ong) {
+	public Doenca(Integer id, Integer codigo, String descricao) {
 		super();
 		this.id = id;
 		this.codigo = codigo;
 		this.descricao = descricao;
-		this.ong = ong;
 	}
 
 	public List<Animal> getAnimais() {
@@ -52,13 +44,6 @@ private static final long serialVersionUID = 1L;
 
 	public void setProdutos(List<Animal> animais) {
 		this.animais = animais;
-	}
-	public Ong getOng() {
-		return ong;
-	}
-
-	public void setOng(Ong ong) {
-		this.ong = ong;
 	}
 
 	public Integer getId() {

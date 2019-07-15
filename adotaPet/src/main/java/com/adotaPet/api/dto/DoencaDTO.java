@@ -4,18 +4,16 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.adotaPet.api.domain.Ong;
 import com.adotaPet.api.domain.Doenca;
 
 public class DoencaDTO {
 	
 	private Integer id;	
-	//@NotEmpty(message="Preenchimento obrigatório")	
+	@NotEmpty(message="Preenchimento obrigatório")	
 	private Integer codigo;
 	@NotEmpty(message="Preenchimento obrigatório")	
 	@Length(min=5, max=80, message="O tamanho deve ser entre 5 e 80 caracteres")
 	private String descricao;
-	private Ong ong;
 	
 	public DoencaDTO() {
 	}
@@ -24,17 +22,8 @@ public class DoencaDTO {
 		id = obj.getId();
 		codigo = obj.getCodigo();
 		descricao = obj.getDescricao();
-		ong = obj.getOng();
 	}
 	
-	public Ong getOng() {
-		return ong;
-	}
-
-	public void setOng(Ong ong) {
-		this.ong = ong;
-	}
-
 	public Integer getId() {
 		return id;
 	}
