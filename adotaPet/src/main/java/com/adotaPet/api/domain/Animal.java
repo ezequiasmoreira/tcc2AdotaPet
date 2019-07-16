@@ -16,7 +16,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 public class Animal implements Serializable {
@@ -51,6 +54,15 @@ private static final long serialVersionUID = 1L;
 	)
 	private List<Doenca> doencas = new ArrayList<>();
 	
+	@ManyToMany
+	@JoinTable(name = "VACINA_ANIMAL",
+		joinColumns = @JoinColumn(name = "animal_id"),
+		inverseJoinColumns = @JoinColumn(name = "vacinaItem_id")
+	)
+	private List<VacinaItem> vacinas = new ArrayList<>();
+	
+		
+	
 	public Animal() {
 	}
 	
@@ -70,11 +82,19 @@ private static final long serialVersionUID = 1L;
 		this.raca = raca;
 	}
 	
+	public List<VacinaItem> getVacinas() {
+		return vacinas;
+	}
+
+	public void setVacinas(List<VacinaItem> vacinas) {
+		this.vacinas = vacinas;
+	}
+	
 	public List<Doenca> getDoencas() {
 		return doencas;
 	}
 
-	public void setDoencass(List<Doenca> doencas) {
+	public void setDoencas(List<Doenca> doencas) {
 		this.doencas = doencas;
 	}
 	public Integer getId() {
