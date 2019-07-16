@@ -22,6 +22,7 @@ import com.adotaPet.api.domain.enums.AcompanhamentoStatus;
 import com.adotaPet.api.domain.enums.AdocaoStatus;
 import com.adotaPet.api.domain.enums.AnimalGenero;
 import com.adotaPet.api.domain.enums.AnimalStatus;
+import com.adotaPet.api.domain.enums.Especie;
 import com.adotaPet.api.domain.enums.Perfil;
 import com.adotaPet.api.domain.enums.Porte;
 import com.adotaPet.api.domain.enums.Sexo;
@@ -57,8 +58,6 @@ public class DBService {
 	@Autowired
 	private AcompanhamentoRepository acompanhamentoRepository;
 	@Autowired
-	private OngService ongService;
-	@Autowired
 	private BCryptPasswordEncoder pe;
 	
 	public void instanciateTestDataBase() throws ParseException {
@@ -83,15 +82,15 @@ public class DBService {
 				
 		ongRepository.saveAll(Arrays.asList(ong1,ong2));
 		
-		Ong ong10 =  ongService.find(1);
-		Ong ong11 =  ongService.find(2);
-		Raca raca1 = new Raca(null,1,"Pastor Alemão");
-		Raca raca2 = new Raca(null,4,"Buldogue");
-		Raca raca3 = new Raca(null,12,"Chihuahua");
-		Raca raca4 = new Raca(null,20,"Dalmata");
-		Raca raca5 = new Raca(null,22,"Pinscher");
+		Raca raca1 = new Raca(null,1,"Pastor Alemão",Especie.CAO);
+		Raca raca2 = new Raca(null,4,"Buldogue",Especie.CAO);
+		Raca raca3 = new Raca(null,12,"Chihuahua",Especie.CAO);
+		Raca raca4 = new Raca(null,20,"Dalmata",Especie.CAO);
+		Raca raca5 = new Raca(null,22,"Pinscher",Especie.CAO);
+		Raca raca6 = new Raca(null,2,"Ancitrini",Especie.CASCUDOS);
+		Raca raca7 = new Raca(null,3,"Triactis",Especie.CASCUDOS);
 		
-		racaRepository.saveAll(Arrays.asList(raca1,raca2,raca3,raca4,raca5));
+		racaRepository.saveAll(Arrays.asList(raca1,raca2,raca3,raca4,raca5,raca6,raca7));
 		
 		Pessoa p1 = new Pessoa(null, 5, "Avenida sete de setembro", "45", "Proximo ao ebenezer", "Treze de junho", "35290-000", c1, "Pedro", Sexo.MASCULINO, Perfil.USUARIO, "108.963.205-96", "895632145", "pedro@hotmail.com", pe.encode("123"), "98564712",null);
 		p1.addPerfil(Perfil.USUARIO);

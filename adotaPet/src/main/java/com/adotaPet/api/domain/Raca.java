@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.adotaPet.api.domain.enums.Especie;
+
 @Entity
 public class Raca implements Serializable {
 	
@@ -18,15 +20,25 @@ private static final long serialVersionUID = 1L;
 	private Integer id;
 	private Integer codigo;
 	private String descricao;
+	private Integer especie;
 	
 	public Raca() {
 	}
 
-	public Raca(Integer id, Integer codigo, String descricao) {
+	public Raca(Integer id, Integer codigo, String descricao, Especie especie) {
 		super();
 		this.id = id;
 		this.codigo = codigo;
 		this.descricao = descricao;
+		this.especie = especie.getCod();
+	}
+
+	public Integer getEspecie() {
+		return especie;
+	}
+
+	public void setEspecie(Integer especie) {
+		this.especie = especie;
 	}
 
 	public Integer getId() {

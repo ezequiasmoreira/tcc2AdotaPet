@@ -6,6 +6,7 @@ public class RacaDTO {
 	private Integer id;		
 	private Integer codigo;
 	private String descricao;
+	private Integer especie;
 	
 	public RacaDTO() {
 	}
@@ -14,6 +15,15 @@ public class RacaDTO {
 		id = obj.getId();
 		codigo = obj.getCodigo();
 		descricao = obj.getDescricao();
+		especie = obj.getEspecie();
+	}
+
+	public Integer getEspecie() {
+		return especie;
+	}
+
+	public void setEspecie(Integer especie) {
+		this.especie = especie;
 	}
 
 	public Integer getId() {

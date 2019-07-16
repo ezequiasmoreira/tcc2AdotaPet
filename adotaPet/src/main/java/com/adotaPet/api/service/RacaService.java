@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.adotaPet.api.domain.Raca;
+import com.adotaPet.api.domain.enums.Especie;
 import com.adotaPet.api.dto.RacaDTO;
 import com.adotaPet.api.repository.RacaRepository;
 import com.adotaPet.api.service.exceptions.DataIntegrityException;
@@ -63,13 +64,14 @@ public class RacaService {
 		return new Raca(
 				objDto.getId(), 
 				objDto.getCodigo(),
-				objDto.getDescricao()
+				objDto.getDescricao(),
+				Especie.toEnum(objDto.getEspecie())
 				);
 	}
 	
 	private void updateData(Raca newObj, Raca obj) {
 		newObj.setCodigo(obj.getCodigo());
 		newObj.setDescricao(obj.getDescricao());
-		
+		newObj.setEspecie(obj.getEspecie());		
 	}
 }
