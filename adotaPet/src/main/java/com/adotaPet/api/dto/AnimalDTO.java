@@ -12,7 +12,6 @@ public class AnimalDTO {
 	private String nome;
 	private Integer genero;
 	private Integer porte;
-	private boolean vacinado;
 	private boolean vermifugado;
 	private boolean castrado;	
 	private Ong ong;
@@ -29,8 +28,7 @@ public class AnimalDTO {
 		porte = obj.getPorte();
 		status = obj.getStatus();
 		codigo = obj.getCodigo();
-		genero = obj.getGenero();		
-		vacinado = obj.getVacinado();		
+		genero = obj.getGenero();				
 		castrado = obj.getCastrado();		
 		vermifugado = obj.getVermifugado();
 	}
@@ -73,14 +71,6 @@ public class AnimalDTO {
 
 	public void setPorte(Integer porte) {
 		this.porte = porte;
-	}
-
-	public boolean getVacinado() {
-		return vacinado;
-	}
-
-	public void setVacinado(boolean vacinado) {
-		this.vacinado = vacinado;
 	}
 
 	public boolean getVermifugado() {

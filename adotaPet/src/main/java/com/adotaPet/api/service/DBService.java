@@ -130,22 +130,40 @@ public class DBService {
 		doencaRepository.saveAll(Arrays.asList(doenca1,doenca2,doenca3,doenca4,doenca5,doenca6));
 		
 		Vacina vacina1 = new Vacina(null, "V8", "6 a 8 semanas", "Cinomose,hepatite", Especie.CAO);
-		vacinaRepository.saveAll(Arrays.asList(vacina1));
+		Vacina vacina2 = new Vacina(null, "V10", "6 a 8 semanas", "Adenovírus,coronavírus", Especie.CAO);
+		Vacina vacina3 = new Vacina(null, "V8", "12 semanas", "reforços", Especie.CAO);
+		Vacina vacina4 = new Vacina(null, "V10", "12 semanas", "reforços", Especie.CAO);
+		Vacina vacina5 = new Vacina(null, "Gripe canina", "12 semanas", "Adenovírus, Parainfluenenza,Bordetella", Especie.CAO);
+		Vacina vacina6 = new Vacina(null, "Giardiase", "12 semanas", "Indicada para animais que vivem em grupo como canis", Especie.CAO);
+		Vacina vacina7 = new Vacina(null, "v8", "16 semanas", "ultima dose", Especie.CAO);
+		Vacina vacina8 = new Vacina(null, "v10", "16 semanas", "ultima dose", Especie.CAO);
+		Vacina vacina9 = new Vacina(null, "v8", "16 semanas", "ultima dose", Especie.CAO);
+		vacinaRepository.saveAll(Arrays.asList(vacina1,vacina2,vacina3,vacina4,vacina5,vacina6,vacina7,vacina8,vacina9));
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		VacinaItem vacinaItem1 = new VacinaItem(null, vacina1, sdf.parse("15/06/2019 11:32"));
-		vacinaItemRepository.saveAll(Arrays.asList(vacinaItem1));
+		VacinaItem vacinaItem2 = new VacinaItem(null, vacina3, sdf.parse("15/07/2019 11:32"));
+		VacinaItem vacinaItem3 = new VacinaItem(null, vacina7, sdf.parse("10/08/2019 10:32"));
+		VacinaItem vacinaItem4 = new VacinaItem(null, vacina2, sdf.parse("05/04/2019 11:32"));
+		VacinaItem vacinaItem5 = new VacinaItem(null, vacina4, sdf.parse("11/09/2019 11:32"));
 		
-		Animal animal1 = new Animal(null, 5,"Belinha", AnimalGenero.FEMEA, Porte.PEQUENO, true, false, true, ong1, AnimalStatus.DISPONIVEL, raca1);
+		vacinaItemRepository.saveAll(Arrays.asList(vacinaItem1,vacinaItem2,vacinaItem3,vacinaItem4,vacinaItem5));
+		
+		Animal animal1 = new Animal(null, 5,"Belinha", AnimalGenero.FEMEA, Porte.PEQUENO, false, true, ong1, AnimalStatus.DISPONIVEL, raca1);
 		animal1.getDoencas().addAll(Arrays.asList(doenca1,doenca4));
-		Animal animal2 = new Animal(null, 8,"Charopinho", AnimalGenero.MACHO, Porte.PEQUENO, true, true, false, ong1, AnimalStatus.PROCESSAMENTO, raca1);
-		Animal animal3 = new Animal(null, 9,"Chulinho", AnimalGenero.MACHO, Porte.MEDIO, false, false, true, ong2, AnimalStatus.ADOTADO, raca2);
+		Animal animal2 = new Animal(null, 8,"Charopinho", AnimalGenero.MACHO, Porte.PEQUENO, true, false, ong1, AnimalStatus.PROCESSAMENTO, raca1);
+			
+		
+		Animal animal3 = new Animal(null, 9,"Chulinho", AnimalGenero.MACHO, Porte.MEDIO, false, true, ong2, AnimalStatus.ADOTADO, raca2);
 		animal3.getDoencas().addAll(Arrays.asList(doenca2,doenca3,doenca5,doenca6));
-		Animal animal4 = new Animal(null, 10,"Lindinha", AnimalGenero.FEMEA, Porte.MEDIO, false, true, false, ong2, AnimalStatus.ADOTADO, raca4);
+		animal3.getVacinas().addAll(Arrays.asList(vacinaItem4,vacinaItem5));
+		
+		
+		Animal animal4 = new Animal(null, 10,"Lindinha", AnimalGenero.FEMEA, Porte.MEDIO, true, false, ong2, AnimalStatus.ADOTADO, raca4);
 		animal4.getDoencas().addAll(Arrays.asList(doenca1,doenca2,doenca3,doenca4,doenca5));
-		Animal animal5 = new Animal(null, 15,"Chulinho", AnimalGenero.FEMEA, Porte.GRANDE, false, true, true, ong2, AnimalStatus.DISPONIVEL, raca5);
+		Animal animal5 = new Animal(null, 15,"Chulinho", AnimalGenero.FEMEA, Porte.GRANDE, true, true, ong2, AnimalStatus.DISPONIVEL, raca5);
 		animal5.getDoencas().addAll(Arrays.asList(doenca6));
-		animal5.getVacinas().addAll(Arrays.asList(vacinaItem1));
+		animal5.getVacinas().addAll(Arrays.asList(vacinaItem1,vacinaItem2,vacinaItem3));
 		animalRepository.saveAll(Arrays.asList(animal1,animal2,animal3,animal4,animal5));
 		
 		

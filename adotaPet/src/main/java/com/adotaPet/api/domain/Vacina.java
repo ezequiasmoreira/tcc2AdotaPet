@@ -22,6 +22,9 @@ public class Vacina implements Serializable {
 	private String prevencao;
 	private Integer especie;
 	
+	public Vacina() {
+	
+	}
 	public Vacina(Integer id, String nome, String faixaIdade, String prevencao, Especie especie) {
 		super();
 		this.id = id;

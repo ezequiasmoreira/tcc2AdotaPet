@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.Sexo"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.domain.Adocao"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AdocaoStatus"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.repository.AdocaoRepository"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AcompanhamentoStatus"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.repository.AcompanhamentoRepository"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Acompanhamento"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AcompanhamentoSituacao"/>
@@ -45,7 +40,6 @@
 <fullyQualifiedTypeName name="com.adotaPet.api.security.UserSS"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.exceptions.AuthorizationException"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Pessoa"/>
-<fullyQualifiedTypeName name="org.springframework.security.access.prepost.PreAuthorize"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.Perfil"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.EmailService"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.SmtpEmailService"/>
@@ -60,4 +54,10 @@
 <fullyQualifiedTypeName name="java.io.InputStream"/>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
 <fullyQualifiedTypeName name="java.io.ByteArrayOutputStream"/>
+<fullyQualifiedTypeName name="org.springframework.security.access.prepost.PreAuthorize"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.Especie"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.Vacina"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.repository.VacinaRepository"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.repository.VacinaItemRepository"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.VacinaItem"/>
 </qualifiedTypeNameHistroy>

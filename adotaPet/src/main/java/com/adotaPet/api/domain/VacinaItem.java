@@ -25,17 +25,17 @@ public class VacinaItem implements Serializable  {
 	private Vacina vacina;
 	
 	@JsonFormat(pattern="dd/MM/yyyy")
-	private Date dataVascinado;
+	private Date dataVacinado;
 
 	public VacinaItem() {
 		
 	}
 
-	public VacinaItem(Integer id, Vacina vacina, Date dataVascinado) {
+	public VacinaItem(Integer id, Vacina vacina, Date dataVacinado) {
 		super();
 		this.id = id;
 		this.vacina = vacina;
-		this.dataVascinado = dataVascinado;
+		this.dataVacinado = dataVacinado;
 	}
 
 	public Integer getId() {
@@ -54,12 +54,12 @@ public class VacinaItem implements Serializable  {
 		this.vacina = vacina;
 	}
 
-	public Date getDataVascinado() {
-		return dataVascinado;
+	public Date getDataVacinado() {
+		return dataVacinado;
 	}
 
-	public void setDataVascinado(Date dataVascinado) {
-		this.dataVascinado = dataVascinado;
+	public void setDataVacinado(Date dataVacinado) {
+		this.dataVacinado = dataVacinado;
 	}
 	
 	

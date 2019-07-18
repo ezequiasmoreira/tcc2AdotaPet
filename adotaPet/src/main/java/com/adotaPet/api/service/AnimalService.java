@@ -71,8 +71,8 @@ public class AnimalService {
 	}
 	
 	public Animal fromDTO(AnimalDTO objDto) {
-		return new Animal(objDto.getId(),objDto.getCodigo(),objDto.getNome(),AnimalGenero.toEnum(objDto.getGenero()),Porte.toEnum(objDto.getPorte()),
-				objDto.getVacinado(),objDto.getVermifugado(),objDto.getCastrado(),objDto.getOng(),		
+		return new Animal(objDto.getId(),objDto.getCodigo(),objDto.getNome(),AnimalGenero.toEnum(objDto.getGenero()),
+				Porte.toEnum(objDto.getPorte()),objDto.getVermifugado(),objDto.getCastrado(),objDto.getOng(),		
 				AnimalStatus.toEnum(objDto.getStatus()),objDto.getRaca());
 	}
 	
@@ -91,7 +91,6 @@ public class AnimalService {
 		newObj.setStatus(obj.getStatus());
 		newObj.setGenero(obj.getGenero());
 		newObj.setCastrado(obj.getCastrado());
-		newObj.setVacinado(obj.getVacinado());
 		newObj.setVermifugado(obj.getVermifugado());
 	}
 }

@@ -33,7 +33,6 @@ private static final long serialVersionUID = 1L;
 	private String nome;
 	private Integer genero;
 	private Integer porte;
-	private boolean vacinado;
 	private boolean vermifugado;
 	private boolean castrado;	
 	private Integer status;
@@ -66,7 +65,7 @@ private static final long serialVersionUID = 1L;
 	public Animal() {
 	}
 	
-	public Animal(Integer id, Integer codigo, String nome, AnimalGenero genero, Porte porte, boolean vacinado, boolean vermifugado,
+	public Animal(Integer id, Integer codigo, String nome, AnimalGenero genero, Porte porte, boolean vermifugado,
 			boolean castrado, Ong ong, AnimalStatus status, Raca raca) {
 		super();
 		this.id = id;
@@ -74,7 +73,6 @@ private static final long serialVersionUID = 1L;
 		this.nome = nome;
 		this.genero = genero.getCod();
 		this.porte = porte.getCod();
-		this.vacinado = vacinado;
 		this.vermifugado = vermifugado;
 		this.castrado = castrado;
 		this.ong = ong;
@@ -135,14 +133,6 @@ private static final long serialVersionUID = 1L;
 
 	public void setPorte(Integer porte) {
 		this.porte = porte;
-	}
-
-	public boolean getVacinado() {
-		return vacinado;
-	}
-
-	public void setVacinado(boolean vacinado) {
-		this.vacinado = vacinado;
 	}
 
 	public boolean getVermifugado() {
