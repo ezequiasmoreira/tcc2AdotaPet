@@ -60,6 +60,13 @@ private static final long serialVersionUID = 1L;
 	)
 	private List<VacinaItem> vacinas = new ArrayList<>();
 	
+	@ManyToMany
+	@JoinTable(name = "ACOMPANHAMENTO_ANIMAL",
+		joinColumns = @JoinColumn(name = "animal_id"),
+		inverseJoinColumns = @JoinColumn(name = "acompanhamento_id")
+	)
+	private List<Acompanhamento> acompanhamentos = new ArrayList<>();
+	
 		
 	
 	public Animal() {
@@ -79,7 +86,13 @@ private static final long serialVersionUID = 1L;
 		this.status = status.getCod();
 		this.raca = raca;
 	}
-	
+	public List<Acompanhamento> getAcompanhamentos() {
+		return acompanhamentos;
+	}
+
+	public void setAcompanhamentos(List<Acompanhamento> acompanhamentos) {
+		this.acompanhamentos = acompanhamentos;
+	}
 	public List<VacinaItem> getVacinas() {
 		return vacinas;
 	}

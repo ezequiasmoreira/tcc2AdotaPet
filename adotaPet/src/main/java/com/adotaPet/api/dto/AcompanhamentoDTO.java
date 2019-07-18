@@ -34,8 +34,7 @@ public class AcompanhamentoDTO {
 		this.situacao = obj.getSituacao();
 		this.observacao = obj.getObservacao();		
 		this.dataCadastro = obj.getDataCadastro();
-		this.dataAgendado = obj.getDataAgendado();		
-		this.adocao = obj.getAdocao();
+		this.dataAgendado = obj.getDataAgendado();			
 	}
 
 	public Integer getId() {

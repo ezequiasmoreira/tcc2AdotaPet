@@ -35,15 +35,11 @@ private static final long serialVersionUID = 1L;
 	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date dataAgendado;
 		
-	@ManyToOne
-	@JoinColumn(name="adocao_id")
-	private Adocao adocao;
-		
 	public Acompanhamento() {
 	}
 
 	public Acompanhamento(Integer id, Integer codigo, String descricao, AcompanhamentoStatus status, AcompanhamentoSituacao situacao,
-			String observacao, Date dataCadastro, Date dataAgendado, Adocao adocao) {
+			String observacao, Date dataCadastro, Date dataAgendado) {
 		super();
 		this.id = id;
 		this.codigo = codigo;
@@ -53,7 +49,6 @@ private static final long serialVersionUID = 1L;
 		this.observacao = observacao;
 		this.dataCadastro = dataCadastro;
 		this.dataAgendado = dataAgendado;
-		this.adocao = adocao;
 	}
 
 	public Integer getId() {
@@ -118,14 +113,6 @@ private static final long serialVersionUID = 1L;
 
 	public void setDataAgendado(Date dataAgendado) {
 		this.dataAgendado = dataAgendado;
-	}
-
-	public Adocao getAdocao() {
-		return adocao;
-	}
-
-	public void setAdocao(Adocao adocao) {
-		this.adocao = adocao;
 	}
 
 	@Override

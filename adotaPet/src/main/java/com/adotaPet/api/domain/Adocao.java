@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 
 import com.adotaPet.api.domain.enums.AdocaoStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -42,6 +43,7 @@ private static final long serialVersionUID = 1L;
 	
 	private String observacao;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="ong_id")
 	private Ong ong;

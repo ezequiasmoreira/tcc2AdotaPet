@@ -70,8 +70,7 @@ public class AcompanhamentoService {
 				AcompanhamentoSituacao.toEnum(obj.getSituacao()),
 				obj.getObservacao(),		
 				obj.getDataCadastro(),
-				obj.getDataAgendado(),		
-				obj.getAdocao());
+				obj.getDataAgendado());
 	}
 	
 	private void updateData(Acompanhamento newObj, Acompanhamento obj) {		

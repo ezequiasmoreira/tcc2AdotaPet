@@ -26,6 +26,8 @@ private static final long serialVersionUID = 1L;
 	private Integer sexo;
 	
 	private Integer perfil;
+	
+	@JsonIgnore
 	@ElementCollection(fetch=FetchType.EAGER)
 	@CollectionTable(name="PERFIS")
 	private Set<Integer> perfis = new HashSet<>();
@@ -40,6 +42,7 @@ private static final long serialVersionUID = 1L;
 	private String senha;	
 	private String telefone;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="ong_id")
 	private Ong ong;
