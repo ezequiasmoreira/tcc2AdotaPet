@@ -1,6 +1,7 @@
 package com.adotaPet.api.service;
 
 import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,10 @@ public class CidadeService {
 		Optional<Cidade> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 		"Objeto não encontrado! Id: " + id + ", Tipo: " + Cidade.class.getName()));
+	}
+	
+	public List<Cidade> findByEstado(Integer estadoId) {
+		return repo.findCidades(estadoId);
 	}
 
 }
