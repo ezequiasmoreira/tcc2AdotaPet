@@ -1,10 +1,13 @@
 package com.adotaPet.api.dto;
 
+import java.io.Serializable;
+
 import com.adotaPet.api.domain.Cidade;
 import com.adotaPet.api.domain.Pessoa;
 
-public class PessoaDTO {
+public class PessoaDTO implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private Integer codigo;
 	private String logradouro;

@@ -47,7 +47,6 @@ public class PessoaResource {
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody PessoaNewDTO objDto) {
 		Pessoa obj = service.fromDTO(objDto);

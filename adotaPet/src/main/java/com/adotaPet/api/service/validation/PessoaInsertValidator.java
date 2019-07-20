@@ -34,15 +34,17 @@ public class PessoaInsertValidator implements ConstraintValidator<PessoaInsert, 
 			if (pessoaEmail != null) {
 				list.add(new FieldMessage("email", "Email já existente"));
 			}
-			
-			Pessoa pessoaCpf = repo.findByCpf(objDto.getCpf()); 
-			if(pessoaCpf != null) {
-				list.add(new FieldMessage("cpf", "Cpf já existente"));
+			if (objDto.getCpf() != "") {
+				Pessoa pessoaCpf = repo.findByCpf(objDto.getCpf()); 
+				if(pessoaCpf != null) {
+					list.add(new FieldMessage("cpf", "Cpf já existente"));
+				}
 			}
-			
-			Pessoa pessoaRg = repo.findByRg(objDto.getRg()); 
-			if(pessoaRg != null) {
-				list.add(new FieldMessage("rg", "Rg já existente"));
+			if ((objDto.getRg() != "")) {
+				Pessoa pessoaRg = repo.findByRg(objDto.getRg()); 
+				if(pessoaRg != null) {
+					list.add(new FieldMessage("rg", "Rg já existente"));
+				}
 			}
 		}
 		

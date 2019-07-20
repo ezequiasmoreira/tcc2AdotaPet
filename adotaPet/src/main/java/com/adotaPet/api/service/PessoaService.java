@@ -147,18 +147,12 @@ public class PessoaService {
 				);
 	}
 	public Pessoa fromDTO(PessoaNewDTO objDto) {
-		UserSS user = UserService.authenticated();		
-		if (user==null ) {
-			throw new AuthorizationException("Usuario não identificado favor fazer o login");
-		}				
-		Pessoa usuariologado = repo.findPessoaId(user.getId());		
-
-		if ((Perfil.toEnum(usuariologado.getPerfil()) == Perfil.USUARIO) ||  (Perfil.toEnum(usuariologado.getPerfil()) == Perfil.VOLUNTARIO)) {
-			throw new AuthorizationException("Não possui permissão para adicionar usuarios");
-		}
+		UserSS user = UserService.authenticated();
+		Integer codigo = null;
+					
 		
 		Cidade cidade = new Cidade(objDto.getCidadeId(), null, null);
-		Integer codigo = objDto.getOngId() == null ? null : repo.obterCodigo(objDto.getOngId());
+		
 		if (codigo == null && objDto.getOngId() != null) {
 			codigo = 1;
 		}
@@ -180,22 +174,31 @@ public class PessoaService {
 				pe.encode(objDto.getSenha()),
 				objDto.getTelefone(),
 				objDto.getOngId() == null ? null : new Ong (objDto.getOngId(),null, null, null, null, null, null, null, null, null, null)
-		); 
-		if ((Perfil.toEnum(usuariologado.getPerfil()) == Perfil.MASTER) || (Perfil.toEnum(usuariologado.getPerfil()) == Perfil.ADMIN)){
-			if(objDto.getOngId() == null) {
-				throw new AuthorizationException("Usuario a ser cadastrado deve possuir ong");
+		);
+		if (user!=null ) {
+			Pessoa usuariologado = repo.findPessoaId(user.getId());
+			if ((Perfil.toEnum(usuariologado.getPerfil()) == Perfil.USUARIO) ||  (Perfil.toEnum(usuariologado.getPerfil()) == Perfil.VOLUNTARIO)) {
+				throw new AuthorizationException("Não possui permissão para adicionar usuarios");
 			}
-		}
-		if (Perfil.toEnum(usuariologado.getPerfil()) == Perfil.MASTER) {			
-			pessoa.addPerfil(Perfil.ADMIN);
-			pessoa.addPerfil(Perfil.VOLUNTARIO);
-			Integer ADMIN = 2;
-			pessoa.setPerfil(ADMIN);			
-		}
-		if (Perfil.toEnum(usuariologado.getPerfil()) == Perfil.ADMIN) {
-			pessoa.addPerfil(Perfil.VOLUNTARIO);
-			Integer VOLUNTARIO = 3;
-			pessoa.setPerfil(VOLUNTARIO);
+			codigo = objDto.getOngId() == null ? null : repo.obterCodigo(objDto.getOngId());
+			pessoa.setCodigo(codigo);
+			
+			if ((Perfil.toEnum(usuariologado.getPerfil()) == Perfil.MASTER) || (Perfil.toEnum(usuariologado.getPerfil()) == Perfil.ADMIN)){
+				if(objDto.getOngId() == null) {
+					throw new AuthorizationException("Usuario a ser cadastrado deve possuir ong");
+				}
+			}
+			if (Perfil.toEnum(usuariologado.getPerfil()) == Perfil.MASTER) {			
+				pessoa.addPerfil(Perfil.ADMIN);
+				pessoa.addPerfil(Perfil.VOLUNTARIO);
+				Integer ADMIN = 2;
+				pessoa.setPerfil(ADMIN);			
+			}
+			if (Perfil.toEnum(usuariologado.getPerfil()) == Perfil.ADMIN) {
+				pessoa.addPerfil(Perfil.VOLUNTARIO);
+				Integer VOLUNTARIO = 3;
+				pessoa.setPerfil(VOLUNTARIO);
+			}
 		}
 		return pessoa;
 	}
