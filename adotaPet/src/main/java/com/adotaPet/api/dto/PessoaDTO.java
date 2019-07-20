@@ -12,13 +12,14 @@ public class PessoaDTO {
 	private String complemento;
 	private String bairro;
 	private String cep;
-	private Cidade cidade;
+	private Integer cidadeId;
 	private String nome;
 	private Integer sexo;
 	private Integer perfil;
 	private String cpf;
 	private String rg;
 	private String telefone;
+	private String email;
 	
 	public PessoaDTO() {
 	}
@@ -37,7 +38,16 @@ public class PessoaDTO {
 		rg = obj.getRg();
 		telefone = obj.getTelefone();
 		sexo = obj.getSexo();
-		cidade = obj.getCidade();
+		cidadeId = obj.getCidade().getId();
+		email = obj.getEmail();
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getNome() {
@@ -144,12 +154,12 @@ public class PessoaDTO {
 		this.cep = cep;
 	}
 	
-	public Cidade getCidade() {
-		return cidade;
+	public Integer getCidadeId() {
+		return cidadeId;
 	}
 
-	public void setCidade(Cidade cidade) {
-		this.cidade = cidade;
+	public void setCidadeId(Integer cidadeId) {
+		this.cidadeId = cidadeId;
 	}
 	
 	

@@ -39,6 +39,13 @@ public class PessoaResource {
 		Pessoa obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
+	@PreAuthorize("hasAnyRole('USUARIO')")
+	@RequestMapping(value="/email", method=RequestMethod.GET)
+	public ResponseEntity<PessoaDTO> find(@RequestParam(value="value") String email) {
+		Pessoa pessoa = service.findByEmail(email);
+		PessoaDTO obj = new PessoaDTO(pessoa); 
+		return ResponseEntity.ok().body(obj);
+	}
 	
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method=RequestMethod.POST)

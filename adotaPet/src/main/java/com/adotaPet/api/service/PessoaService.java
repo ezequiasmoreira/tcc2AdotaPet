@@ -67,6 +67,20 @@ public class PessoaService {
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Pessoa.class.getName()));
 	}
 	
+	public Pessoa findByEmail(String email) {
+		UserSS user = UserService.authenticated();
+		if (user == null || !user.hasRole(Perfil.ADMIN) && !email.equals(user.getUsername())) {
+			throw new AuthorizationException("Acesso negado");
+		}
+	
+		Pessoa obj = repo.findByEmail(email);
+		if (obj == null) {
+			throw new ObjectNotFoundException(
+					"Objeto não encontrado! Id: " + user.getId() + ", Tipo: " + Pessoa.class.getName());
+		}
+		return obj;
+	}
+	
 	@Transactional
 	public Pessoa insert(Pessoa obj) {
 		obj.setId(null);
@@ -111,6 +125,7 @@ public class PessoaService {
 	}
 	
 	public Pessoa fromDTO(PessoaDTO objDto) {
+		Cidade cidade = new Cidade(objDto.getCidadeId(), null, null);
 		return new Pessoa(
 				objDto.getId(), 
 				objDto.getCodigo(),
@@ -119,7 +134,7 @@ public class PessoaService {
 				objDto.getComplemento(),
 				objDto.getBairro(),
 				objDto.getCep(),
-				objDto.getCidade(),
+				cidade,
 				objDto.getNome(),
 				Sexo.toEnum(objDto.getSexo()),
 				Perfil.toEnum(objDto.getPerfil()),

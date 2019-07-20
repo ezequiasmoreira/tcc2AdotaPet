@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="com.adotaPet.api.repository.AcompanhamentoRepository"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.domain.Acompanhamento"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AcompanhamentoSituacao"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.repository.DoencaRepository"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Animal"/>
@@ -17,7 +16,6 @@
 <fullyQualifiedTypeName name="com.amazonaws.services.codecommit.model.TipOfSourceReferenceIsDifferentException"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Ong"/>
 <fullyQualifiedTypeName name="javax.transaction.Transactional"/>
-<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.WebMvcConfigurer"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.CorsRegistry"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter"/>
@@ -36,7 +34,6 @@
 <fullyQualifiedTypeName name="javax.persistence.Column"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.validation.PessoaInsert"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.validation.OngInsert"/>
-<fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonIgnore"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.security.UserSS"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.exceptions.AuthorizationException"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Pessoa"/>
@@ -60,4 +57,7 @@
 <fullyQualifiedTypeName name="com.adotaPet.api.repository.VacinaRepository"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.repository.VacinaItemRepository"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.VacinaItem"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.Acompanhamento"/>
+<fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonIgnore"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
 </qualifiedTypeNameHistroy>

@@ -36,6 +36,7 @@ private static final long serialVersionUID = 1L;
 	private String cpf;
 	@Column(unique=true)
 	private String rg;	
+	
 	@Column(unique=true)
 	private String email;
 	@JsonIgnore
