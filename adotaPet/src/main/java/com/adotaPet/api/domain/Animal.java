@@ -35,9 +35,8 @@ private static final long serialVersionUID = 1L;
 	private Integer porte;
 	private boolean vermifugado;
 	private boolean castrado;	
-	private Integer status;
+	private Integer status;	
 	
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="ong_id")
 	private Ong ong;	

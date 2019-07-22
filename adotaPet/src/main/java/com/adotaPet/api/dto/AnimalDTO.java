@@ -14,16 +14,16 @@ public class AnimalDTO {
 	private Integer porte;
 	private boolean vermifugado;
 	private boolean castrado;	
-	private Ong ong;
+	private Integer ongId;
 	private Integer status;
-	private Raca raca;
+	private Integer racaId;
 	
 	public AnimalDTO() {
 	}
 	public AnimalDTO(Animal obj) {
 		id = obj.getId();
-		ong = obj.getOng();		
-		raca = obj.getRaca();
+		ongId = obj.getOng().getId();		
+		racaId = obj.getRaca().getId();
 		nome = obj.getNome();	
 		porte = obj.getPorte();
 		status = obj.getStatus();
@@ -89,12 +89,12 @@ public class AnimalDTO {
 		this.castrado = castrado;
 	}
 
-	public Ong getOng() {
-		return ong;
+	public int getOngId() {
+		return ongId;
 	}
 
-	public void setOng(Ong ong) {
-		this.ong = ong;
+	public void setOngId(int ongId) {
+		this.ongId = ongId;
 	}
 
 	public int getStatus() {
@@ -105,12 +105,12 @@ public class AnimalDTO {
 		this.status = status;
 	}
 
-	public Raca getRaca() {
-		return raca;
+	public int getRacaId() {
+		return racaId;
 	}
 
-	public void setRaca(Raca raca) {
-		this.raca = raca;
+	public void setRacaId(int racaId) {
+		this.racaId = racaId;
 	}
 	
 	

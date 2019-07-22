@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.Doenca;
+import com.adotaPet.api.domain.Ong;
+import com.adotaPet.api.domain.Raca;
 import com.adotaPet.api.domain.enums.AnimalGenero;
 import com.adotaPet.api.domain.enums.AnimalStatus;
 import com.adotaPet.api.domain.enums.Porte;
@@ -71,9 +73,12 @@ public class AnimalService {
 	}
 	
 	public Animal fromDTO(AnimalDTO objDto) {
+		
 		return new Animal(objDto.getId(),objDto.getCodigo(),objDto.getNome(),AnimalGenero.toEnum(objDto.getGenero()),
-				Porte.toEnum(objDto.getPorte()),objDto.getVermifugado(),objDto.getCastrado(),objDto.getOng(),		
-				AnimalStatus.toEnum(objDto.getStatus()),objDto.getRaca());
+				Porte.toEnum(objDto.getPorte()),objDto.getVermifugado(),objDto.getCastrado(),
+				new Ong (objDto.getOngId(),null, null, null, null, null, null, null, null, null, null),		
+				AnimalStatus.toEnum(objDto.getStatus()),
+				new Raca(objDto.getRacaId(), null, null, null)); 
 	}
 	
 	public Page<Animal> search(String nome, List<Integer> ids, Integer page, Integer linesPerPage, String orderBy, String direction) {

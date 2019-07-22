@@ -63,6 +63,12 @@ public class AnimalResource {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
+	@RequestMapping(method=RequestMethod.GET)
+	public ResponseEntity<List<AnimalDTO>> findAll() {
+		List<Animal> list = service. findAll();
+		List<AnimalDTO> listDto = list.stream().map(obj -> new AnimalDTO(obj)).collect(Collectors.toList());  
+		return ResponseEntity.ok().body(listDto);
+	}
 	
 	@RequestMapping(value="/ong/{id}",method=RequestMethod.GET)
 	public ResponseEntity<List<AnimalDTO>> findAll(@PathVariable Integer id) {
@@ -71,7 +77,7 @@ public class AnimalResource {
 		return ResponseEntity.ok().body(listDto);
 	}
 	
-	@RequestMapping(method=RequestMethod.GET)
+	@RequestMapping(value="doencas", method=RequestMethod.GET)
 	public ResponseEntity<Page<AnimalDTO>> findPage(
 			@RequestParam(value="nome", defaultValue="") String nome, 
 			@RequestParam(value="doencas", defaultValue="") String doencas, 
