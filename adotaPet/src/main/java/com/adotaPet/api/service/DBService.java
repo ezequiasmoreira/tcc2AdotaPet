@@ -118,6 +118,18 @@ public class DBService {
 		p4.addPerfil(Perfil.VOLUNTARIO);
 		p4.addPerfil(Perfil.ADMIN);
 		
+		Pessoa p5 = new Pessoa(null, 100, "Rua de cocal", "78", null, "Centro", "88806-000", c2, "Gustavo", Sexo.MASCULINO, Perfil.MASTER, "107.458.987-85", "789856123", "gustavoluza@hotmail.com", pe.encode("0123"), "98410553",null);
+		p5.addPerfil(Perfil.MASTER);
+		p5.addPerfil(Perfil.USUARIO);
+		p5.addPerfil(Perfil.VOLUNTARIO);
+		p5.addPerfil(Perfil.ADMIN);
+		
+		Pessoa p6 = new Pessoa(null, 100, "Rua do centro", "7", null, "Centro", "88000-000", c2, "Carlos", Sexo.MASCULINO, Perfil.MASTER, "107.798.987-85", "7898986123", "gabrieldfm13@gmail.com", pe.encode("0123"), "98410553",null);
+		p5.addPerfil(Perfil.MASTER);
+		p5.addPerfil(Perfil.USUARIO);
+		p5.addPerfil(Perfil.VOLUNTARIO);
+		p5.addPerfil(Perfil.ADMIN);
+		
 		pessoaRepository.saveAll(Arrays.asList(p1,p2,p3,p4));
 		
 		Doenca doenca1 = new Doenca(null,1,"Alergia alimentar");
@@ -161,7 +173,7 @@ public class DBService {
 		
 		Animal animal4 = new Animal(null, 10,"Lindinha", AnimalGenero.FEMEA, Porte.MEDIO, true, false, ong2, AnimalStatus.ADOTADO, raca4);
 		animal4.getDoencas().addAll(Arrays.asList(doenca1,doenca2,doenca3,doenca4,doenca5));
-		Animal animal5 = new Animal(null, 15,"Chulinho", AnimalGenero.FEMEA, Porte.GRANDE, true, true, ong2, AnimalStatus.DISPONIVEL, raca5);
+		Animal animal5 = new Animal(null, 15,"Cenorinha", AnimalGenero.MACHO, Porte.GRANDE, true, true, ong2, AnimalStatus.DISPONIVEL, raca5);
 		animal5.getDoencas().addAll(Arrays.asList(doenca6));
 		animal5.getVacinas().addAll(Arrays.asList(vacinaItem1,vacinaItem2,vacinaItem3));
 		animalRepository.saveAll(Arrays.asList(animal1,animal2,animal3,animal4,animal5));
