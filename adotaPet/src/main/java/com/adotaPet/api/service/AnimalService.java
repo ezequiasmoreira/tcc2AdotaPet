@@ -20,6 +20,7 @@ import com.adotaPet.api.domain.enums.Porte;
 import com.adotaPet.api.dto.AnimalDTO;
 import com.adotaPet.api.repository.AnimalRepository;
 import com.adotaPet.api.repository.DoencaRepository;
+import com.adotaPet.api.repository.RacaRepository;
 import com.adotaPet.api.service.exceptions.DataIntegrityException;
 import com.adotaPet.api.service.exceptions.ObjectNotFoundException;
 
@@ -31,6 +32,8 @@ public class AnimalService {
 	private AnimalRepository repo;
 	@Autowired
 	private DoencaRepository doencaRepository;
+	@Autowired
+	private RacaRepository racaRepository;
 
 	public Animal find(Integer id) {
 		Optional<Animal> obj = repo.findById(id);
@@ -85,6 +88,10 @@ public class AnimalService {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		List<Doenca> doencas = doencaRepository.findAllById(ids);
 		return repo.findDistinctByNomeContainingAndDoencasIn(nome, doencas, pageRequest);	
+	}
+	public Page<Animal> findRacas(Integer id, Integer page, Integer linesPerPage, String orderBy, String direction) {
+		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);		
+		return repo.findByRacaId(id, pageRequest);	
 	}
 	
 	private void updateData(Animal newObj, Animal obj) {		

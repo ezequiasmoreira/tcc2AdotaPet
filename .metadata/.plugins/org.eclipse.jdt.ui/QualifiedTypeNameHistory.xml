@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.adotaPet.api.repository.AcompanhamentoRepository"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AcompanhamentoSituacao"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.repository.DoencaRepository"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Animal"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Doenca"/>
@@ -11,8 +9,6 @@
 <fullyQualifiedTypeName name="com.adotaPet.api.repository.OngRepository"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.dto.PessoaNewDTO"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.repository.CidadeRepository"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.service.CidadeService"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.domain.Cidade"/>
 <fullyQualifiedTypeName name="com.amazonaws.services.codecommit.model.TipOfSourceReferenceIsDifferentException"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Ong"/>
 <fullyQualifiedTypeName name="javax.transaction.Transactional"/>
@@ -42,7 +38,6 @@
 <fullyQualifiedTypeName name="com.adotaPet.api.service.SmtpEmailService"/>
 <fullyQualifiedTypeName name="java.nio.file.Path"/>
 <fullyQualifiedTypeName name="com.amazonaws.services.cloudfront.model.Paths"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.exceptions.FileException"/>
 <fullyQualifiedTypeName name="java.net.URI"/>
 <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartFile"/>
@@ -60,4 +55,9 @@
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Acompanhamento"/>
 <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonIgnore"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.dto.CidadeDTO"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.service.CidadeService"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.Cidade"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.Raca"/>
 </qualifiedTypeNameHistroy>

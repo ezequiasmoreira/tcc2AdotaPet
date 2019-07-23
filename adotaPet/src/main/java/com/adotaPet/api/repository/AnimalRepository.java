@@ -9,7 +9,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import com.adotaPet.api.domain.Animal;
-import com.adotaPet.api.domain.Doenca;;
+import com.adotaPet.api.domain.Doenca;
+import com.adotaPet.api.domain.Pessoa;
+import com.adotaPet.api.domain.Raca;;
 
 
 @Repository
@@ -22,4 +24,7 @@ public interface AnimalRepository extends JpaRepository<Animal, Integer> {
 	@Transactional(readOnly=true)
 	@Query("SELECT obj FROM Animal obj WHERE obj.ong.id = :ongId ORDER BY obj.codigo")
 	public List<Animal> findOng(@Param("ongId") Integer ongId);
+	
+	@Transactional(readOnly=true)
+	Page<Animal> findByRacaId(Integer raca_id,Pageable pageRequest);
 }

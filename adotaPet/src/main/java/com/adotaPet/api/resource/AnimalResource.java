@@ -91,4 +91,16 @@ public class AnimalResource {
 		Page<AnimalDTO> listDto = list.map(obj -> new AnimalDTO(obj));  
 		return ResponseEntity.ok().body(listDto);
 	}
+	
+	@RequestMapping(value="raca/{id}", method=RequestMethod.GET)
+	public ResponseEntity<Page<AnimalDTO>> findPage(
+			@PathVariable Integer id, 
+			@RequestParam(value="page", defaultValue="0") Integer page, 
+			@RequestParam(value="linesPerPage", defaultValue="24") Integer linesPerPage, 
+			@RequestParam(value="orderBy", defaultValue="nome") String orderBy, 
+			@RequestParam(value="direction", defaultValue="ASC") String direction) {		
+		Page<Animal> list = service.findRacas(id, page, linesPerPage, orderBy, direction);
+		Page<AnimalDTO> listDto = list.map(obj -> new AnimalDTO(obj));  
+		return ResponseEntity.ok().body(listDto);
+	}
 }
