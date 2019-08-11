@@ -13,10 +13,10 @@ public class AdocaoDTO {
 	private Integer id;
 	private Integer codigo;
 	
-	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonFormat(pattern="dd/MM/yyyy HH:mm:ss")
 	private Date dataCadastro;
 	
-	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonFormat(pattern="dd/MM/yyyy HH:mm:ss")
 	private Date dataFinalizacao;
 	
 	private Integer status;

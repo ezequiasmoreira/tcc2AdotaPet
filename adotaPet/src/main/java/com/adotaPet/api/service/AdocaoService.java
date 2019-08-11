@@ -1,5 +1,9 @@
 package com.adotaPet.api.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,9 +15,13 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.adotaPet.api.domain.Adocao;
+import com.adotaPet.api.domain.Animal;
+import com.adotaPet.api.domain.Pessoa;
 import com.adotaPet.api.domain.enums.AdocaoStatus;
 import com.adotaPet.api.dto.AdocaoDTO;
 import com.adotaPet.api.repository.AdocaoRepository;
+import com.adotaPet.api.repository.PessoaRepository;
+import com.adotaPet.api.security.UserSS;
 import com.adotaPet.api.service.exceptions.DataIntegrityException;
 import com.adotaPet.api.service.exceptions.ObjectNotFoundException;
 
@@ -23,6 +31,11 @@ public class AdocaoService {
 
 	@Autowired
 	private AdocaoRepository repo;
+	@Autowired
+	private PessoaService pessoaService;
+	@Autowired
+	private AnimalService animalService;
+	
 
 	public Adocao find(Integer id) {
 		Optional<Adocao> obj = repo.findById(id);
@@ -52,7 +65,8 @@ public class AdocaoService {
 	}
 	
 	public List<Adocao> findAll() {
-		return repo.findAll();
+		Pessoa usuarioLogado = pessoaService.getUserLogged();
+		return repo.getAdocoes(usuarioLogado.getId());
 	}
 	
 	public Page<Adocao> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
@@ -72,6 +86,31 @@ public class AdocaoService {
 				obj.getObservacao(),
 				obj.getOng(),
 				obj.getAnimal());
+	}
+	public Adocao fromDTO(Integer animalId)  {
+	
+		Integer codigo = null;
+		
+		Pessoa usuariologado = pessoaService.getUserLogged();
+		Animal animal = animalService.getAnimal(animalId);
+		
+		if (codigo == null && animal.getOng() != null) {
+			codigo = 1;
+		}
+		
+		codigo =  animal.getOng() == null ? null : repo.obterCodigo(animal.getOng().getId());
+		return new Adocao(
+				null,
+				codigo,
+				new Date(),
+				null,
+				AdocaoStatus.AGUARDANDO,
+				usuariologado,
+				null,
+				"Aguardando reposta da ong",
+				animal.getOng(),
+				animal);
+	
 	}
 	
 	private void updateData(Adocao newObj, Adocao obj) {		

@@ -30,7 +30,7 @@ public class UploadService {
 	
 	public URI uploadFile(MultipartFile multipartFile) {
 		try {
-			String caminho = "C:\\tcc2\\ong\\img\\";
+			String caminho = "C:\\tccf\\adotapet\\src\\assets\\imgs\\";
 			
 			UserSS user = UserService.authenticated();
 			if (user == null) {

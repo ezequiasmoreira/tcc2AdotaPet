@@ -10,11 +10,13 @@ import org.springframework.context.annotation.Profile;
 
 import com.adotaPet.api.service.DBService;
 import com.adotaPet.api.service.EmailService;
+import com.adotaPet.api.service.MockEmailService;
 import com.adotaPet.api.service.SmtpEmailService;
 
 
 @Configuration
-@Profile("dev")
+//@Profile("dev")
+@Profile("devPgadm")
 public class DevConfig {
 	
 	@Autowired

@@ -26,5 +26,9 @@ public interface AnimalRepository extends JpaRepository<Animal, Integer> {
 	public List<Animal> findOng(@Param("ongId") Integer ongId);
 	
 	@Transactional(readOnly=true)
+	@Query("SELECT obj FROM Animal obj WHERE obj.id = :id ")
+	Animal findAnimalId(@Param("id") Integer id);
+	
+	@Transactional(readOnly=true)
 	Page<Animal> findByRacaId(Integer raca_id,Pageable pageRequest);
 }

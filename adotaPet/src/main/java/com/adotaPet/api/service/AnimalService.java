@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.Doenca;
 import com.adotaPet.api.domain.Ong;
+import com.adotaPet.api.domain.Pessoa;
 import com.adotaPet.api.domain.Raca;
 import com.adotaPet.api.domain.enums.AnimalGenero;
 import com.adotaPet.api.domain.enums.AnimalStatus;
@@ -21,6 +22,7 @@ import com.adotaPet.api.dto.AnimalDTO;
 import com.adotaPet.api.repository.AnimalRepository;
 import com.adotaPet.api.repository.DoencaRepository;
 import com.adotaPet.api.repository.RacaRepository;
+import com.adotaPet.api.security.UserSS;
 import com.adotaPet.api.service.exceptions.DataIntegrityException;
 import com.adotaPet.api.service.exceptions.ObjectNotFoundException;
 
@@ -40,7 +42,9 @@ public class AnimalService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Animal.class.getName()));
 	}
-	
+	public Animal getAnimal(Integer animalId) {		
+		return repo.findAnimalId(animalId);
+	}
 	public Animal insert(Animal obj) {
 		obj.setId(null);
 		return repo.save(obj);

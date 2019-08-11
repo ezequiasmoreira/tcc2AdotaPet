@@ -235,4 +235,8 @@ public class PessoaService {
 	public URI uploadProfilePicture(MultipartFile multipartFile) {		
 		return uploadService.uploadFile(multipartFile);
 	}
+	public Pessoa getUserLogged() {
+		UserSS user = UserService.authenticated();
+		return repo.findPessoaId(user.getId());
+	}
 }

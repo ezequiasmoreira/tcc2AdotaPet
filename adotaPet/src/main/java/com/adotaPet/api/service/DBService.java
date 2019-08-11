@@ -76,12 +76,13 @@ public class DBService {
 		Cidade c1 = new Cidade(null,"Mantena",est1);
 		Cidade c2 = new Cidade(null,"Criciuma",est2);
 		Cidade c3 = new Cidade(null,"Florianipolis",est2);
+		Cidade c4 = new Cidade(null,"Cocal",est2);
 		
 		est1.getCidades().addAll(Arrays.asList(c1));
-		est2.getCidades().addAll(Arrays.asList(c2,c3));
+		est2.getCidades().addAll(Arrays.asList(c2,c3,c4));
 				
 		estadoRepository.saveAll(Arrays.asList(est1,est2));
-		cidadeRepository.saveAll(Arrays.asList(c1,c2,c3));
+		cidadeRepository.saveAll(Arrays.asList(c1,c2,c3,c4));
 		
 		Ong ong1 = new Ong(null, 10,"Avenida Sebastião Toledo dos santos","785","Proximo a moradas da colina","Maria ceu","88806-620",
 				c2,"Ong LTDA","Ong do bem","62.769.648/0001-84");
@@ -118,7 +119,7 @@ public class DBService {
 		p4.addPerfil(Perfil.VOLUNTARIO);
 		p4.addPerfil(Perfil.ADMIN);
 		
-		Pessoa p5 = new Pessoa(null, 100, "Rua de cocal", "78", null, "Centro", "88806-000", c2, "Gustavo", Sexo.MASCULINO, Perfil.MASTER, "107.458.987-85", "789856123", "gustavoluza@hotmail.com", pe.encode("0123"), "98410553",null);
+		Pessoa p5 = new Pessoa(null, 100, "Rua de cocal", "78", null, "Centro", "88806-000", c4, "Gustavo", Sexo.MASCULINO, Perfil.MASTER, "107.458.987-85", "789856123", "gustavoluza@hotmail.com", pe.encode("0123"), "98410553",null);
 		p5.addPerfil(Perfil.MASTER);
 		p5.addPerfil(Perfil.USUARIO);
 		p5.addPerfil(Perfil.VOLUNTARIO);
@@ -130,7 +131,7 @@ public class DBService {
 		p5.addPerfil(Perfil.VOLUNTARIO);
 		p5.addPerfil(Perfil.ADMIN);
 		
-		pessoaRepository.saveAll(Arrays.asList(p1,p2,p3,p4));
+		pessoaRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5,p6));
 		
 		Doenca doenca1 = new Doenca(null,1,"Alergia alimentar");
 		Doenca doenca2 = new Doenca(null,2,"Depressão");

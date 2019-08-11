@@ -46,6 +46,14 @@ public class AdocaoResource {
 			.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
+	@RequestMapping(value="/{id}",method=RequestMethod.POST)
+	public ResponseEntity<Void> insert(@PathVariable Integer id) {
+		Adocao obj = service.fromDTO(id);
+		obj = service.insert(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+			.path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).build();
+	}
 	
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)

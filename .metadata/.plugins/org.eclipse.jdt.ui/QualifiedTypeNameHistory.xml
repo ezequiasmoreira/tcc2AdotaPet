@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.adotaPet.api.repository.DoencaRepository"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.domain.Animal"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.domain.Doenca"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.resource.utils.URL"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.service.OngService"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.repository.OngRepository"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.dto.PessoaNewDTO"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.repository.CidadeRepository"/>
 <fullyQualifiedTypeName name="com.amazonaws.services.codecommit.model.TipOfSourceReferenceIsDifferentException"/>
@@ -26,7 +19,6 @@
 <fullyQualifiedTypeName name="java.util.HashSet"/>
 <fullyQualifiedTypeName name="java.util.stream.Collectors"/>
 <fullyQualifiedTypeName name="org.springframework.security.web.authentication.AuthenticationFailureHandler"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="javax.persistence.Column"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.validation.PessoaInsert"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.validation.OngInsert"/>
@@ -59,5 +51,13 @@
 <fullyQualifiedTypeName name="com.adotaPet.api.service.CidadeService"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Cidade"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.repository.RacaRepository"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Raca"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.repository.PessoaRepository"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.service.PessoaService"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.Animal"/>
+<fullyQualifiedTypeName name="java.time.LocalDateTime"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.time.Instant"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
 </qualifiedTypeNameHistroy>
