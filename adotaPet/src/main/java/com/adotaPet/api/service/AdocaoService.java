@@ -18,6 +18,7 @@ import com.adotaPet.api.domain.Adocao;
 import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.Pessoa;
 import com.adotaPet.api.domain.enums.AdocaoStatus;
+import com.adotaPet.api.domain.enums.Perfil;
 import com.adotaPet.api.dto.AdocaoDTO;
 import com.adotaPet.api.repository.AdocaoRepository;
 import com.adotaPet.api.repository.PessoaRepository;
@@ -67,6 +68,13 @@ public class AdocaoService {
 	public List<Adocao> findAll() {
 		Pessoa usuarioLogado = pessoaService.getUserLogged();
 		return repo.getAdocoes(usuarioLogado.getId());
+	}
+	public List<Adocao> solicitacaoAdocoes() {
+		Pessoa usuarioLogado = pessoaService.getUserLogged();		
+		if (usuarioLogado.getPerfil() == Perfil.MASTER.getCod() ) {
+			return repo.solicitacaoAdocoes();
+		}
+		return repo.solicitacaoAdocoes(usuarioLogado.getOng().getId());
 	}
 	
 	public Page<Adocao> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {

@@ -70,10 +70,17 @@ public class AdocaoResource {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
-	
+	//@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<AdocaoDTO>> findAll() {
 		List<Adocao> list = service.findAll();
+		List<AdocaoDTO> listDto = list.stream().map(obj -> new AdocaoDTO(obj)).collect(Collectors.toList());  
+		return ResponseEntity.ok().body(listDto);
+	}
+	//@PreAuthorize("hasAnyRole('ADMIN')")
+	@RequestMapping(value="/solicitacao",method=RequestMethod.GET)
+	public ResponseEntity<List<AdocaoDTO>> solicitacaoAdocoes() {
+		List<Adocao> list = service.solicitacaoAdocoes();
 		List<AdocaoDTO> listDto = list.stream().map(obj -> new AdocaoDTO(obj)).collect(Collectors.toList());  
 		return ResponseEntity.ok().body(listDto);
 	}
