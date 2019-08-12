@@ -17,6 +17,7 @@ public class AnimalDTO {
 	private Integer ongId;
 	private Integer status;
 	private Integer racaId;
+	private String cidade;
 	
 	public AnimalDTO() {
 	}
@@ -31,8 +32,15 @@ public class AnimalDTO {
 		genero = obj.getGenero();				
 		castrado = obj.getCastrado();		
 		vermifugado = obj.getVermifugado();
+		cidade = obj.getOng().getCidade().getNome();
 	}
 	
+	public String getCidade() {
+		return cidade;
+	}
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
 	public Integer getId() {
 		return id;
 	}

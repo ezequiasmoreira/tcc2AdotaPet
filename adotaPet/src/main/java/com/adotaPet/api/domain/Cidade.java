@@ -20,7 +20,6 @@ public class Cidade implements Serializable {
 	private Integer id;
 	private String nome;
 	
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="estado_id")
 	private Estado estado;
