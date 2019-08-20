@@ -122,6 +122,6 @@ public class AdocaoService {
 	}
 	
 	private void updateData(Adocao newObj, Adocao obj) {		
-		newObj.setOng(obj.getOng());
+		newObj.setStatus(obj.getStatus());
 	}
 }

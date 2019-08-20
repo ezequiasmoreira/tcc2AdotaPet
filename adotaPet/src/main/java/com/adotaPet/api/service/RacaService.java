@@ -29,6 +29,9 @@ public class RacaService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Raca.class.getName()));
 	}
+	public Raca findRacaId(Integer racaId) {					
+		return repo.findRacaId(racaId);			
+	}
 	
 	public Raca insert(Raca obj) {
 		obj.setId(null);

@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.Doenca;
 import com.adotaPet.api.domain.Ong;
-import com.adotaPet.api.domain.Pessoa;
 import com.adotaPet.api.domain.Raca;
 import com.adotaPet.api.domain.enums.AnimalGenero;
 import com.adotaPet.api.domain.enums.AnimalStatus;
@@ -21,8 +20,6 @@ import com.adotaPet.api.domain.enums.Porte;
 import com.adotaPet.api.dto.AnimalDTO;
 import com.adotaPet.api.repository.AnimalRepository;
 import com.adotaPet.api.repository.DoencaRepository;
-import com.adotaPet.api.repository.RacaRepository;
-import com.adotaPet.api.security.UserSS;
 import com.adotaPet.api.service.exceptions.DataIntegrityException;
 import com.adotaPet.api.service.exceptions.ObjectNotFoundException;
 
@@ -34,8 +31,9 @@ public class AnimalService {
 	private AnimalRepository repo;
 	@Autowired
 	private DoencaRepository doencaRepository;
+
 	@Autowired
-	private RacaRepository racaRepository;
+	private RacaService racaService;
 
 	public Animal find(Integer id) {
 		Optional<Animal> obj = repo.findById(id);
@@ -80,12 +78,13 @@ public class AnimalService {
 	}
 	
 	public Animal fromDTO(AnimalDTO objDto) {
-		
+		Raca raca = racaService.findRacaId(objDto.getRacaId());
 		return new Animal(objDto.getId(),objDto.getCodigo(),objDto.getNome(),AnimalGenero.toEnum(objDto.getGenero()),
 				Porte.toEnum(objDto.getPorte()),objDto.getVermifugado(),objDto.getCastrado(),
 				new Ong (objDto.getOngId(),null, null, null, null, null, null, null, null, null, null),		
 				AnimalStatus.toEnum(objDto.getStatus()),
-				new Raca(objDto.getRacaId(), null, null, null)); 
+				raca
+				); 
 	}
 	
 	public Page<Animal> search(String nome, List<Integer> ids, Integer page, Integer linesPerPage, String orderBy, String direction) {

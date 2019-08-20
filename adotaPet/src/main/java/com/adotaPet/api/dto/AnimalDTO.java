@@ -21,6 +21,15 @@ public class AnimalDTO {
 	
 	public AnimalDTO() {
 	}
+	public void setOngId(Integer ongId) {
+		this.ongId = ongId;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+	public void setRacaId(Integer racaId) {
+		this.racaId = racaId;
+	}
 	public AnimalDTO(Animal obj) {
 		id = obj.getId();
 		ongId = obj.getOng().getId();		

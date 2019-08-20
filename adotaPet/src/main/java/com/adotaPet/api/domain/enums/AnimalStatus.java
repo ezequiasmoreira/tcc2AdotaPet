@@ -3,7 +3,7 @@ package com.adotaPet.api.domain.enums;
 public enum AnimalStatus {
 	DISPONIVEL(1, "Disponivel"),
 	PROCESSAMENTO(2, "Processamento"),
-	ADOTADO(4, "Adotado");
+	ADOTADO(3, "Adotado");
 	
 	private int cod;
 	private String descricao;

@@ -3,6 +3,7 @@ package com.adotaPet.api.service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -69,6 +70,45 @@ public class DBService {
 	private BCryptPasswordEncoder pe;
 	
 	public void instanciateTestDataBase() throws ParseException {
+		
+		
+		
+
+		//insere registro em massa
+		try {
+			InsereDoenca  insereDoenca = new InsereDoenca();	
+			List<Doenca> listaDoenca = insereDoenca.insert();			
+			for (Doenca doenca : listaDoenca) {
+				doencaRepository.saveAll(Arrays.asList(new Doenca(null,doenca.getCodigo(),doenca.getDescricao())));	
+			}
+			System.out.println("Deu certo" );
+		}catch (Exception e) {
+			System.out.println("Deu erro: " + e.getMessage());
+		}
+		
+		//insere raças de cães
+		try {
+			InsereRaca  insereRaca = new InsereRaca();	
+			List<Raca> ListaRacaCaes = insereRaca.insertCaes();			
+			for (Raca listaRacaCaes : ListaRacaCaes) {
+				racaRepository.saveAll(Arrays.asList(new Raca(null,listaRacaCaes.getCodigo(),listaRacaCaes.getDescricao(),Especie.CAO)));	
+			}
+			System.out.println("Deu certo" );
+		}catch (Exception e) {
+			System.out.println("Deu erro: " + e.getMessage());
+		}
+		//insere raças de gatos
+		try {
+			InsereRaca  insereRaca = new InsereRaca();	
+			List<Raca> ListaRacaCaes = insereRaca.insertGatos();			
+			for (Raca listaRacaCaes : ListaRacaCaes) {
+				racaRepository.saveAll(Arrays.asList(new Raca(null,listaRacaCaes.getCodigo(),listaRacaCaes.getDescricao(),Especie.GATO)));	
+			}
+			System.out.println("Deu certo" );
+		}catch (Exception e) {
+			System.out.println("Deu erro: " + e.getMessage());
+		}
+		
 		
 		Estado est1 = new Estado(null,"Minas Gerais",31);
 		Estado est2 = new Estado(null,"Santa Catarina",42);
@@ -194,7 +234,10 @@ public class DBService {
 		
 		animal3.getAcompanhamentos().addAll(Arrays.asList(acom1,acom2));
 		animal4.getAcompanhamentos().addAll(Arrays.asList(acom3));
-		animalRepository.saveAll(Arrays.asList(animal3,animal4));				
+		animalRepository.saveAll(Arrays.asList(animal3,animal4));
+		
+		
+		 
 	}
 
 }
