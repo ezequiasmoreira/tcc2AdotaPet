@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import com.adotaPet.api.domain.Adocao;
 import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.Doenca;
 import com.adotaPet.api.domain.Ong;
@@ -48,9 +49,9 @@ public class AnimalService {
 		return repo.save(obj);
 	}
 	
-	public Animal update(Animal obj) {
+	public Animal update(Animal obj) {		
 		Animal newObj = find(obj.getId());
-		updateData(newObj, obj);
+		updateData(newObj,obj);
 		return repo.save(newObj);
 	}
 	
@@ -86,7 +87,7 @@ public class AnimalService {
 				raca
 				); 
 	}
-	
+		
 	public Page<Animal> search(String nome, List<Integer> ids, Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		List<Doenca> doencas = doencaRepository.findAllById(ids);
@@ -96,8 +97,25 @@ public class AnimalService {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);		
 		return repo.findByRacaId(id, pageRequest);	
 	}
-	
-	private void updateData(Animal newObj, Animal obj) {		
+	public AnimalDTO validaCampos(AnimalDTO animalDTO,Animal animal) {
+		if(animalDTO.getPorte() == null) {
+			animalDTO.setPorte(animal.getPorte());
+		}
+		if(animalDTO.getStatus() == null) {
+			animalDTO.setStatus(animal.getStatus());
+		}
+		if(animalDTO.getGenero() == null) {
+			animalDTO.setGenero(animal.getGenero());
+		}
+		if(animalDTO.getNome() == null) {
+			animalDTO.setNome(animal.getNome());
+		}
+		if(animalDTO.getOngId() == null) {
+			animalDTO.setOngId(animal.getOng().getId());
+		}
+		return animalDTO;
+	}
+	private void updateData(Animal newObj,Animal obj ) {		
 		newObj.setOng(obj.getOng());		
 		newObj.setRaca(obj.getRaca());
 		newObj.setNome(obj.getNome());
@@ -107,5 +125,16 @@ public class AnimalService {
 		newObj.setGenero(obj.getGenero());
 		newObj.setCastrado(obj.getCastrado());
 		newObj.setVermifugado(obj.getVermifugado());
+		
+		/*newObj.setOng( obj.getOngId() > 0 ? ongService.findOngId(obj.getOngId()) : newObj.getOng() );		
+		newObj.setRaca(obj.getRacaId() > 0 ? racaService.findRacaId(obj.getRacaId()) : newObj.getRaca() );
+		newObj.setNome(obj.getNome() != "" ? obj.getNome() : newObj.getNome());
+		newObj.setPorte(obj.getPorte() > 0 ? obj.getPorte() : newObj.getPorte());	
+		newObj.setStatus(obj.getStatus() > 0 ? obj.getStatus() : newObj.getStatus() );
+		newObj.setGenero(obj.getGenero() > 0 ? obj.getGenero() : newObj.getGenero());
+		newObj.setCastrado(obj.getCastrado() != newObj.getCastrado()  ? obj.getCastrado() : newObj.getCastrado() );
+		newObj.setVermifugado(obj.getVermifugado() != newObj.getVermifugado() ? obj.getVermifugado() : newObj.getVermifugado() );
+		return newObj;*/
+
 	}
 }

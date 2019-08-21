@@ -1,8 +1,6 @@
 package com.adotaPet.api.dto;
 
 
-import com.adotaPet.api.domain.Ong;
-import com.adotaPet.api.domain.Raca;
 import com.adotaPet.api.domain.Animal;
 
 public class AnimalDTO {
@@ -21,15 +19,7 @@ public class AnimalDTO {
 	
 	public AnimalDTO() {
 	}
-	public void setOngId(Integer ongId) {
-		this.ongId = ongId;
-	}
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-	public void setRacaId(Integer racaId) {
-		this.racaId = racaId;
-	}
+	
 	public AnimalDTO(Animal obj) {
 		id = obj.getId();
 		ongId = obj.getOng().getId();		
@@ -106,27 +96,27 @@ public class AnimalDTO {
 		this.castrado = castrado;
 	}
 
-	public int getOngId() {
+	public Integer getOngId() {
 		return ongId;
 	}
 
-	public void setOngId(int ongId) {
+	public void setOngId(Integer ongId) {
 		this.ongId = ongId;
 	}
 
-	public int getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 
-	public int getRacaId() {
+	public Integer getRacaId() {
 		return racaId;
 	}
 
-	public void setRacaId(int racaId) {
+	public void setRacaId(Integer racaId) {
 		this.racaId = racaId;
 	}
 	

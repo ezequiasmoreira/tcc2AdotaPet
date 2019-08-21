@@ -28,6 +28,9 @@ public class OngService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Ong.class.getName()));
 	}
+	public Ong findOngId(Integer ongId) {		
+		return repo.findOngId(ongId);
+	}
 	
 	public Ong insert(Ong obj) {
 		obj.setId(null);

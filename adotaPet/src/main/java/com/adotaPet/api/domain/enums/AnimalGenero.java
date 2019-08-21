@@ -4,15 +4,15 @@ public enum AnimalGenero {
 	MACHO(1, "Macho"),
 	FEMEA(2, "Femea");
 	
-	private int cod;
+	private Integer cod;
 	private String descricao;
 	
-	private AnimalGenero(int cod, String descricao) {
+	private AnimalGenero(Integer cod, String descricao) {
 		this.cod = cod;
 		this.descricao = descricao;
 	}
 
-	public int getCod() {
+	public Integer getCod() {
 		return cod;
 	}
 	public String getDescricao() {

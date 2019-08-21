@@ -51,6 +51,9 @@ public class AnimalResource {
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody AnimalDTO objDto, @PathVariable Integer id) throws ObjectNotFoundException {
+		Animal animal = service.getAnimal(id);
+		objDto = service.validaCampos(objDto,animal);
+		
 		Animal obj = service.fromDTO(objDto);
 		obj.setId(id);
 		obj = service.update(obj);
