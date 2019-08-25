@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.security.JWTUtil"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.AuthService"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.UserService"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.dto.EmailDTO"/>
@@ -60,4 +58,6 @@
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.Especie"/>
 <fullyQualifiedTypeName name="javax.validation.constraints.Min"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Raca"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.dto.AnimalDTO"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
 </qualifiedTypeNameHistroy>

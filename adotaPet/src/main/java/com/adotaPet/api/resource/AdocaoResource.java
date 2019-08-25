@@ -20,6 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.adotaPet.api.domain.Adocao;
 import com.adotaPet.api.dto.AdocaoDTO;
 import com.adotaPet.api.service.AdocaoService;
+import com.adotaPet.api.service.AnimalService;
 
 import javassist.tools.rmi.ObjectNotFoundException;
 
@@ -30,6 +31,8 @@ public class AdocaoResource {
 	
 	@Autowired
 	private AdocaoService service;
+	@Autowired
+	private AnimalService animalService;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Adocao> find(@PathVariable Integer id) throws ObjectNotFoundException {
@@ -42,6 +45,7 @@ public class AdocaoResource {
 	public ResponseEntity<Void> insert(@Valid @RequestBody AdocaoDTO objDto) {
 		Adocao obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
+		
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 			.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
@@ -50,6 +54,7 @@ public class AdocaoResource {
 	public ResponseEntity<Void> insert(@PathVariable Integer id) {
 		Adocao obj = service.fromDTO(id);
 		obj = service.insert(obj);
+		animalService.atualizaStatus(obj.getAnimal());
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 			.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
@@ -61,6 +66,7 @@ public class AdocaoResource {
 		Adocao obj = service.fromDTO(objDto);
 		obj.setId(id);
 		obj = service.update(obj);
+		animalService.atualizaStatus(obj.getAnimal());
 		return ResponseEntity.noContent().build();
 	}
 	

@@ -124,4 +124,7 @@ public class AdocaoService {
 	private void updateData(Adocao newObj, Adocao obj) {		
 		newObj.setStatus(obj.getStatus());
 	}
+	public List<Adocao> obterAdocaoPorAnimaleStatus(Animal animal,int adocaoStatus) {		
+		return repo.obterAdocaoPorAnimaleStatus(animal.getId(),adocaoStatus);
+	}
 }

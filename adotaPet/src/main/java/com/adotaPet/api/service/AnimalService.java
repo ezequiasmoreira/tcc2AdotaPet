@@ -15,6 +15,7 @@ import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.Doenca;
 import com.adotaPet.api.domain.Ong;
 import com.adotaPet.api.domain.Raca;
+import com.adotaPet.api.domain.enums.AdocaoStatus;
 import com.adotaPet.api.domain.enums.AnimalGenero;
 import com.adotaPet.api.domain.enums.AnimalStatus;
 import com.adotaPet.api.domain.enums.Porte;
@@ -35,6 +36,8 @@ public class AnimalService {
 
 	@Autowired
 	private RacaService racaService;
+	@Autowired
+	private AdocaoService adocaoService;
 
 	public Animal find(Integer id) {
 		Optional<Animal> obj = repo.findById(id);
@@ -125,16 +128,26 @@ public class AnimalService {
 		newObj.setGenero(obj.getGenero());
 		newObj.setCastrado(obj.getCastrado());
 		newObj.setVermifugado(obj.getVermifugado());
-		
-		/*newObj.setOng( obj.getOngId() > 0 ? ongService.findOngId(obj.getOngId()) : newObj.getOng() );		
-		newObj.setRaca(obj.getRacaId() > 0 ? racaService.findRacaId(obj.getRacaId()) : newObj.getRaca() );
-		newObj.setNome(obj.getNome() != "" ? obj.getNome() : newObj.getNome());
-		newObj.setPorte(obj.getPorte() > 0 ? obj.getPorte() : newObj.getPorte());	
-		newObj.setStatus(obj.getStatus() > 0 ? obj.getStatus() : newObj.getStatus() );
-		newObj.setGenero(obj.getGenero() > 0 ? obj.getGenero() : newObj.getGenero());
-		newObj.setCastrado(obj.getCastrado() != newObj.getCastrado()  ? obj.getCastrado() : newObj.getCastrado() );
-		newObj.setVermifugado(obj.getVermifugado() != newObj.getVermifugado() ? obj.getVermifugado() : newObj.getVermifugado() );
-		return newObj;*/
-
 	}
+	public void atualizaStatus(Animal animal) {	
+		int status = AnimalStatus.DISPONIVEL.getCod();
+		int EMuANALISE = AdocaoStatus.ANALISE.getCod();
+		int APROVADO = AdocaoStatus.APROVADO.getCod();
+		
+		animal.setStatus(status);
+		
+		List<Adocao> listaAdocoesEmAnalise = adocaoService.obterAdocaoPorAnimaleStatus(animal,EMuANALISE);
+		if (!listaAdocoesEmAnalise.isEmpty()) {
+			System.out.println("entrou em processamento");
+			animal.setStatus( AnimalStatus.PROCESSAMENTO.getCod());
+		}
+		
+		List<Adocao> listaAdocoesAprovado = adocaoService.obterAdocaoPorAnimaleStatus(animal,APROVADO);
+		if (!listaAdocoesAprovado.isEmpty()) {
+			System.out.println("entrou em adotado");
+			animal.setStatus( AnimalStatus.ADOTADO.getCod());
+		}
+		repo.save(animal);
+	}
+	
 }
