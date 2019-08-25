@@ -98,7 +98,7 @@ public class AnimalService {
 	}
 	public Page<Animal> findRacas(Integer id, Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);		
-		return repo.findByRacaId(id, pageRequest);	
+		return repo.findByRacaIdAndStatus(id, 1,pageRequest);	
 	}
 	public AnimalDTO validaCampos(AnimalDTO animalDTO,Animal animal) {
 		if(animalDTO.getPorte() == null) {

@@ -30,5 +30,5 @@ public interface AnimalRepository extends JpaRepository<Animal, Integer> {
 	Animal findAnimalId(@Param("id") Integer id);
 	
 	@Transactional(readOnly=true)
-	Page<Animal> findByRacaId(Integer raca_id,Pageable pageRequest);
+	Page<Animal> findByRacaIdAndStatus(Integer raca_id,Integer status,Pageable pageRequest);
 }
