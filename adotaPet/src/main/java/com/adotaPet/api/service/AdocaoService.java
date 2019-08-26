@@ -3,6 +3,7 @@ package com.adotaPet.api.service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -14,9 +15,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import com.adotaPet.api.domain.Acompanhamento;
 import com.adotaPet.api.domain.Adocao;
 import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.Pessoa;
+import com.adotaPet.api.domain.enums.AcompanhamentoSituacao;
+import com.adotaPet.api.domain.enums.AcompanhamentoStatus;
 import com.adotaPet.api.domain.enums.AdocaoStatus;
 import com.adotaPet.api.domain.enums.Perfil;
 import com.adotaPet.api.dto.AdocaoDTO;
@@ -36,6 +40,8 @@ public class AdocaoService {
 	private PessoaService pessoaService;
 	@Autowired
 	private AnimalService animalService;
+	@Autowired
+	private AcompanhamentoService acompanhamentoService;
 	
 
 	public Adocao find(Integer id) {
@@ -126,5 +132,23 @@ public class AdocaoService {
 	}
 	public List<Adocao> obterAdocaoPorAnimaleStatus(Animal animal,int adocaoStatus) {		
 		return repo.obterAdocaoPorAnimaleStatus(animal.getId(),adocaoStatus);
+	}
+	public void realizarProcessosObrigatorios(Adocao adocao) {
+		animalService.atualizaStatus(adocao.getAnimal());
+		List<Acompanhamento> acompanhamentos = new ArrayList<Acompanhamento>();
+		if (adocao.getStatus() == AdocaoStatus.APROVADO.getCod()) {
+			Acompanhamento acompanhamento = new Acompanhamento();
+			acompanhamento.setCodigo(adocao.getAnimal().getCodigo());
+			acompanhamento.setDescricao("Adoção aprovada.");
+			acompanhamento.setStatus(AcompanhamentoStatus.FINALIZADO.getCod());
+			acompanhamento.setSituacao(AcompanhamentoSituacao.PROCESSOS.getCod());
+			acompanhamento.setObservacao("Acompanhamento gerado internamente");
+			acompanhamento.setDataAgendado(new Date());
+			acompanhamento.setDataCadastro(new Date());
+			acompanhamentoService.insert(acompanhamento);
+			acompanhamentos.add(acompanhamento);
+			animalService.adicionarAcompanhamento(adocao.getAnimal(),acompanhamentos );
+			
+		}
 	}
 }

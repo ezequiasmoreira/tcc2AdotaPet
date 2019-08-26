@@ -1,5 +1,6 @@
 package com.adotaPet.api.service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import com.adotaPet.api.domain.Acompanhamento;
 import com.adotaPet.api.domain.Adocao;
 import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.Doenca;
@@ -148,6 +150,12 @@ public class AnimalService {
 			animal.setStatus( AnimalStatus.ADOTADO.getCod());
 		}
 		repo.save(animal);
+	}
+	public void adicionarAcompanhamento(Animal animal,List<Acompanhamento> acompanhamentos) {
+		for (Acompanhamento acompanhamento : acompanhamentos) {
+			animal.getAcompanhamentos().addAll(Arrays.asList(acompanhamento));			
+		}
+		repo.saveAll(Arrays.asList(animal));	
 	}
 	
 }

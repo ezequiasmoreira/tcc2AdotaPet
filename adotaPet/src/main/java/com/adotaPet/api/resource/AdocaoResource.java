@@ -65,8 +65,8 @@ public class AdocaoResource {
 	public ResponseEntity<Void> update(@Valid @RequestBody AdocaoDTO objDto, @PathVariable Integer id) throws ObjectNotFoundException {
 		Adocao obj = service.fromDTO(objDto);
 		obj.setId(id);
-		obj = service.update(obj);
-		animalService.atualizaStatus(obj.getAnimal());
+		obj = service.update(obj);		
+		service.realizarProcessosObrigatorios(obj);		
 		return ResponseEntity.noContent().build();
 	}
 	

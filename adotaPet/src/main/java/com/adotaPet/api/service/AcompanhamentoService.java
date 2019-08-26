@@ -1,5 +1,6 @@
 package com.adotaPet.api.service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.adotaPet.api.domain.Acompanhamento;
+import com.adotaPet.api.domain.Ong;
 import com.adotaPet.api.domain.enums.AcompanhamentoSituacao;
 import com.adotaPet.api.domain.enums.AcompanhamentoStatus;
 import com.adotaPet.api.dto.AcompanhamentoDTO;
@@ -76,4 +78,5 @@ public class AcompanhamentoService {
 	private void updateData(Acompanhamento newObj, Acompanhamento obj) {		
 		newObj.setCodigo(obj.getCodigo());
 	}
+	
 }
