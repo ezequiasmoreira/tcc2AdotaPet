@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import com.adotaPet.api.domain.Acompanhamento;
 import com.adotaPet.api.domain.Adocao;
 import com.adotaPet.api.domain.Animal;
+import com.adotaPet.api.domain.Doenca;
 import com.adotaPet.api.domain.Pessoa;
 import com.adotaPet.api.domain.enums.AcompanhamentoSituacao;
 import com.adotaPet.api.domain.enums.AcompanhamentoStatus;
@@ -150,5 +151,21 @@ public class AdocaoService {
 			animalService.adicionarAcompanhamento(adocao.getAnimal(),acompanhamentos );
 			
 		}
+	}
+	public List<Adocao> search(Integer codigo, Integer status,Date dataInicial, Date dataFinal, Integer page, Integer linesPerPage, String orderBy, String direction) {
+		List<Adocao> listaAdocoes = repo.obterAdocoesPorFiltro(dataInicial,dataFinal);
+		List<Adocao> adocoesRemover =  new ArrayList<Adocao>();
+		if(!listaAdocoes.isEmpty()) {
+			for (Adocao adocao : listaAdocoes) {
+				if ((adocao.getCodigo() != codigo)&&(codigo != 0)) {
+					adocoesRemover.add(adocao);
+				}else 
+				if ((adocao.getStatus() != status)&&(status != 0)){
+					adocoesRemover.add(adocao);
+				}
+			}
+			listaAdocoes.removeAll(adocoesRemover);
+		}
+		return listaAdocoes;
 	}
 }

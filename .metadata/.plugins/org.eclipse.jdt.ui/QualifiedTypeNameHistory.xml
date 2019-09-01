@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.adotaPet.api.service.AuthService"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.service.UserService"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.dto.EmailDTO"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.service.MockEmailService"/>
-<fullyQualifiedTypeName name="javax.persistence.FetchType"/>
-<fullyQualifiedTypeName name="javax.persistence.CollectionTable"/>
-<fullyQualifiedTypeName name="java.util.Set"/>
-<fullyQualifiedTypeName name="java.util.HashSet"/>
 <fullyQualifiedTypeName name="java.util.stream.Collectors"/>
 <fullyQualifiedTypeName name="org.springframework.security.web.authentication.AuthenticationFailureHandler"/>
 <fullyQualifiedTypeName name="javax.persistence.Column"/>
@@ -33,7 +25,6 @@
 <fullyQualifiedTypeName name="com.adotaPet.api.repository.VacinaRepository"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.repository.VacinaItemRepository"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.VacinaItem"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.domain.Acompanhamento"/>
 <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonIgnore"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.dto.CidadeDTO"/>
@@ -44,7 +35,6 @@
 <fullyQualifiedTypeName name="com.adotaPet.api.service.PessoaService"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Animal"/>
 <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.time.Instant"/>
 <fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.Perfil"/>
@@ -52,7 +42,6 @@
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.InsereDoenca"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.service.InsereRaca"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.Especie"/>
@@ -60,4 +49,15 @@
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Raca"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.dto.AnimalDTO"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.service.AnimalService"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AnimalStatus"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AdocaoStatus"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.Ong"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AcompanhamentoStatus"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AcompanhamentoSituacao"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.Acompanhamento"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.dto.AdocaoDTO"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="javax.persistence.criteria.CriteriaBuilder"/>
 </qualifiedTypeNameHistroy>
