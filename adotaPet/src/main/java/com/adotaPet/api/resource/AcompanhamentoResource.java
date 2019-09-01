@@ -1,6 +1,7 @@
 package com.adotaPet.api.resource;
 
 import java.net.URI;
+import java.text.ParseException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,8 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.adotaPet.api.domain.Acompanhamento;
+import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.dto.AcompanhamentoDTO;
 import com.adotaPet.api.service.AcompanhamentoService;
+import com.adotaPet.api.service.AnimalService;
 
 import javassist.tools.rmi.ObjectNotFoundException;
 
@@ -30,6 +33,8 @@ public class AcompanhamentoResource {
 	
 	@Autowired
 	private AcompanhamentoService service;
+	@Autowired
+	private AnimalService animalService;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Acompanhamento> find(@PathVariable Integer id) throws ObjectNotFoundException {
@@ -39,9 +44,11 @@ public class AcompanhamentoResource {
 	
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@Valid @RequestBody AcompanhamentoDTO objDto) {
-		Acompanhamento obj = service.fromDTO(objDto);
+	public ResponseEntity<Void> insert(@Valid @RequestBody AcompanhamentoDTO objDto) throws ParseException {
+		Animal animal = animalService.getAnimal(objDto.getAnimal());
+		Acompanhamento obj = service.fromDTO(objDto,animal);
 		obj = service.insert(obj);
+		service.vincularAcompanhamentoAnimal(obj,animal);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 			.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
@@ -49,8 +56,9 @@ public class AcompanhamentoResource {
 	
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> update(@Valid @RequestBody AcompanhamentoDTO objDto, @PathVariable Integer id) throws ObjectNotFoundException {
-		Acompanhamento obj = service.fromDTO(objDto);
+	public ResponseEntity<Void> update(@Valid @RequestBody AcompanhamentoDTO objDto, @PathVariable Integer id) throws ObjectNotFoundException, ParseException {
+		Animal animal = animalService.getAnimal(objDto.getAnimal());
+		Acompanhamento obj = service.fromDTO(objDto,animal);
 		obj.setId(id);
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();

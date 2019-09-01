@@ -18,9 +18,8 @@ public class AcompanhamentoDTO {
 	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date dataCadastro;
 	
-	@JsonFormat(pattern="dd/MM/yyyy")
-	private Date dataAgendado;
-		
+	private String dataAgendado;
+	private Integer animal ;
 	private Adocao adocao;
 	
 	public AcompanhamentoDTO() {
@@ -34,7 +33,15 @@ public class AcompanhamentoDTO {
 		this.situacao = obj.getSituacao();
 		this.observacao = obj.getObservacao();		
 		this.dataCadastro = obj.getDataCadastro();
-		this.dataAgendado = obj.getDataAgendado();			
+		this.dataAgendado = obj.getDataAgendado()+"";			
+	}
+
+	public Integer getAnimal() {
+		return animal;
+	}
+
+	public void setAnimal(Integer animal) {
+		this.animal = animal;
 	}
 
 	public Integer getId() {
@@ -93,11 +100,11 @@ public class AcompanhamentoDTO {
 		this.dataCadastro = dataCadastro;
 	}
 
-	public Date getDataAgendado() {
+	public String getDataAgendado() {
 		return dataAgendado;
 	}
 
-	public void setDataAgendado(Date dataAgendado) {
+	public void setDataAgendado(String dataAgendado) {
 		this.dataAgendado = dataAgendado;
 	}
 

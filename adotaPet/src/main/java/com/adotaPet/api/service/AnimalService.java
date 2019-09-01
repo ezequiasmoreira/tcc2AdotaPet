@@ -16,10 +16,12 @@ import com.adotaPet.api.domain.Adocao;
 import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.Doenca;
 import com.adotaPet.api.domain.Ong;
+import com.adotaPet.api.domain.Pessoa;
 import com.adotaPet.api.domain.Raca;
 import com.adotaPet.api.domain.enums.AdocaoStatus;
 import com.adotaPet.api.domain.enums.AnimalGenero;
 import com.adotaPet.api.domain.enums.AnimalStatus;
+import com.adotaPet.api.domain.enums.Perfil;
 import com.adotaPet.api.domain.enums.Porte;
 import com.adotaPet.api.dto.AnimalDTO;
 import com.adotaPet.api.repository.AnimalRepository;
@@ -40,6 +42,8 @@ public class AnimalService {
 	private RacaService racaService;
 	@Autowired
 	private AdocaoService adocaoService;
+	@Autowired
+	private PessoaService pessoaService;
 
 	public Animal find(Integer id) {
 		Optional<Animal> obj = repo.findById(id);
@@ -75,7 +79,12 @@ public class AnimalService {
 	}
 	
 	public List<Animal> findByOng(Integer ongId) {
-		return repo.findOng(ongId);
+		Pessoa  pessoa = pessoaService.getUserLogged();
+		if (pessoa.getPerfil() != Perfil.MASTER.getCod()) {
+			ongId = pessoa.getOng().getId();
+			return repo.findOng(ongId);
+		}
+		return findAll();
 	}
 	
 	public Page<Animal> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {

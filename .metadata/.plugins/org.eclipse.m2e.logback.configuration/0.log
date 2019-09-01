@@ -10038,3 +10038,138 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact com.amazonaws
 2019-08-27 23:25:15,736 [Worker-72: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2019-08-27 23:25:15,747 [Worker-72: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2019-08-27 23:25:15,748 [Worker-72: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-08-31 19:13:16,752 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2019-08-31 19:39:22,129 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-08-31 19:39:22,152 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-08-31 19:39:22,396 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-08-31 19:39:22,403 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-08-31 19:39:22,404 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-08-31 21:42:57,981 [Worker-45: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-08-31 21:42:58,019 [Worker-45: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-08-31 21:42:58,087 [Worker-45: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-08-31 21:42:58,090 [Worker-45: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-08-31 21:42:58,090 [Worker-45: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-08-31 21:57:00,518 [Worker-35: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-08-31 21:57:00,523 [Worker-35: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-08-31 21:57:00,726 [Worker-35: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-08-31 21:57:00,736 [Worker-35: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-08-31 21:57:00,737 [Worker-35: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-08-31 22:05:23,337 [Worker-54: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-08-31 22:05:23,349 [Worker-54: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-08-31 22:05:23,588 [Worker-54: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-08-31 22:05:23,613 [Worker-54: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-08-31 22:05:23,689 [Worker-54: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-08-31 22:07:52,747 [Worker-35: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-08-31 22:07:52,791 [Worker-35: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-08-31 22:07:52,857 [Worker-35: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-08-31 22:07:52,902 [Worker-35: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-08-31 22:07:52,902 [Worker-35: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-08-31 22:08:13,124 [Worker-55: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-08-31 22:08:13,133 [Worker-55: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-08-31 22:08:13,189 [Worker-55: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-08-31 22:08:13,205 [Worker-55: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-08-31 22:08:13,216 [Worker-55: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-09-01 00:55:37,707 [Worker-86: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 00:55:37,755 [Worker-86: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-09-01 00:55:37,837 [Worker-86: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-01 00:55:37,859 [Worker-86: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 00:55:37,860 [Worker-86: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-09-01 00:58:21,808 [Worker-82: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 00:58:21,810 [Worker-82: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-09-01 00:58:21,861 [Worker-82: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-01 00:58:21,865 [Worker-82: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 00:58:21,872 [Worker-82: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-09-01 00:59:01,678 [Worker-88: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 00:59:01,690 [Worker-88: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-09-01 00:59:01,746 [Worker-88: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-01 00:59:01,758 [Worker-88: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 00:59:01,758 [Worker-88: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-09-01 01:00:24,633 [Worker-82: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:00:24,636 [Worker-82: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-09-01 01:00:24,662 [Worker-82: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-01 01:00:24,672 [Worker-82: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:00:24,678 [Worker-82: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-09-01 01:00:30,270 [Worker-82: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:00:30,281 [Worker-82: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-09-01 01:00:30,303 [Worker-82: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-01 01:00:30,312 [Worker-82: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:00:30,313 [Worker-82: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-09-01 01:08:40,405 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:08:40,407 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-09-01 01:08:40,427 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-01 01:08:40,430 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:08:40,430 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-09-01 01:08:58,456 [Worker-92: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:08:58,459 [Worker-92: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-09-01 01:08:58,476 [Worker-92: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-01 01:08:58,486 [Worker-92: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:08:58,486 [Worker-92: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-09-01 01:09:20,326 [Worker-92: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:09:20,329 [Worker-92: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-09-01 01:09:20,354 [Worker-92: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-01 01:09:20,375 [Worker-92: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:09:20,384 [Worker-92: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-09-01 01:12:11,893 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:12:11,929 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-09-01 01:12:11,966 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-01 01:12:11,976 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:12:11,976 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-09-01 01:12:38,617 [Worker-92: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:12:38,619 [Worker-92: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-09-01 01:12:38,633 [Worker-92: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-01 01:12:38,636 [Worker-92: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:12:38,648 [Worker-92: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-09-01 01:13:58,614 [Worker-85: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:13:58,631 [Worker-85: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-09-01 01:13:58,662 [Worker-85: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-01 01:13:58,671 [Worker-85: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:13:58,671 [Worker-85: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-09-01 01:17:17,463 [Worker-92: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:17:17,466 [Worker-92: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-09-01 01:17:17,520 [Worker-92: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-01 01:17:17,530 [Worker-92: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:17:17,554 [Worker-92: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-09-01 01:17:31,609 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:17:31,619 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-09-01 01:17:31,660 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-01 01:17:31,670 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:17:31,671 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-09-01 01:17:54,871 [Worker-89: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:17:54,874 [Worker-89: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-09-01 01:17:54,901 [Worker-89: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-01 01:17:54,903 [Worker-89: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:17:54,903 [Worker-89: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-09-01 01:18:39,506 [Worker-20: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:18:39,516 [Worker-20: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-09-01 01:18:39,633 [Worker-20: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-01 01:18:39,644 [Worker-20: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:18:39,644 [Worker-20: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-09-01 01:27:03,901 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:27:03,904 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-09-01 01:27:03,932 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-01 01:27:03,941 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:27:03,946 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-09-01 01:27:16,766 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:27:16,789 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-09-01 01:27:16,835 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-01 01:27:17,037 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:27:17,037 [Worker-93: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-09-01 01:28:10,988 [Worker-95: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:28:10,992 [Worker-95: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-09-01 01:28:11,017 [Worker-95: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-01 01:28:11,025 [Worker-95: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:28:11,043 [Worker-95: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-09-01 01:28:45,128 [Worker-96: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:28:45,140 [Worker-96: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-09-01 01:28:45,168 [Worker-96: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-01 01:28:45,177 [Worker-96: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:28:45,177 [Worker-96: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-09-01 01:29:03,669 [Worker-95: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:29:03,671 [Worker-95: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-09-01 01:29:03,690 [Worker-95: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-01 01:29:03,700 [Worker-95: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:29:03,707 [Worker-95: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\tcc2\ong\adotaPet\src\test\resources
+2019-09-01 01:33:58,003 [Worker-97: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-09-01 01:33:58,012 [Worker-97: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2019-09-01 01:33:58,077 [Worker-97: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-09-01 01:33:58,091 [Worker-97: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.

@@ -1,6 +1,10 @@
 package com.adotaPet.api.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +16,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.adotaPet.api.domain.Acompanhamento;
+import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.Ong;
 import com.adotaPet.api.domain.enums.AcompanhamentoSituacao;
 import com.adotaPet.api.domain.enums.AcompanhamentoStatus;
@@ -26,6 +31,8 @@ public class AcompanhamentoService {
 
 	@Autowired
 	private AcompanhamentoRepository repo;
+	@Autowired
+	private AnimalService animalService;
 
 	public Acompanhamento find(Integer id) {
 		Optional<Acompanhamento> obj = repo.findById(id);
@@ -63,20 +70,26 @@ public class AcompanhamentoService {
 		return repo.findAll(pageRequest);
 	}
 	
-	public Acompanhamento fromDTO(AcompanhamentoDTO obj) {
+	public Acompanhamento fromDTO(AcompanhamentoDTO obj,Animal animal) throws ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		Date  dataAgendado = sdf.parse(obj.getDataAgendado().replaceAll("-", "/"));		
 		return new Acompanhamento(
 				obj.getId(),
-				obj.getCodigo(),
+				animal.getCodigo(),
 				obj.getDescricao(),
 				AcompanhamentoStatus.toEnum(obj.getStatus()),
 				AcompanhamentoSituacao.toEnum(obj.getSituacao()),
 				obj.getObservacao(),		
-				obj.getDataCadastro(),
-				obj.getDataAgendado());
+				new Date(),
+				dataAgendado);
 	}
 	
 	private void updateData(Acompanhamento newObj, Acompanhamento obj) {		
 		newObj.setCodigo(obj.getCodigo());
 	}
-	
+	public void vincularAcompanhamentoAnimal(Acompanhamento acompanhamento,Animal animal) {
+		List<Acompanhamento> acompanhamentos = new ArrayList<Acompanhamento>();
+		acompanhamentos.add(acompanhamento);
+		animalService.adicionarAcompanhamento(animal, acompanhamentos);
+	}
 }
