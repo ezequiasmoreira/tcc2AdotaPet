@@ -1,5 +1,8 @@
 package com.adotaPet.api.service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,9 +13,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import com.adotaPet.api.domain.Acompanhamento;
+import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.Vacina;
+import com.adotaPet.api.domain.VacinaItem;
 import com.adotaPet.api.domain.enums.Especie;
 import com.adotaPet.api.dto.VacinaDTO;
+import com.adotaPet.api.repository.VacinaItemRepository;
 import com.adotaPet.api.repository.VacinaRepository;
 import com.adotaPet.api.service.exceptions.DataIntegrityException;
 import com.adotaPet.api.service.exceptions.ObjectNotFoundException;
@@ -23,6 +30,10 @@ public class VacinaService {
 
 	@Autowired
 	private VacinaRepository repo;
+	@Autowired
+	private VacinaItemRepository vacinaItemRepository;
+	@Autowired
+	private AnimalService animalService;
 
 	public Vacina find(Integer id) {
 		Optional<Vacina> obj = repo.findById(id);
@@ -33,6 +44,10 @@ public class VacinaService {
 	public Vacina insert(Vacina obj) {
 		obj.setId(null);
 		return repo.save(obj);
+	}
+	public VacinaItem insertVacinaItem(VacinaItem obj) {
+		obj.setId(null);
+		return vacinaItemRepository.save(obj);
 	}
 	
 	public Vacina update(Vacina obj) {
@@ -68,11 +83,19 @@ public class VacinaService {
                 objDto.getPrevencao(),
                 Especie.toEnum(objDto.getEspecie()));
 	}
-	
+	public Vacina getVacina(Integer vacinaId) {		
+		return repo.findVacinaId(vacinaId);
+	}
 	private void updateData(Vacina newObj, Vacina obj) {
 		newObj.setNome(obj.getNome());
 		newObj.setFaixaIdade(obj.getFaixaIdade());
 		newObj.setPrevencao(obj.getPrevencao());
 		newObj.setEspecie(obj.getEspecie());
+	}
+	public VacinaItem vincularVacinalAnimal(Vacina vacina,Animal animal) {
+		VacinaItem vacinaItem = new VacinaItem(null, vacina, new Date());
+		vacinaItem = insertVacinaItem(vacinaItem);		
+		animalService.adicionarVacina(animal, vacinaItem);
+		return vacinaItem;
 	}
 }

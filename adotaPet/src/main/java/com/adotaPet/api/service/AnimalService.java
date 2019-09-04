@@ -18,6 +18,8 @@ import com.adotaPet.api.domain.Doenca;
 import com.adotaPet.api.domain.Ong;
 import com.adotaPet.api.domain.Pessoa;
 import com.adotaPet.api.domain.Raca;
+import com.adotaPet.api.domain.Vacina;
+import com.adotaPet.api.domain.VacinaItem;
 import com.adotaPet.api.domain.enums.AdocaoStatus;
 import com.adotaPet.api.domain.enums.AnimalGenero;
 import com.adotaPet.api.domain.enums.AnimalStatus;
@@ -165,6 +167,10 @@ public class AnimalService {
 			animal.getAcompanhamentos().addAll(Arrays.asList(acompanhamento));			
 		}
 		repo.saveAll(Arrays.asList(animal));	
+	}
+	public void adicionarVacina(Animal animal,VacinaItem vacinaItem) {
+		animal.getVacinas().addAll(Arrays.asList(vacinaItem));		
+		repo.saveAll(Arrays.asList(animal));
 	}
 	
 }

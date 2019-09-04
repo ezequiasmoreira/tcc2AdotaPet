@@ -19,8 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.Vacina;
+import com.adotaPet.api.domain.VacinaItem;
 import com.adotaPet.api.dto.VacinaDTO;
+import com.adotaPet.api.service.AnimalService;
 import com.adotaPet.api.service.VacinaService;
 
 import javassist.tools.rmi.ObjectNotFoundException;
@@ -32,6 +35,8 @@ public class VacinaResource {
 	
 	@Autowired
 	private VacinaService service;
+	@Autowired
+	private AnimalService animalService;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Vacina> find(@PathVariable Integer id) throws ObjectNotFoundException {
@@ -46,6 +51,16 @@ public class VacinaResource {
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 			.path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).build();
+	}
+	@PreAuthorize("hasAnyRole('VOLUNTARIO')")
+	@RequestMapping(value="vincular", method=RequestMethod.POST)
+	public ResponseEntity<Void> vincula(@Valid @RequestBody VacinaDTO objDto) {
+		Vacina vacina = service.getVacina(objDto.getVacinaId());
+		Animal animal = animalService.getAnimal(objDto.getAnimalId()); 
+		VacinaItem vacinaItem = service.vincularVacinalAnimal(vacina, animal);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+			.path("/{id}").buildAndExpand(vacinaItem.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	

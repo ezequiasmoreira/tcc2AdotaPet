@@ -10,16 +10,28 @@ public class VacinaDTO {
 	
 	private Integer id;	
 	private Integer especie;
-	@NotEmpty(message="Preenchimento obrigatório")	
-	@Length(min=5, max=80, message="O tamanho deve ser entre 5 e 80 caracteres")
 	private String nome;
-	@NotEmpty(message="Preenchimento obrigatório")	
-	@Length(min=5, max=80, message="O tamanho deve ser entre 5 e 80 caracteres")
 	private String faixaIdade;
-	@NotEmpty(message="Preenchimento obrigatório")	
-	@Length(min=5, max=80, message="O tamanho deve ser entre 5 e 80 caracteres")
 	private String prevencao;
+	private Integer vacinaId;
+	private Integer animalId;
 	
+	public Integer getVacinaId() {
+		return vacinaId;
+	}
+
+	public void setVacinaId(Integer vacinaId) {
+		this.vacinaId = vacinaId;
+	}
+
+	public Integer getAnimalId() {
+		return animalId;
+	}
+
+	public void setAnimalId(Integer animalId) {
+		this.animalId = animalId;
+	}
+
 	public VacinaDTO() {
 	}
 	
