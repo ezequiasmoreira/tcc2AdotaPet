@@ -16,6 +16,14 @@ public class VacinaDTO {
 	private Integer vacinaId;
 	private Integer animalId;
 	
+	public Integer getAnimal() {
+		return animalId;
+	}
+
+	public void setAnimal(Integer animal) {
+		this.animalId = animal;
+	}
+
 	public Integer getVacinaId() {
 		return vacinaId;
 	}

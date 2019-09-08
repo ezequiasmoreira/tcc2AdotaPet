@@ -47,12 +47,15 @@ public class VacinaResource {
 	//@PreAuthorize("hasAnyRole('MASTER')")
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody VacinaDTO objDto) {
+		Animal animal = animalService.getAnimal(objDto.getAnimal());
 		Vacina obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
+		service.vincularVacinalAnimal(obj, animal);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 			.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
+	
 	@PreAuthorize("hasAnyRole('VOLUNTARIO')")
 	@RequestMapping(value="vincular", method=RequestMethod.POST)
 	public ResponseEntity<Void> vincula(@Valid @RequestBody VacinaDTO objDto) {
