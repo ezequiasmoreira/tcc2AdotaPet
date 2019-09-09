@@ -1,6 +1,9 @@
 package com.adotaPet.api.resource;
 
 import java.net.URI;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.adotaPet.api.domain.Adocao;
 import com.adotaPet.api.domain.Animal;
+import com.adotaPet.api.dto.AdocaoDTO;
 import com.adotaPet.api.dto.AnimalDTO;
 import com.adotaPet.api.resource.utils.URL;
 import com.adotaPet.api.service.AnimalService;
@@ -98,6 +103,29 @@ public class AnimalResource {
 			@RequestParam(value="direction", defaultValue="ASC") String direction) {		
 		Page<Animal> list = service.findRacas(id, page, linesPerPage, orderBy, direction);
 		Page<AnimalDTO> listDto = list.map(obj -> new AnimalDTO(obj));  
+		return ResponseEntity.ok().body(listDto);
+	}
+	
+	@RequestMapping(value="pesquisar", method=RequestMethod.GET)
+	public ResponseEntity<List<AnimalDTO>> findPage(
+			@RequestParam(value="nome", defaultValue="") String nome, 
+			@RequestParam(value="genero", defaultValue="") String genero, 
+			@RequestParam(value="porte", defaultValue="") String porte, 
+			@RequestParam(value="castrado", defaultValue="") String castrado,
+			@RequestParam(value="estadoId", defaultValue="") String estadoId,
+			@RequestParam(value="cidadeId", defaultValue="") String cidadeId,
+			@RequestParam(value="racaId", defaultValue="") String racaId) {
+		String nomeDecoded =nome;
+		Integer generoDecoded = Integer.parseInt(URL.decodeParam(genero));
+		Integer porteDecoded = Integer.parseInt(URL.decodeParam(porte));
+		Integer castradoDecoded = Integer.parseInt(URL.decodeParam(castrado));
+		Integer estadoIdDecoded = Integer.parseInt(URL.decodeParam(estadoId));
+		Integer cidadeIdDecoded = Integer.parseInt(URL.decodeParam(cidadeId));
+		Integer racaIdDecoded = Integer.parseInt(URL.decodeParam(racaId));
+		
+		List<Animal> list = service.search(nomeDecoded, generoDecoded,porteDecoded,castradoDecoded,
+				estadoIdDecoded, cidadeIdDecoded, racaIdDecoded);
+		List<AnimalDTO> listDto = list.stream().map(obj -> new AnimalDTO(obj)).collect(Collectors.toList());  
 		return ResponseEntity.ok().body(listDto);
 	}
 }

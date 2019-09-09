@@ -1,6 +1,8 @@
 package com.adotaPet.api.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -171,6 +173,43 @@ public class AnimalService {
 	public void adicionarVacina(Animal animal,VacinaItem vacinaItem) {
 		animal.getVacinas().addAll(Arrays.asList(vacinaItem));		
 		repo.saveAll(Arrays.asList(animal));
+	}
+	
+	public List<Animal> search(
+			String nome, Integer genero, Integer porte, Integer castrado, Integer estadoId, Integer cidadeId, Integer racaId) 
+	{
+		Boolean isCastrado = true;
+		if (castrado != 0) {
+			isCastrado = castrado.equals(0) ? false : true;
+		}
+		
+		List<Animal> listaAnimais = repo.obterAnimaisPorFiltro(estadoId);
+		List<Animal> AnimaisRemover =  new ArrayList<Animal>();
+		System.out.println(listaAnimais);
+		if(!listaAnimais.isEmpty()) {
+			for (Animal animal : listaAnimais) {
+				if ((!animal.getNome().equals(nome)) &&(!nome.isEmpty())) {					
+					AnimaisRemover.add(animal);
+				}else 
+				if ((animal.getGenero() != genero)&&(genero != 0)){
+					AnimaisRemover.add(animal);
+				}else
+				if((animal.getPorte() != porte)&&(porte != 0)) {
+					AnimaisRemover.add(animal);
+				}else
+				if ((animal.getCastrado() != isCastrado) && (castrado != 0)){
+					AnimaisRemover.add(animal);
+				}else
+				if ((animal.getOng().getCidade().getId() != cidadeId) && (cidadeId != 0)) {
+					AnimaisRemover.add(animal);
+				}else
+				if ((animal.getRaca().getId() != racaId) && (racaId != 0)) {
+					AnimaisRemover.add(animal);
+				}				
+			}
+			listaAnimais.removeAll(AnimaisRemover);
+		}
+		return listaAnimais;
 	}
 	
 }

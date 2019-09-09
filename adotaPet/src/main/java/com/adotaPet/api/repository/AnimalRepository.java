@@ -2,12 +2,16 @@ package com.adotaPet.api.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import java.util.Date;
 import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.adotaPet.api.domain.Adocao;
 import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.Doenca;
 import com.adotaPet.api.domain.Pessoa;
@@ -31,4 +35,8 @@ public interface AnimalRepository extends JpaRepository<Animal, Integer> {
 	
 	@Transactional(readOnly=true)
 	Page<Animal> findByRacaIdAndStatus(Integer raca_id,Integer status,Pageable pageRequest);
+	
+	@Transactional(readOnly=true)
+	@Query("SELECT obj FROM Animal obj  WHERE obj.status = 1 AND obj.ong.cidade.estado.id = :estadoId")
+	List<Animal> obterAnimaisPorFiltro(@Param("estadoId") Integer estadoId);
 }

@@ -19,10 +19,7 @@
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
 <fullyQualifiedTypeName name="java.io.ByteArrayOutputStream"/>
 <fullyQualifiedTypeName name="org.springframework.security.access.prepost.PreAuthorize"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.domain.Vacina"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.repository.VacinaRepository"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.repository.VacinaItemRepository"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.domain.VacinaItem"/>
 <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonIgnore"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.dto.CidadeDTO"/>
@@ -53,11 +50,14 @@
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AcompanhamentoSituacao"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Acompanhamento"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.dto.AdocaoDTO"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="javax.persistence.criteria.CriteriaBuilder"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Pessoa"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.Perfil"/>
-<fullyQualifiedTypeName name="com.adotaPet.api.service.AnimalService"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.dto.AcompanhamentoDTO"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Animal"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.Vacina"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.repository.VacinaItemRepository"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.service.AnimalService"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.VacinaItem"/>
 </qualifiedTypeNameHistroy>
