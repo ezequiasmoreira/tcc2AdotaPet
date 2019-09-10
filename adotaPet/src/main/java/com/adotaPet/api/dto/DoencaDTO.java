@@ -13,6 +13,8 @@ public class DoencaDTO {
 	@NotEmpty(message="Preenchimento obrigatório")	
 	@Length(min=5, max=80, message="O tamanho deve ser entre 5 e 80 caracteres")
 	private String descricao;
+
+	private Integer animal ;
 	
 	public DoencaDTO() {
 	}
@@ -21,6 +23,14 @@ public class DoencaDTO {
 		id = obj.getId();
 		codigo = obj.getCodigo();
 		descricao = obj.getDescricao();
+	}
+
+	public Integer getAnimal() {
+		return animal;
+	}
+
+	public void setAnimal(Integer animal) {
+		this.animal = animal;
 	}
 	
 	public Integer getId() {

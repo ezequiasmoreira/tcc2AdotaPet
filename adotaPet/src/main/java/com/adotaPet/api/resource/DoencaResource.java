@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.adotaPet.api.domain.Doenca;
+import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.dto.DoencaDTO;
 import com.adotaPet.api.service.DoencaService;
+import com.adotaPet.api.service.AnimalService;
 
 import javassist.tools.rmi.ObjectNotFoundException;
 
@@ -31,6 +33,8 @@ public class DoencaResource {
 	
 	@Autowired
 	private DoencaService service;
+	@Autowired
+	private AnimalService animalService;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Doenca> find(@PathVariable Integer id) throws ObjectNotFoundException {
@@ -41,8 +45,10 @@ public class DoencaResource {
 	@PreAuthorize("hasAnyRole('MASTER')")
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody DoencaDTO objDto) {
+		Animal animal = animalService.getAnimal(objDto.getAnimal());
 		Doenca obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
+		service.vincularDoencaAnimal(obj,animal);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 			.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();

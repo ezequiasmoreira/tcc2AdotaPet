@@ -2,6 +2,7 @@ package com.adotaPet.api.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.adotaPet.api.domain.Doenca;
+import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.dto.DoencaDTO;
 import com.adotaPet.api.repository.DoencaRepository;
 import com.adotaPet.api.service.exceptions.DataIntegrityException;
@@ -22,6 +24,9 @@ public class DoencaService {
 
 	@Autowired
 	private DoencaRepository repo;
+
+	@Autowired
+	private AnimalService animalService;
 
 	public Doenca find(Integer id) {
 		Optional<Doenca> obj = repo.findById(id);
@@ -70,5 +75,11 @@ public class DoencaService {
 	private void updateData(Doenca newObj, Doenca obj) {
 		newObj.setCodigo(obj.getCodigo());
 		newObj.setDescricao(obj.getDescricao());
+	}
+
+	public void vincularDoencaAnimal(Doenca acompanhamento,Animal animal) {
+		List<Doenca> doencas = new ArrayList<Doenca>();
+		doencas.add(acompanhamento);
+		animalService.adicionarDoenca(animal, doencas);
 	}
 }

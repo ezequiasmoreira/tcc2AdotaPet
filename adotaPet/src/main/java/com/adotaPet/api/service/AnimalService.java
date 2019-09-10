@@ -170,6 +170,13 @@ public class AnimalService {
 		}
 		repo.saveAll(Arrays.asList(animal));	
 	}
+	public void adicionarDoenca(Animal animal,List<Doenca> doencas) {
+		for (Doenca doenca : doencas) {
+			animal.getDoencas().addAll(Arrays.asList(doenca));			
+		}
+		repo.saveAll(Arrays.asList(animal));	
+	}
+
 	public void adicionarVacina(Animal animal,VacinaItem vacinaItem) {
 		animal.getVacinas().addAll(Arrays.asList(vacinaItem));		
 		repo.saveAll(Arrays.asList(animal));
