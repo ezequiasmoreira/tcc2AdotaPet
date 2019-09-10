@@ -77,9 +77,9 @@ public class DoencaService {
 		newObj.setDescricao(obj.getDescricao());
 	}
 
-	public void vincularDoencaAnimal(Doenca acompanhamento,Animal animal) {
+	public void vincularDoencaAnimal(Doenca doenca,Animal animal) {
 		List<Doenca> doencas = new ArrayList<Doenca>();
-		doencas.add(acompanhamento);
+		doencas.add(doenca);
 		animalService.adicionarDoenca(animal, doencas);
 	}
 }

@@ -42,12 +42,11 @@ public class DoencaResource {
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	@PreAuthorize("hasAnyRole('MASTER')")
+	//@PreAuthorize("hasAnyRole('MASTER')")
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody DoencaDTO objDto) {
 		Animal animal = animalService.getAnimal(objDto.getAnimal());
 		Doenca obj = service.fromDTO(objDto);
-		obj = service.insert(obj);
 		service.vincularDoencaAnimal(obj,animal);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 			.path("/{id}").buildAndExpand(obj.getId()).toUri();
