@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import com.adotaPet.api.domain.Cidade;
 import com.adotaPet.api.domain.Ong;
 import com.adotaPet.api.dto.OngDTO;
 import com.adotaPet.api.repository.OngRepository;
@@ -22,6 +23,8 @@ public class OngService {
 
 	@Autowired
 	private OngRepository repo;
+	@Autowired
+	private CidadeService cidadeService;
 
 	public Ong find(Integer id) {
 		Optional<Ong> obj = repo.findById(id);
@@ -63,15 +66,16 @@ public class OngService {
 	}
 	
 	public Ong fromDTO(OngDTO objDto) {
+		Cidade cidade = cidadeService.getCidade(objDto.getCidadeId());
 		return new Ong(
 				objDto.getId(), 
-				objDto.getCodigo(),
+				repo.obterCodigo(),
 				objDto.getLogradouro(),
 				objDto.getNumero(),
 				objDto.getComplemento(),
 				objDto.getBairro(),
 				objDto.getCep(),
-				objDto.getCidade(),
+				cidade,
 				objDto.getRazao_Social(),
 				objDto.getNome_Fantasia(),
 				objDto.getCnpj()
@@ -81,5 +85,13 @@ public class OngService {
 	private void updateData(Ong newObj, Ong obj) {
 		newObj.setCodigo(obj.getCodigo());
 		newObj.setCnpj(obj.getCnpj());
+		newObj.setRazao_Social(obj.getRazao_Social());
+		newObj.setNome_Fantasia(obj.getNome_Fantasia());
+		newObj.setNumero(obj.getNumero());
+		newObj.setBairro(obj.getBairro());
+		newObj.setLogradouro(obj.getLogradouro());
+		newObj.setComplemento(obj.getComplemento());
+		newObj.setCep(obj.getCep());
+		newObj.setCidade(obj.getCidade());
 	}
 }

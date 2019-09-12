@@ -29,6 +29,11 @@ public class OngInsertValidator implements ConstraintValidator<OngInsert, OngDTO
 		
 		Ong ongCnpj = repo.findByCnpj(objDto.getCnpj());
 		if (ongCnpj != null) {
+			if ((ongCnpj.getId() != null) && (ongCnpj.getId() != objDto.getId()) && (ongCnpj != null)){
+				list.add(new FieldMessage("cnpj", "Cnpj já existente"));
+			}
+		}
+		if ((ongCnpj != null) && (ongCnpj.getId() == null)) {
 			list.add(new FieldMessage("cnpj", "Cnpj já existente"));
 		}
 		

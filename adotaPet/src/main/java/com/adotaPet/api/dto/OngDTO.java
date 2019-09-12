@@ -16,6 +16,7 @@ public class OngDTO {
 	private String razao_Social;
 	private String nome_Fantasia;
 	private String cnpj;
+	private Integer cidadeId;	
 	private Cidade cidade;
 	
 	public OngDTO() {
@@ -33,6 +34,14 @@ public class OngDTO {
 		nome_Fantasia = obj.getNome_Fantasia();
 		cnpj = obj.getCnpj();
 		cidade = obj.getCidade();
+	}
+	
+	public Integer getCidadeId() {
+		return cidadeId;
+	}
+
+	public void setCidadeId(Integer cidadeId) {
+		this.cidadeId = cidadeId;
 	}
 
 	public Integer getId() {

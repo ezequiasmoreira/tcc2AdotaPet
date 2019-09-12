@@ -17,5 +17,9 @@ public interface OngRepository extends JpaRepository<Ong, Integer> {
 	@Transactional(readOnly=true)
 	@Query("SELECT obj FROM Ong obj WHERE obj.id = :id ")
 	Ong findOngId(@Param("id") Integer id);
+	
+	@Transactional(readOnly=true)
+	@Query("SELECT max(obj.codigo) + 1 FROM Ong obj")
+	Integer obterCodigo();
 
 }

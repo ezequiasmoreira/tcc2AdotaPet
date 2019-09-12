@@ -55,7 +55,7 @@ public class RacaService {
 	}
 	
 	public List<Raca> findAll() {
-		return repo.findAll();
+		return repo.findAllOrderByDescricao();
 	}
 	
 	public Page<Raca> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
