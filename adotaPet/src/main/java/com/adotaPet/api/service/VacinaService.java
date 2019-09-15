@@ -69,6 +69,10 @@ public class VacinaService {
 	public List<Vacina> findAll() {
 		return repo.findAll();
 	}
+
+	public List<Vacina> findAllByEspecie(Integer especie) {
+		return repo.findAllByEspecie(especie);
+	}
 	
 	public Page<Vacina> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);

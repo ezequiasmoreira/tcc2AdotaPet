@@ -1,5 +1,7 @@
 package com.adotaPet.api.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,5 +16,9 @@ public interface VacinaRepository extends JpaRepository<Vacina, Integer> {
 	@Transactional(readOnly=true)
 	@Query("SELECT obj FROM Vacina obj WHERE obj.id = :id ")
 	Vacina findVacinaId(@Param("id") Integer id);
+
+	@Transactional(readOnly=true)
+	@Query("SELECT obj FROM Vacina obj WHERE obj.especie = :especie ")
+	List<Vacina> findAllByEspecie(@Param("especie") Integer especie);
 
 }

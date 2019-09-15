@@ -47,23 +47,21 @@ public class VacinaResource {
 	//@PreAuthorize("hasAnyRole('MASTER')")
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody VacinaDTO objDto) {
-		Animal animal = animalService.getAnimal(objDto.getAnimal());
 		Vacina obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
-		service.vincularVacinalAnimal(obj, animal);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 			.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@PreAuthorize("hasAnyRole('VOLUNTARIO')")
+	//@PreAuthorize("hasAnyRole('VOLUNTARIO')")
 	@RequestMapping(value="vincular", method=RequestMethod.POST)
 	public ResponseEntity<Void> vincula(@Valid @RequestBody VacinaDTO objDto) {
-		Vacina vacina = service.getVacina(objDto.getVacinaId());
-		Animal animal = animalService.getAnimal(objDto.getAnimalId()); 
-		VacinaItem vacinaItem = service.vincularVacinalAnimal(vacina, animal);
+		Animal animal = animalService.getAnimal(objDto.getAnimal());
+		Vacina obj = service.fromDTO(objDto);
+		service.vincularVacinalAnimal(obj, animal);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-			.path("/{id}").buildAndExpand(vacinaItem.getId()).toUri();
+			.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
@@ -86,6 +84,13 @@ public class VacinaResource {
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<VacinaDTO>> findAll() {
 		List<Vacina> list = service.findAll();
+		List<VacinaDTO> listDto = list.stream().map(obj -> new VacinaDTO(obj)).collect(Collectors.toList());  
+		return ResponseEntity.ok().body(listDto);
+	}
+
+	@RequestMapping(value="/especie/{id}", method=RequestMethod.GET)
+	public ResponseEntity<List<VacinaDTO>> findAllByEspecie(@PathVariable Integer id) throws ObjectNotFoundException{
+		List<Vacina> list = service.findAllByEspecie(id);
 		List<VacinaDTO> listDto = list.stream().map(obj -> new VacinaDTO(obj)).collect(Collectors.toList());  
 		return ResponseEntity.ok().body(listDto);
 	}
