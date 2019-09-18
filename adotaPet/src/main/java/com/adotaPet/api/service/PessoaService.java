@@ -183,10 +183,16 @@ public class PessoaService {
 			codigo = objDto.getOngId() == null ? null : repo.obterCodigo(objDto.getOngId());
 			pessoa.setCodigo(codigo);
 			
-			if ((Perfil.toEnum(usuariologado.getPerfil()) == Perfil.MASTER) || (Perfil.toEnum(usuariologado.getPerfil()) == Perfil.ADMIN)){
+			if (Perfil.toEnum(usuariologado.getPerfil()) == Perfil.MASTER){
 				if(objDto.getOngId() == null) {
 					throw new AuthorizationException("Usuario a ser cadastrado deve possuir ong");
 				}
+			}
+			if (Perfil.toEnum(usuariologado.getPerfil()) == Perfil.ADMIN){
+				if(usuariologado.getOng() == null) {
+					throw new AuthorizationException("Administrador deve estar vinculado a uma ong");
+				}
+				pessoa.setOng(usuariologado.getOng());
 			}
 			if (Perfil.toEnum(usuariologado.getPerfil()) == Perfil.MASTER) {			
 				pessoa.addPerfil(Perfil.ADMIN);

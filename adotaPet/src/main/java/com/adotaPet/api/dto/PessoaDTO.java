@@ -23,6 +23,7 @@ public class PessoaDTO implements Serializable {
 	private String rg;
 	private String telefone;
 	private String email;
+	private Integer estadoId;
 	
 	public PessoaDTO() {
 	}
@@ -43,6 +44,7 @@ public class PessoaDTO implements Serializable {
 		sexo = obj.getSexo();
 		cidadeId = obj.getCidade().getId();
 		email = obj.getEmail();
+		estadoId = obj.getCidade().getEstado().getId();
 	}
 
 	public String getEmail() {
@@ -163,6 +165,13 @@ public class PessoaDTO implements Serializable {
 
 	public void setCidadeId(Integer cidadeId) {
 		this.cidadeId = cidadeId;
+	}
+	public Integer getEstadoId() {
+		return estadoId;
+	}
+
+	public void setEstadoId(Integer estadoId) {
+		this.estadoId = estadoId;
 	}
 	
 	
