@@ -29,7 +29,8 @@ public class DevConfig {
 	public boolean instanciateDataBase() throws ParseException {
 		//System.out.println(strategy);
 		if (!"create".equals(strategy)) {
-			return false;
+			dbService.adicionaRegistros();
+			return true;
 		}
 		dbService.instanciateTestDataBase();
 		return true;

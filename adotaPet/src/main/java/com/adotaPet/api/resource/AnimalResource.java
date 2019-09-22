@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.adotaPet.api.domain.Adocao;
@@ -42,15 +43,19 @@ public class AnimalResource {
 		Animal obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
+
+	@RequestMapping(value="/picture/{id}", method=RequestMethod.POST)
+	public ResponseEntity<Void> uploadAnimalPicture(@PathVariable Integer id,@RequestParam(name="file") MultipartFile file) {
+		URI uri = service.uploadPicture(file, id);
+		return ResponseEntity.created(uri).build();
+	}
 	
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@Valid @RequestBody AnimalDTO objDto) {
+	public ResponseEntity<Animal> insert(@Valid @RequestBody AnimalDTO objDto) {
 		Animal obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-			.path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).build();
+		return ResponseEntity.ok().body(obj);
 	}
 	
 	//@PreAuthorize("hasAnyRole('ADMIN')")

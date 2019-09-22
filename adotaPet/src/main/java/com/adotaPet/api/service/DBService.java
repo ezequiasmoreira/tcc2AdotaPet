@@ -70,10 +70,7 @@ public class DBService {
 	private BCryptPasswordEncoder pe;
 	
 	public void instanciateTestDataBase() throws ParseException {
-		
-		
-		
-
+		System.out.println("estrou" );
 		//insere registro em massa
 		try {
 			InsereDoenca  insereDoenca = new InsereDoenca();	
@@ -108,8 +105,7 @@ public class DBService {
 		}catch (Exception e) {
 			System.out.println("Deu erro: " + e.getMessage());
 		}
-		
-		
+
 		Estado est1 = new Estado(null,"Minas Gerais",31);
 		Estado est2 = new Estado(null,"Santa Catarina",42);
 		
@@ -235,8 +231,25 @@ public class DBService {
 		animal3.getAcompanhamentos().addAll(Arrays.asList(acom1,acom2));
 		animal4.getAcompanhamentos().addAll(Arrays.asList(acom3));
 		animalRepository.saveAll(Arrays.asList(animal3,animal4));
-		
-		
+		 
+	}
+
+	public void adicionaRegistros() throws ParseException {
+		System.out.println("estrou" );
+		//insere registro em massa
+	
+		try {
+			if(estadoRepository.count() == 0){
+				InsereEstados insereEstado = new InsereEstados();
+				List<Estado> ListaEstado = insereEstado.insert();			
+				for (Estado listaEstado : ListaEstado) {
+					estadoRepository.saveAll(Arrays.asList(new Estado(null,listaEstado.getNome(), listaEstado.getCodigo())));	
+				}
+				System.out.println("Deu certo" );
+			}
+		}catch (Exception e) {
+			System.out.println("Deu erro: " + e.getMessage());
+		}
 		 
 	}
 

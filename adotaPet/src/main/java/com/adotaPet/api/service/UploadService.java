@@ -24,6 +24,9 @@ public class UploadService {
 		
 	@Value("${img.prefix.pessoa.profile}")
 	private String prefix;
+
+	@Value("${img.prefix.animal}")
+	private String prefixAnimal;
 	
 	@Value("${img.profile.size}")
 	private Integer size;
@@ -51,5 +54,32 @@ public class UploadService {
 			throw new FileException("Erro ao converter URL para URI");
 		}
 	}	
+
+	public URI uploadAnimalFile(MultipartFile multipartFile, Integer id) {
+		try {
+
+			final String dir = System.getProperty("user.dir");
+        	System.out.println("current dir = " + dir);
+			String caminho = dir.replace("adotaPet", "img\\animal\\");
+			
+			UserSS user = UserService.authenticated();
+			if (user == null) {
+				throw new AuthorizationException("Acesso negado");
+			}
+			
+			BufferedImage jpgImage = imageService.getJpgImageFromFile(multipartFile);
+			jpgImage = imageService.cropSquare(jpgImage);
+			jpgImage = imageService.resize(jpgImage, size);
+			
+			String fileName = prefixAnimal + id + ".jpg";	
+			
+			byte[] bytes = imageService.toByteArray(jpgImage);			
+			
+            Path path = Paths.get(caminho + fileName);            
+			return  Files.write(path, bytes).toUri();
+		} catch (IOException e) {
+			throw new FileException("Erro ao converter URL para URI");
+		}
+	}
 
 }

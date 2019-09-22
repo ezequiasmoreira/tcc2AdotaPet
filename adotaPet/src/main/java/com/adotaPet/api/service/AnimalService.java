@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.adotaPet.api.domain.Acompanhamento;
 import com.adotaPet.api.domain.Adocao;
@@ -48,6 +50,8 @@ public class AnimalService {
 	private AdocaoService adocaoService;
 	@Autowired
 	private PessoaService pessoaService;
+	@Autowired
+	private UploadService uploadService;
 
 	public Animal find(Integer id) {
 		Optional<Animal> obj = repo.findById(id);
@@ -217,6 +221,10 @@ public class AnimalService {
 			listaAnimais.removeAll(AnimaisRemover);
 		}
 		return listaAnimais;
+	}
+
+	public URI uploadPicture(MultipartFile multipartFile, Integer id) {		
+		return uploadService.uploadAnimalFile(multipartFile, id);
 	}
 	
 }
