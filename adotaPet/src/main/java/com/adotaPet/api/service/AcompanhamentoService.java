@@ -3,7 +3,6 @@ package com.adotaPet.api.service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -17,9 +16,10 @@ import org.springframework.stereotype.Service;
 
 import com.adotaPet.api.domain.Acompanhamento;
 import com.adotaPet.api.domain.Animal;
-import com.adotaPet.api.domain.Ong;
+import com.adotaPet.api.domain.Pessoa;
 import com.adotaPet.api.domain.enums.AcompanhamentoSituacao;
 import com.adotaPet.api.domain.enums.AcompanhamentoStatus;
+import com.adotaPet.api.domain.enums.Perfil;
 import com.adotaPet.api.dto.AcompanhamentoDTO;
 import com.adotaPet.api.repository.AcompanhamentoRepository;
 import com.adotaPet.api.service.exceptions.DataIntegrityException;
@@ -33,6 +33,8 @@ public class AcompanhamentoService {
 	private AcompanhamentoRepository repo;
 	@Autowired
 	private AnimalService animalService;
+	@Autowired
+	private PessoaService pessoaService;
 
 	public Acompanhamento find(Integer id) {
 		Optional<Acompanhamento> obj = repo.findById(id);
@@ -94,4 +96,45 @@ public class AcompanhamentoService {
 		acompanhamentos.add(acompanhamento);
 		animalService.adicionarAcompanhamento(animal, acompanhamentos);
 	}
+	
+	public List<Acompanhamento> search(Integer status, Integer animalId) {
+		
+		Pessoa usuarioLogado = pessoaService.getUserLogged();
+		List<Animal> listaAnimais = new ArrayList<Animal>();
+		List<Acompanhamento> listaAcompanhamentos = new ArrayList<Acompanhamento>();
+		List<Acompanhamento> listaAcompanhamentosRemover = new ArrayList<Acompanhamento>();
+		
+		if (usuarioLogado.getPerfil() != Perfil.MASTER.getCod()) {
+			if (animalId == 0) {
+				listaAnimais = animalService.findByOng(usuarioLogado.getOng().getId());
+			}
+		}
+		
+		if (usuarioLogado.getPerfil() == Perfil.MASTER.getCod()) {
+			if (animalId == 0) {
+				listaAnimais = animalService.findAll();
+			}
+		}
+		
+		if (animalId != 0) {
+			listaAnimais.add(animalService.getAnimal(animalId));
+		}
+		
+		if(!listaAnimais.isEmpty()) {
+			for (Animal animal : listaAnimais) {
+				List<Acompanhamento> listaAcompanhamentosAnimal = animal.getAcompanhamentos();
+				for (Acompanhamento acompanhamentoAnimal : listaAcompanhamentosAnimal) {
+					listaAcompanhamentos.add(acompanhamentoAnimal);
+					if ((acompanhamentoAnimal.getStatus() != status) &&(status != 0)) {
+						listaAcompanhamentosRemover.add(acompanhamentoAnimal);
+					}
+				}
+						
+			}
+			System.out.println(listaAcompanhamentos);
+			listaAcompanhamentos.removeAll(listaAcompanhamentosRemover);
+		}		
+		return listaAcompanhamentos;
+	}
+
 }

@@ -21,6 +21,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.adotaPet.api.domain.Acompanhamento;
 import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.dto.AcompanhamentoDTO;
+import com.adotaPet.api.dto.AnimalDTO;
+import com.adotaPet.api.resource.utils.URL;
 import com.adotaPet.api.service.AcompanhamentoService;
 import com.adotaPet.api.service.AnimalService;
 
@@ -93,6 +95,18 @@ public class AcompanhamentoResource {
 			@RequestParam(value="direction", defaultValue="ASC") String direction) {
 		Page<Acompanhamento> list = service.findPage(page, linesPerPage, orderBy, direction);
 		Page<AcompanhamentoDTO> listDto = list.map(obj -> new AcompanhamentoDTO(obj));  
+		return ResponseEntity.ok().body(listDto);
+	}
+	
+	@RequestMapping(value="pesquisar", method=RequestMethod.GET)
+	public ResponseEntity<List<AcompanhamentoDTO>> findPage(
+			@RequestParam(value="status", defaultValue="") String status, 
+			@RequestParam(value="animalId", defaultValue="") String animalId) {
+		Integer statusDecoded = Integer.parseInt(URL.decodeParam(status));
+		Integer animalIdDecoded = Integer.parseInt(URL.decodeParam(animalId));
+		
+		List<Acompanhamento> list = service.search(statusDecoded, animalIdDecoded);
+		List<AcompanhamentoDTO> listDto = list.stream().map(obj -> new AcompanhamentoDTO(obj)).collect(Collectors.toList());  
 		return ResponseEntity.ok().body(listDto);
 	}
 }

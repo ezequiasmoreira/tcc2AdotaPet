@@ -224,7 +224,7 @@ public class DBService {
 		
 		Acompanhamento acom1 =new Acompanhamento(null, 1, "Acompamento após 1 mês de adoção", AcompanhamentoStatus.ABERTO,AcompanhamentoSituacao.ANALISE, null, sdf.parse("02/07/2019 10:00"), null);
 		Acompanhamento acom2 =new Acompanhamento(null, 2, "Acompanhamento do chulinho", AcompanhamentoStatus.AGENDADO, AcompanhamentoSituacao.ANALISE, "Tentando contato", sdf.parse("12/07/2019 10:20"), null);
-		Acompanhamento acom3 =new Acompanhamento(null, 3, "Acompanhamento do chulinho segunda tentativa", AcompanhamentoStatus.FINALIZADO, AcompanhamentoSituacao.OTIMO, null,  sdf.parse("13/07/2019 11:20"), sdf.parse("13/07/2019 11:30"));	
+		Acompanhamento acom3 =new Acompanhamento(null, 3, "Acompanhamento do lindinha ", AcompanhamentoStatus.FINALIZADO, AcompanhamentoSituacao.OTIMO, null,  sdf.parse("13/07/2019 11:20"), sdf.parse("13/07/2019 11:30"));	
 		
 		acompanhamentoRepository.saveAll(Arrays.asList(acom1,acom2,acom3));
 		
