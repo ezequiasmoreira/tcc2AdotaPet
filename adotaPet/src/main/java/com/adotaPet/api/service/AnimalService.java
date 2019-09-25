@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.adotaPet.api.domain.Acompanhamento;
 import com.adotaPet.api.domain.Adocao;
 import com.adotaPet.api.domain.Animal;
+import com.adotaPet.api.domain.Cidade;
 import com.adotaPet.api.domain.Doenca;
 import com.adotaPet.api.domain.Ong;
 import com.adotaPet.api.domain.Pessoa;
@@ -102,7 +103,15 @@ public class AnimalService {
 	
 	public Animal fromDTO(AnimalDTO objDto) {
 		Raca raca = racaService.findRacaId(objDto.getRacaId());
-		return new Animal(objDto.getId(),objDto.getCodigo(),objDto.getNome(),AnimalGenero.toEnum(objDto.getGenero()),
+		Pessoa  pessoa = pessoaService.getUserLogged();
+		if (pessoa.getPerfil() != Perfil.MASTER.getCod()) {
+			objDto.setOngId(pessoa.getOng().getId());			
+		}else {
+			objDto.setOngId(1);
+		}
+				
+		Integer codigo = objDto.getOngId() == null ? null : repo.obterCodigo(objDto.getOngId());
+		return new Animal(objDto.getId(),codigo,objDto.getNome(),AnimalGenero.toEnum(objDto.getGenero()),
 				Porte.toEnum(objDto.getPorte()),objDto.getVermifugado(),objDto.getCastrado(),
 				new Ong (objDto.getOngId(),null, null, null, null, null, null, null, null, null, null),		
 				AnimalStatus.toEnum(objDto.getStatus()),

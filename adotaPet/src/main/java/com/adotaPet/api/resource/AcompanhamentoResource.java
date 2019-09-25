@@ -78,6 +78,13 @@ public class AcompanhamentoResource {
 		return ResponseEntity.ok().body(listDto);
 	}
 	
+	@RequestMapping(value="/aberto",method=RequestMethod.GET)
+	public ResponseEntity<List<AcompanhamentoDTO>> getAcompamhamentosNaoFinalizado() {
+		List<Acompanhamento> list = service.getAcompamhamentosNaoFinalizado();
+		List<AcompanhamentoDTO> listDto = list.stream().map(obj -> new AcompanhamentoDTO(obj)).collect(Collectors.toList());  
+		return ResponseEntity.ok().body(listDto);
+	}
+	
 	@RequestMapping(value="/page", method=RequestMethod.GET)
 	public ResponseEntity<Page<AcompanhamentoDTO>> findPage(
 			@RequestParam(value="page", defaultValue="0") Integer page, 

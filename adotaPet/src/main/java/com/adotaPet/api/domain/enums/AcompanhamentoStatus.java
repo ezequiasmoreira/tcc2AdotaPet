@@ -3,7 +3,8 @@ package com.adotaPet.api.domain.enums;
 public enum AcompanhamentoStatus {
 	ABERTO(1, "Aberto"),
 	AGENDADO(2, "Agendado"),
-	FINALIZADO(3, "Finalizado");
+	SOLICITADO(3, "Solicitado"),
+	FINALIZADO(4, "Finalizado");
 	
 	private int cod;
 	private String descricao;
