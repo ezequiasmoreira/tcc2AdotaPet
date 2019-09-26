@@ -46,7 +46,7 @@ private static final long serialVersionUID = 1L;
 		return animais;
 	}
 
-	public void setProdutos(List<Animal> animais) {
+	public void setAnimais(List<Animal> animais) {
 		this.animais = animais;
 	}
 

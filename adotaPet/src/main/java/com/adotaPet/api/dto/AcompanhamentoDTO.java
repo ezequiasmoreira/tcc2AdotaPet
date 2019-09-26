@@ -1,9 +1,12 @@
 package com.adotaPet.api.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.adotaPet.api.domain.Acompanhamento;
 import com.adotaPet.api.domain.Adocao;
+import com.adotaPet.api.domain.Animal;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class AcompanhamentoDTO {
@@ -20,6 +23,9 @@ public class AcompanhamentoDTO {
 	
 	private String dataAgendado;
 	private Integer animal ;
+	private Integer animalCodigo;
+	private String animalNome;
+	
 	private Adocao adocao;
 	
 	public AcompanhamentoDTO() {
@@ -33,11 +39,32 @@ public class AcompanhamentoDTO {
 		this.situacao = obj.getSituacao();
 		this.observacao = obj.getObservacao();		
 		this.dataCadastro = obj.getDataCadastro();
-		this.dataAgendado = obj.getDataAgendado()+"";			
+		this.dataAgendado = obj.getDataAgendado()+"";	
+		for (Animal animal : obj.getAnimais()) {
+			this.animal = animal.getId();
+			this.animalCodigo = animal.getCodigo();
+			this.animalNome = animal.getNome();
+		}
 	}
 
 	public Integer getAnimal() {
 		return animal;
+	}
+	
+	public Integer getAnimalCodigo() {
+		return animalCodigo;
+	}
+
+	public void setAnimalCodigo(Integer animalCodigo) {
+		this.animalCodigo = animalCodigo;
+	}
+
+	public String getAnimalNome() {
+		return animalNome;
+	}
+
+	public void setAnimalNome(String animalNome) {
+		this.animalNome = animalNome;
 	}
 
 	public void setAnimal(Integer animal) {

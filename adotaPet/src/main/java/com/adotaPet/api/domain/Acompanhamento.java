@@ -6,14 +6,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.adotaPet.api.domain.enums.AcompanhamentoSituacao;
 import com.adotaPet.api.domain.enums.AcompanhamentoStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Acompanhamento implements Serializable {
@@ -34,7 +38,11 @@ private static final long serialVersionUID = 1L;
 	
 	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date dataAgendado;
-		
+	
+	@JsonIgnore
+	@ManyToMany(mappedBy="acompanhamentos")
+	private List<Animal> animais = new ArrayList<>();
+	
 	public Acompanhamento() {
 	}
 
@@ -53,6 +61,14 @@ private static final long serialVersionUID = 1L;
 
 	public Integer getId() {
 		return id;
+	}
+	
+	public List<Animal> getAnimais() {
+		return animais;
+	}
+
+	public void setAnimais(List<Animal> animais) {
+		this.animais = animais;
 	}
 
 	public void setId(Integer id) {

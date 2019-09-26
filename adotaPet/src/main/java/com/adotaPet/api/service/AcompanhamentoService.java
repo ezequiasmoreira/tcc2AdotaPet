@@ -1,5 +1,6 @@
 package com.adotaPet.api.service;
 
+import java.net.URI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.adotaPet.api.domain.Acompanhamento;
 import com.adotaPet.api.domain.Animal;
@@ -35,6 +37,8 @@ public class AcompanhamentoService {
 	private AnimalService animalService;
 	@Autowired
 	private PessoaService pessoaService;
+	@Autowired
+	private UploadService uploadService;
 
 	public Acompanhamento find(Integer id) {
 		Optional<Acompanhamento> obj = repo.findById(id);
@@ -76,7 +80,12 @@ public class AcompanhamentoService {
 	
 	public Acompanhamento fromDTO(AcompanhamentoDTO obj,Animal animal) throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		Date  dataAgendado = sdf.parse(obj.getDataAgendado().replaceAll("-", "/"));		
+		Date  dataAgendado = new Date();
+		if (obj.getDataAgendado() != null) {
+			dataAgendado = sdf.parse(obj.getDataAgendado().replaceAll("-", "/"));	
+		}else {
+			dataAgendado = null;
+		}
 		return new Acompanhamento(
 				obj.getId(),
 				animal.getCodigo(),
@@ -135,6 +144,9 @@ public class AcompanhamentoService {
 			listaAcompanhamentos.removeAll(listaAcompanhamentosRemover);
 		}		
 		return listaAcompanhamentos;
+	}
+	public URI uploadPicture(MultipartFile multipartFile, Integer id) {		
+		return uploadService.uploadACompanhamentoFile(multipartFile, id);
 	}
 
 }

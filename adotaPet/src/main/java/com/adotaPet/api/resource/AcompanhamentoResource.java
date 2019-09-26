@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.adotaPet.api.domain.Acompanhamento;
@@ -46,14 +47,14 @@ public class AcompanhamentoResource {
 	
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@Valid @RequestBody AcompanhamentoDTO objDto) throws ParseException {
+	public ResponseEntity<Acompanhamento> insert(@Valid @RequestBody AcompanhamentoDTO objDto) throws ParseException {
 		Animal animal = animalService.getAnimal(objDto.getAnimal());
 		Acompanhamento obj = service.fromDTO(objDto,animal);
 		obj = service.insert(obj);
 		service.vincularAcompanhamentoAnimal(obj,animal);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 			.path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).build();
+		return ResponseEntity.ok().body(obj);
 	}
 	
 	//@PreAuthorize("hasAnyRole('ADMIN')")
@@ -108,5 +109,10 @@ public class AcompanhamentoResource {
 		List<Acompanhamento> list = service.search(statusDecoded, animalIdDecoded);
 		List<AcompanhamentoDTO> listDto = list.stream().map(obj -> new AcompanhamentoDTO(obj)).collect(Collectors.toList());  
 		return ResponseEntity.ok().body(listDto);
+	}
+	@RequestMapping(value="/picture/{id}", method=RequestMethod.POST)
+	public ResponseEntity<Void> uploadAcompanhamentoPicture(@PathVariable Integer id,@RequestParam(name="file") MultipartFile file) {
+		URI uri = service.uploadPicture(file, id);
+		return ResponseEntity.created(uri).build();
 	}
 }
