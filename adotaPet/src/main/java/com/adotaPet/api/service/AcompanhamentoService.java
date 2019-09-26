@@ -24,6 +24,7 @@ import com.adotaPet.api.domain.enums.AcompanhamentoStatus;
 import com.adotaPet.api.domain.enums.Perfil;
 import com.adotaPet.api.dto.AcompanhamentoDTO;
 import com.adotaPet.api.repository.AcompanhamentoRepository;
+import com.adotaPet.api.service.exceptions.AuthorizationException;
 import com.adotaPet.api.service.exceptions.DataIntegrityException;
 import com.adotaPet.api.service.exceptions.ObjectNotFoundException;
 
@@ -53,6 +54,9 @@ public class AcompanhamentoService {
 	
 	public Acompanhamento update(Acompanhamento obj) {
 		Acompanhamento newObj = find(obj.getId());
+		if (newObj.getStatus() == AcompanhamentoStatus.FINALIZADO.getCod()) {
+			throw new AuthorizationException("Status do acompanhamento não permite alteração.");
+		}
 		updateData(newObj, obj);
 		return repo.save(newObj);
 	}
@@ -82,7 +86,7 @@ public class AcompanhamentoService {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		Date  dataAgendado = new Date();
 		if (obj.getDataAgendado() != null) {
-			dataAgendado = sdf.parse(obj.getDataAgendado().replaceAll("-", "/"));	
+			dataAgendado = obj.getDataAgendado();	
 		}else {
 			dataAgendado = null;
 		}
@@ -97,8 +101,13 @@ public class AcompanhamentoService {
 				dataAgendado);
 	}
 	
-	private void updateData(Acompanhamento newObj, Acompanhamento obj) {		
-		newObj.setCodigo(obj.getCodigo());
+	private void updateData(Acompanhamento newObj, Acompanhamento obj) {	
+		System.out.println(obj.getDataAgendado());
+		newObj.setStatus(obj.getStatus());
+		newObj.setSituacao(obj.getSituacao());
+		newObj.setDataAgendado(obj.getDataAgendado());
+		newObj.setDescricao(obj.getDescricao());
+		newObj.setObservacao(obj.getObservacao());
 	}
 	public void vincularAcompanhamentoAnimal(Acompanhamento acompanhamento,Animal animal) {
 		List<Acompanhamento> acompanhamentos = new ArrayList<Acompanhamento>();

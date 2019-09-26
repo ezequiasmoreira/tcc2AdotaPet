@@ -40,9 +40,10 @@ public class AcompanhamentoResource {
 	private AnimalService animalService;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<Acompanhamento> find(@PathVariable Integer id) throws ObjectNotFoundException {
+	public ResponseEntity<AcompanhamentoDTO> find(@PathVariable Integer id) throws ObjectNotFoundException {
 		Acompanhamento obj = service.find(id);
-		return ResponseEntity.ok().body(obj);
+		AcompanhamentoDTO dto = new AcompanhamentoDTO(obj);
+		return ResponseEntity.ok().body(dto);
 	}
 	
 	//@PreAuthorize("hasAnyRole('ADMIN')")
