@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.adotaPet.api.domain.Acompanhamento;
+import com.adotaPet.api.domain.Adocao;
 import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.Pessoa;
 import com.adotaPet.api.domain.enums.AcompanhamentoSituacao;
@@ -99,6 +100,17 @@ public class AcompanhamentoService {
 				obj.getObservacao(),		
 				new Date(),
 				dataAgendado);
+	}
+	public Acompanhamento fromDTO(Adocao adocao) throws ParseException {		
+		return new Acompanhamento(
+				null,
+				adocao.getAnimal().getCodigo(),
+				null,
+				AcompanhamentoStatus.SOLICITADO,
+				AcompanhamentoSituacao.PROCESSOS,
+				null,		
+				new Date(),
+				null);
 	}
 	
 	private void updateData(Acompanhamento newObj, Acompanhamento obj) {	

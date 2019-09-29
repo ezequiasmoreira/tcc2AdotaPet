@@ -20,11 +20,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.adotaPet.api.domain.Acompanhamento;
+import com.adotaPet.api.domain.Adocao;
 import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.dto.AcompanhamentoDTO;
 import com.adotaPet.api.dto.AnimalDTO;
 import com.adotaPet.api.resource.utils.URL;
 import com.adotaPet.api.service.AcompanhamentoService;
+import com.adotaPet.api.service.AdocaoService;
 import com.adotaPet.api.service.AnimalService;
 
 import javassist.tools.rmi.ObjectNotFoundException;
@@ -38,6 +40,8 @@ public class AcompanhamentoResource {
 	private AcompanhamentoService service;
 	@Autowired
 	private AnimalService animalService;
+	@Autowired
+	private AdocaoService adocaoService;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<AcompanhamentoDTO> find(@PathVariable Integer id) throws ObjectNotFoundException {
@@ -57,6 +61,19 @@ public class AcompanhamentoResource {
 			.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.ok().body(obj);
 	}
+	
+	//@PreAuthorize("hasAnyRole('ADMIN')")
+		@RequestMapping(value="solicitar/{id}", method=RequestMethod.POST)
+		public ResponseEntity<Acompanhamento> insert(@PathVariable Integer id) throws ParseException {
+			Adocao adocao = adocaoService.find(id);
+			Acompanhamento obj = service.fromDTO(adocao);
+			obj = service.insert(obj);
+			service.vincularAcompanhamentoAnimal(obj,adocao.getAnimal());
+			URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}").buildAndExpand(obj.getId()).toUri();
+			return ResponseEntity.ok().body(obj);
+		}
+		
 	
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
