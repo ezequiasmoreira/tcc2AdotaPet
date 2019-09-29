@@ -121,16 +121,6 @@ public class DBService {
 				
 		ongRepository.saveAll(Arrays.asList(ong1,ong2));
 		
-		Raca raca1 = new Raca(null,1,"Pastor Alemão",Especie.CAO);
-		Raca raca2 = new Raca(null,4,"Buldogue",Especie.CAO);
-		Raca raca3 = new Raca(null,12,"Chihuahua",Especie.CAO);
-		Raca raca4 = new Raca(null,20,"Dalmata",Especie.CAO);
-		Raca raca5 = new Raca(null,22,"Pinscher",Especie.CAO);
-		Raca raca6 = new Raca(null,2,"Ancitrini",Especie.CASCUDOS);
-		Raca raca7 = new Raca(null,3,"Triactis",Especie.CASCUDOS);
-		
-		racaRepository.saveAll(Arrays.asList(raca1,raca2,raca3,raca4,raca5,raca6,raca7));
-		
 		Pessoa p1 = new Pessoa(null, 5, "Avenida sete de setembro", "45", "Proximo ao ebenezer", "Treze de junho", "35290-000", c1, "Pedro", Sexo.MASCULINO, Perfil.USUARIO, "108.963.205-96", "895632145", "pedro@hotmail.com", pe.encode("123"), "98564712",null);
 		p1.addPerfil(Perfil.USUARIO);
 		
@@ -163,15 +153,6 @@ public class DBService {
 		
 		pessoaRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5,p6));
 		
-		Doenca doenca1 = new Doenca(null,1,"Alergia alimentar");
-		Doenca doenca2 = new Doenca(null,2,"Depressão");
-		Doenca doenca3 = new Doenca(null,3,"Erlichiose");
-		Doenca doenca4 = new Doenca(null,4,"Insuficiência renal");
-		Doenca doenca5 = new Doenca(null,5,"Obesidade");
-		Doenca doenca6 = new Doenca(null,6,"Otite");
-		
-		doencaRepository.saveAll(Arrays.asList(doenca1,doenca2,doenca3,doenca4,doenca5,doenca6));
-		
 		Vacina vacina1 = new Vacina(null, "V8", "6 a 8 semanas", "Cinomose,hepatite", Especie.CAO);
 		Vacina vacina2 = new Vacina(null, "V10", "6 a 8 semanas", "Adenovírus,coronavírus", Especie.CAO);
 		Vacina vacina3 = new Vacina(null, "V8", "12 semanas", "reforços", Especie.CAO);
@@ -192,6 +173,20 @@ public class DBService {
 		
 		vacinaItemRepository.saveAll(Arrays.asList(vacinaItem1,vacinaItem2,vacinaItem3,vacinaItem4,vacinaItem5));
 		
+		List<Raca> listaRacas = racaRepository.findByEspecie(Especie.CAO.getCod());
+		Raca raca1 = listaRacas.get(1);
+		Raca raca2 = listaRacas.get(2);
+		Raca raca4 = listaRacas.get(4);
+		Raca raca5 = listaRacas.get(5);
+		
+		List<Doenca> listaDoencas = doencaRepository.findAll();
+		Doenca doenca1 = listaDoencas.get(1);
+		Doenca doenca2 = listaDoencas.get(2);
+		Doenca doenca3 = listaDoencas.get(3);
+		Doenca doenca4 = listaDoencas.get(4);
+		Doenca doenca5 = listaDoencas.get(5);
+		Doenca doenca6 = listaDoencas.get(6);
+
 		Animal animal1 = new Animal(null, 5,"Belinha", AnimalGenero.FEMEA, Porte.PEQUENO, false, true, ong1, AnimalStatus.DISPONIVEL, raca1);
 		animal1.getDoencas().addAll(Arrays.asList(doenca1,doenca4));
 		Animal animal2 = new Animal(null, 8,"Charopinho", AnimalGenero.MACHO, Porte.PEQUENO, true, false, ong1, AnimalStatus.PROCESSAMENTO, raca1);

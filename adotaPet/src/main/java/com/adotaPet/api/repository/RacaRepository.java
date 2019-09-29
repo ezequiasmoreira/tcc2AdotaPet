@@ -22,4 +22,8 @@ public interface RacaRepository extends JpaRepository<Raca, Integer> {
 	@Query("SELECT obj FROM Raca obj ORDER BY obj.descricao")
 	List<Raca> findAllOrderByDescricao();
 
+	@Transactional(readOnly=true)
+	@Query("SELECT obj FROM Raca obj WHERE obj.especie = :especie")
+	List<Raca> findByEspecie(@Param("especie") Integer especie);
+
 }

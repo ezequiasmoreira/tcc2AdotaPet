@@ -8,25 +8,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.adotaPet.api.domain.Doenca;
-import com.adotaPet.api.repository.DoencaRepository;
 
 @Service
 public class InsereDoenca {
 	
-	@Autowired
-	private DoencaRepository doencaRepository;
-	
 	public List<Doenca> insert() throws IOException {		
-		
+		final String dir = System.getProperty("user.dir");
 		List<Doenca> listaDoenca = new ArrayList<Doenca>();
 		
-		//Doenca doenca1 = new Doenca(null,1,"Alergia alimentar");
-		
-		File file = new File("C:\\Users\\ezequ\\Desktop\\doecas.txt");
+		File file = new File(dir+ "\\datasets\\doencas.txt");
 		BufferedReader br = new BufferedReader(new FileReader(file));
 		String st;
 		int cont = 1;
