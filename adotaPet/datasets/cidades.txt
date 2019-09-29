@@ -1,4 +1,3 @@
-"IBGE","Cidade","Estado","Sigla","Pais"
 "5200050","Abadia de Goiás","Goiás","GO","Brasil"
 "2409704","Pedro Avelino","Rio Grande do Norte","RN","Brasil"
 "2924207","Pedro Alexandre","Bahia","BA","Brasil"

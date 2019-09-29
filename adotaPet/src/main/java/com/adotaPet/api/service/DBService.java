@@ -2,6 +2,7 @@ package com.adotaPet.api.service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -106,19 +107,12 @@ public class DBService {
 			System.out.println("Deu erro: " + e.getMessage());
 		}
 
-		Estado est1 = new Estado(null,"Minas Gerais",31);
-		Estado est2 = new Estado(null,"Santa Catarina",42);
-		
-		Cidade c1 = new Cidade(null,"Mantena",est1);
-		Cidade c2 = new Cidade(null,"Criciuma",est2);
-		Cidade c3 = new Cidade(null,"Florianipolis",est2);
-		Cidade c4 = new Cidade(null,"Cocal",est2);
-		
-		est1.getCidades().addAll(Arrays.asList(c1));
-		est2.getCidades().addAll(Arrays.asList(c2,c3,c4));
-				
-		estadoRepository.saveAll(Arrays.asList(est1,est2));
-		cidadeRepository.saveAll(Arrays.asList(c1,c2,c3,c4));
+		InsercaoEnderecos();
+
+		Cidade c1 = cidadeRepository.findCidadeByName("Criciúma");
+		Cidade c2 = cidadeRepository.findCidadeByName("Mantena");
+		Cidade c3 = cidadeRepository.findCidadeByName("Florianópolis");
+		Cidade c4 = cidadeRepository.findCidadeByName("Cocal do Sul");
 		
 		Ong ong1 = new Ong(null, 10,"Avenida Sebastião Toledo dos santos","785","Proximo a moradas da colina","Maria ceu","88806-620",
 				c2,"Ong LTDA","Ong do bem","62.769.648/0001-84");
@@ -234,6 +228,43 @@ public class DBService {
 		 
 	}
 
+	private void InsercaoEnderecos(){
+		try {
+			if(estadoRepository.count() == 0){
+				List<Estado> ListaEstado = new InsereEstados().buscaEstadosDataSet();			
+				List<String> LinhasDataSet = new InsereCidades().buscaCidadesDataSet();
+				for (Estado listaEstado : ListaEstado) {
+					List<Cidade> ListaCidades = new ArrayList<Cidade>();
+					List<String> ListaTeste = new ArrayList<String>();
+
+					System.out.println("lista clonada: " + LinhasDataSet.size() );
+					for(String linha : LinhasDataSet){
+
+						String[] textoSeparado = linha.split(",");
+						String cidade = textoSeparado[1].replaceAll("^\"|\"$", "");
+						String estado = textoSeparado[2].replaceAll("^\"|\"$", "");
+
+						if(estado.toUpperCase().equals(listaEstado.getNome().toUpperCase()) ){
+							ListaCidades.add(new Cidade(null,cidade,listaEstado));
+						}
+						else{
+							ListaTeste.add(linha);
+						}
+					}
+					LinhasDataSet = ListaTeste;
+
+					listaEstado.getCidades().addAll(ListaCidades);
+
+					estadoRepository.saveAll(Arrays.asList(listaEstado));
+					cidadeRepository.saveAll(ListaCidades);	
+				}
+				System.out.println("Deu certo" );
+			}
+		}catch (Exception e) {
+			System.out.println("Deu erro: " + e.getMessage());
+		}
+	}
+
 	public void adicionaRegistros() throws ParseException {
 		System.out.println("estrou" );
 		//insere registro em massa
@@ -241,7 +272,7 @@ public class DBService {
 		try {
 			if(estadoRepository.count() == 0){
 				InsereEstados insereEstado = new InsereEstados();
-				List<Estado> ListaEstado = insereEstado.insert();			
+				List<Estado> ListaEstado = insereEstado.buscaEstadosDataSet();			
 				for (Estado listaEstado : ListaEstado) {
 					estadoRepository.saveAll(Arrays.asList(new Estado(null,listaEstado.getNome(), listaEstado.getCodigo())));	
 				}
