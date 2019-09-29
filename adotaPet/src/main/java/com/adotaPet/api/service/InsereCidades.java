@@ -11,27 +11,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.adotaPet.api.domain.Estado;
+import com.adotaPet.api.domain.Cidade;
+import com.adotaPet.api.repository.CidadeRepository;
 
 @Service
-public class InsereEstados {
+public class InsereCidades {
 	
-	public List<Estado> buscaEstadosDataSet() throws IOException {		
+	public List<String> buscaCidadesDataSet() throws IOException {		
 		final String dir = System.getProperty("user.dir");
-        System.out.println("current dir = " + dir);
         
-        List<Estado> listaEstados = new ArrayList<Estado>();
+        List<String> linhasArquivo = new ArrayList<String>();
 		
-		File file = new File(dir+ "\\datasets\\estados.txt");
+		File file = new File(dir+ "\\datasets\\cidades.txt");
 		BufferedReader br = new BufferedReader(new FileReader(file));
         String st;
-        int cont = 1;
 		while((st = br.readLine()) != null) {
-
-            listaEstados.add(new Estado(null,st,cont++));
-
+            linhasArquivo.add(st);
 		}
-		return listaEstados;
+		return linhasArquivo;
 	}
 
 }

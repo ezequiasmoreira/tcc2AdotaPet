@@ -23,6 +23,10 @@ public interface CidadeRepository extends JpaRepository<Cidade, Integer> {
 	@Query("SELECT obj FROM Cidade obj WHERE obj.id = :id ")
 	Cidade findCidadeById(@Param("id") Integer id);
 
+	@Transactional(readOnly=true)
+	@Query("SELECT obj FROM Cidade obj WHERE obj.nome = :nome ")
+	Cidade findCidadeByName(@Param("nome") String nome);
+
 }
 
 
