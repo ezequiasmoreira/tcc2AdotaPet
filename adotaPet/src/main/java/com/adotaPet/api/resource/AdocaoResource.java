@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -89,10 +90,18 @@ public class AdocaoResource {
 		List<AdocaoDTO> listDto = list.stream().map(obj -> new AdocaoDTO(obj)).collect(Collectors.toList());  
 		return ResponseEntity.ok().body(listDto);
 	}
-	//@PreAuthorize("hasAnyRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('VOLUNTARIO')")
 	@RequestMapping(value="/solicitacao",method=RequestMethod.GET)
 	public ResponseEntity<List<AdocaoDTO>> solicitacaoAdocoes() {
 		List<Adocao> list = service.solicitacaoAdocoes();
+		List<AdocaoDTO> listDto = list.stream().map(obj -> new AdocaoDTO(obj)).collect(Collectors.toList());  
+		return ResponseEntity.ok().body(listDto);
+	}
+	
+	@PreAuthorize("hasAnyRole('VOLUNTARIO')")
+	@RequestMapping(value="/concluida",method=RequestMethod.GET)
+	public ResponseEntity<List<AdocaoDTO>> obterAdocoesConcluida() {
+		List<Adocao> list = service.obterAdocoesConcluida();
 		List<AdocaoDTO> listDto = list.stream().map(obj -> new AdocaoDTO(obj)).collect(Collectors.toList());  
 		return ResponseEntity.ok().body(listDto);
 	}

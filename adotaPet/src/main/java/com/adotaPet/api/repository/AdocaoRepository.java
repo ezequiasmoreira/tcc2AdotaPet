@@ -34,6 +34,14 @@ public interface AdocaoRepository extends JpaRepository<Adocao, Integer> {
 	public List<Adocao> solicitacaoAdocoes();
 	
 	@Transactional(readOnly=true)
+	@Query("SELECT obj FROM Adocao obj WHERE obj.status = 4  ORDER BY obj.id DESC")
+	public List<Adocao> obterAdocoesConcluida();
+	
+	@Transactional(readOnly=true)
+	@Query("SELECT obj FROM Adocao obj WHERE obj.status = 4 AND obj.ong.id = :ongId ORDER BY obj.id DESC")
+	public List<Adocao> obterAdocoesConcluida(@Param("ongId") Integer ongId);
+	
+	@Transactional(readOnly=true)
 	@Query("SELECT obj FROM Adocao obj WHERE  obj.status = :status AND obj.animal.id = :animalId ORDER BY obj.id DESC")
 	public List<Adocao> obterAdocaoPorAnimaleStatus(@Param("animalId") Integer animalId,@Param("status") Integer status);
 	

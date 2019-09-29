@@ -84,6 +84,14 @@ public class AdocaoService {
 		return repo.solicitacaoAdocoes(usuarioLogado.getOng().getId());
 	}
 	
+	public List<Adocao> obterAdocoesConcluida() {
+		Pessoa usuarioLogado = pessoaService.getUserLogged();		
+		if (usuarioLogado.getPerfil() == Perfil.MASTER.getCod() ) {
+			return repo.obterAdocoesConcluida();
+		}
+		return repo.obterAdocoesConcluida(usuarioLogado.getOng().getId());
+	}
+		
 	public Page<Adocao> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
