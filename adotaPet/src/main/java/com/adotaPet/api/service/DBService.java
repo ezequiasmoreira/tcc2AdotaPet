@@ -199,7 +199,7 @@ public class DBService {
 		
 		Animal animal4 = new Animal(null, 10,"Lindinha", AnimalGenero.FEMEA, Porte.MEDIO, true, false, ong2, AnimalStatus.ADOTADO, raca4);
 		animal4.getDoencas().addAll(Arrays.asList(doenca1,doenca2,doenca3,doenca4,doenca5));
-		Animal animal5 = new Animal(null, 15,"Cenorinha", AnimalGenero.MACHO, Porte.GRANDE, true, true, ong2, AnimalStatus.DISPONIVEL, raca5);
+		Animal animal5 = new Animal(null, 15,"Cenorinha", AnimalGenero.MACHO, Porte.GRANDE, true, true, ong2, AnimalStatus.ADOTADO, raca5);
 		animal5.getDoencas().addAll(Arrays.asList(doenca6));
 		animal5.getVacinas().addAll(Arrays.asList(vacinaItem1,vacinaItem2,vacinaItem3));
 		animalRepository.saveAll(Arrays.asList(animal1,animal2,animal3,animal4,animal5));
