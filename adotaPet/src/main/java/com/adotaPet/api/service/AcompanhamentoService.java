@@ -22,6 +22,7 @@ import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.Pessoa;
 import com.adotaPet.api.domain.enums.AcompanhamentoSituacao;
 import com.adotaPet.api.domain.enums.AcompanhamentoStatus;
+import com.adotaPet.api.domain.enums.AdocaoStatus;
 import com.adotaPet.api.domain.enums.Perfil;
 import com.adotaPet.api.dto.AcompanhamentoDTO;
 import com.adotaPet.api.repository.AcompanhamentoRepository;
@@ -39,6 +40,8 @@ public class AcompanhamentoService {
 	private AnimalService animalService;
 	@Autowired
 	private PessoaService pessoaService;
+	@Autowired
+	private AdocaoService adocaoService;
 	@Autowired
 	private UploadService uploadService;
 
@@ -78,6 +81,23 @@ public class AcompanhamentoService {
 	public List<Acompanhamento> getAcompamhamentosNaoFinalizado(){
 		return repo.getAcompamhamentosNaoFinalizado();
 	}
+	public List<Acompanhamento> getAcompamhamentosSolicitado(){
+		
+		Pessoa pessoa = pessoaService.getUserLogged();
+		List<Adocao> adocoes = adocaoService.getAdocoesPorPessoa(pessoa);
+		List<Acompanhamento> acompanhamentos = new ArrayList<Acompanhamento>();
+		
+		for (Adocao adocao : adocoes) {
+			if (adocao.getStatus() == AdocaoStatus.APROVADO.getCod()) {
+				for (Acompanhamento acompanhamento : adocao.getAnimal().getAcompanhamentos()) {
+					if(acompanhamento.getStatus() == AcompanhamentoStatus.SOLICITADO.getCod() && (acompanhamento.getDescricao()==null) ) {
+						acompanhamentos.add(acompanhamento);
+					}
+				}
+			}
+		}
+		return acompanhamentos;
+	}
 	public Page<Acompanhamento> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
@@ -114,7 +134,6 @@ public class AcompanhamentoService {
 	}
 	
 	private void updateData(Acompanhamento newObj, Acompanhamento obj) {	
-		System.out.println(obj.getDataAgendado());
 		newObj.setStatus(obj.getStatus());
 		newObj.setSituacao(obj.getSituacao());
 		newObj.setDataAgendado(obj.getDataAgendado());
@@ -161,7 +180,6 @@ public class AcompanhamentoService {
 				}
 						
 			}
-			System.out.println(listaAcompanhamentos);
 			listaAcompanhamentos.removeAll(listaAcompanhamentosRemover);
 		}		
 		return listaAcompanhamentos;

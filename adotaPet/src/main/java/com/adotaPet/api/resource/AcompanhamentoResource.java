@@ -63,16 +63,16 @@ public class AcompanhamentoResource {
 	}
 	
 	//@PreAuthorize("hasAnyRole('ADMIN')")
-		@RequestMapping(value="solicitar/{id}", method=RequestMethod.POST)
-		public ResponseEntity<Acompanhamento> insert(@PathVariable Integer id) throws ParseException {
-			Adocao adocao = adocaoService.find(id);
-			Acompanhamento obj = service.fromDTO(adocao);
-			obj = service.insert(obj);
-			service.vincularAcompanhamentoAnimal(obj,adocao.getAnimal());
-			URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}").buildAndExpand(obj.getId()).toUri();
-			return ResponseEntity.ok().body(obj);
-		}
+	@RequestMapping(value="/solicitar/{id}", method=RequestMethod.POST)
+	public ResponseEntity<Acompanhamento> insert(@PathVariable Integer id) throws ParseException {
+		Adocao adocao = adocaoService.find(id);
+		Acompanhamento obj = service.fromDTO(adocao);
+		obj = service.insert(obj);
+		service.vincularAcompanhamentoAnimal(obj,adocao.getAnimal());
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+			.path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.ok().body(obj);
+	}
 		
 	
 	//@PreAuthorize("hasAnyRole('ADMIN')")
@@ -102,6 +102,13 @@ public class AcompanhamentoResource {
 	@RequestMapping(value="/aberto",method=RequestMethod.GET)
 	public ResponseEntity<List<AcompanhamentoDTO>> getAcompamhamentosNaoFinalizado() {
 		List<Acompanhamento> list = service.getAcompamhamentosNaoFinalizado();
+		List<AcompanhamentoDTO> listDto = list.stream().map(obj -> new AcompanhamentoDTO(obj)).collect(Collectors.toList());  
+		return ResponseEntity.ok().body(listDto);
+	}
+	
+	@RequestMapping(value="/solicitado",method=RequestMethod.GET)
+	public ResponseEntity<List<AcompanhamentoDTO>> getAcompamhamentosSolicitado() {
+		List<Acompanhamento> list = service.getAcompamhamentosSolicitado();
 		List<AcompanhamentoDTO> listDto = list.stream().map(obj -> new AcompanhamentoDTO(obj)).collect(Collectors.toList());  
 		return ResponseEntity.ok().body(listDto);
 	}

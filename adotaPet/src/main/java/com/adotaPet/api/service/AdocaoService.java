@@ -61,6 +61,9 @@ public class AdocaoService {
 		updateData(newObj, obj);
 		return repo.save(newObj);
 	}
+	public List<Adocao> getAdocoesPorPessoa(Pessoa pessoa) {		
+		return repo.getAdocoesPorPessoa(pessoa.getId());
+	}
 	
 	public void delete(Integer id) {
 		find(id);

@@ -203,7 +203,7 @@ public class AnimalService {
 			isCastrado = castrado.equals(0) ? false : true;
 		}
 		
-		List<Animal> listaAnimais = repo.obterAnimaisPorFiltro(estadoId);
+		List<Animal> listaAnimais = repo.obterAnimaisPorFiltro();
 		List<Animal> AnimaisRemover =  new ArrayList<Animal>();
 		System.out.println(listaAnimais);
 		if(!listaAnimais.isEmpty()) {
@@ -225,7 +225,10 @@ public class AnimalService {
 				}else
 				if ((animal.getRaca().getId() != racaId) && (racaId != 0)) {
 					AnimaisRemover.add(animal);
-				}				
+				}else
+				if ((animal.getOng().getCidade().getEstado().getId() != estadoId) && (estadoId != 0)) {
+					AnimaisRemover.add(animal);
+				}	
 			}
 			listaAnimais.removeAll(AnimaisRemover);
 		}
