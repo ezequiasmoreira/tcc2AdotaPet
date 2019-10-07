@@ -36,7 +36,10 @@ public class UploadService {
 	
 	public URI uploadFile(MultipartFile multipartFile) {
 		try {
-			String caminho = "C:\\tccf\\adotapet\\src\\assets\\imgs\\";
+			
+			final String dir = System.getProperty("user.dir");
+        	System.out.println("current dir = " + dir);
+			String caminho = dir.replace("adotaPet", "img\\pessoa\\");
 			
 			UserSS user = UserService.authenticated();
 			if (user == null) {
