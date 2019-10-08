@@ -81,6 +81,9 @@ public class AcompanhamentoService {
 	public List<Acompanhamento> getAcompamhamentosNaoFinalizado(){
 		return repo.getAcompamhamentosNaoFinalizado();
 	}
+	public List<Acompanhamento> getAcompamhamentosAtendido(){
+		return repo.getAcompamhamentosAtendido();
+	}
 	public List<Acompanhamento> getAcompamhamentosSolicitado(){
 		
 		Pessoa pessoa = pessoaService.getUserLogged();
@@ -111,11 +114,15 @@ public class AcompanhamentoService {
 		}else {
 			dataAgendado = null;
 		}
+		Pessoa pessoa = pessoaService.getUserLogged();
+		if (pessoa.getPerfil() == Perfil.USUARIO.getCod()) {
+			
+		}
 		return new Acompanhamento(
 				obj.getId(),
 				animal.getCodigo(),
 				obj.getDescricao(),
-				AcompanhamentoStatus.toEnum(obj.getStatus()),
+				AcompanhamentoStatus.toEnum(pessoa.getPerfil() == Perfil.USUARIO.getCod()?5:obj.getStatus()),
 				AcompanhamentoSituacao.toEnum(obj.getSituacao()),
 				obj.getObservacao(),		
 				new Date(),

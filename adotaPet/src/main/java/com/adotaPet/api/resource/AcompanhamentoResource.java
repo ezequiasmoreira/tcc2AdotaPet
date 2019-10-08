@@ -106,6 +106,13 @@ public class AcompanhamentoResource {
 		return ResponseEntity.ok().body(listDto);
 	}
 	
+	@RequestMapping(value="/atendido",method=RequestMethod.GET)
+	public ResponseEntity<List<AcompanhamentoDTO>> getAcompamhamentosAtendido() {
+		List<Acompanhamento> list = service.getAcompamhamentosAtendido();
+		List<AcompanhamentoDTO> listDto = list.stream().map(obj -> new AcompanhamentoDTO(obj)).collect(Collectors.toList());  
+		return ResponseEntity.ok().body(listDto);
+	}
+	
 	@RequestMapping(value="/solicitado",method=RequestMethod.GET)
 	public ResponseEntity<List<AcompanhamentoDTO>> getAcompamhamentosSolicitado() {
 		List<Acompanhamento> list = service.getAcompamhamentosSolicitado();

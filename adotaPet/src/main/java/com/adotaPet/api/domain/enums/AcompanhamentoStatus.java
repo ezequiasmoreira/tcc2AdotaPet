@@ -4,7 +4,8 @@ public enum AcompanhamentoStatus {
 	ABERTO(1, "Aberto"),
 	AGENDADO(2, "Agendado"),
 	SOLICITADO(3, "Solicitado"),
-	FINALIZADO(4, "Finalizado");
+	FINALIZADO(4, "Finalizado"),
+	ATENDIDO(5, "Atendido");
 	
 	private int cod;
 	private String descricao;

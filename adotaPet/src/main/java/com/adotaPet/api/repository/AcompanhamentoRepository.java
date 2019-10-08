@@ -20,5 +20,9 @@ public interface AcompanhamentoRepository extends JpaRepository<Acompanhamento, 
 	@Transactional(readOnly=true)
 	@Query("SELECT obj FROM Acompanhamento obj WHERE obj.status = :status ORDER BY obj.id DESC")
 	public List<Acompanhamento> getAcompanhamentoPorStatus(@Param("status") Integer status);
-
+	
+	@Transactional(readOnly=true)
+	@Query("SELECT obj FROM Acompanhamento obj WHERE obj.status = 5 ORDER BY obj.id DESC")
+	public List<Acompanhamento> getAcompamhamentosAtendido();
+	
 }
