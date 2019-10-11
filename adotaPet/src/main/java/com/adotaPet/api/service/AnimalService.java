@@ -111,6 +111,10 @@ public class AnimalService {
 		}
 				
 		Integer codigo = objDto.getOngId() == null ? null : repo.obterCodigo(objDto.getOngId());
+		if ((objDto.getOngId() != null) && (codigo == null)) {
+			codigo = 1;
+		}
+		
 		return new Animal(objDto.getId(),codigo,objDto.getNome(),AnimalGenero.toEnum(objDto.getGenero()),
 				Porte.toEnum(objDto.getPorte()),objDto.getVermifugado(),objDto.getCastrado(),
 				new Ong (objDto.getOngId(),null, null, null, null, null, null, null, null, null, null),		
@@ -203,9 +207,14 @@ public class AnimalService {
 			isCastrado = castrado.equals(0) ? false : true;
 		}
 		
-		List<Animal> listaAnimais = repo.obterAnimaisPorFiltro();
-		List<Animal> AnimaisRemover =  new ArrayList<Animal>();
-		System.out.println(listaAnimais);
+		Pessoa  pessoa = pessoaService.getUserLogged();
+		List<Animal> listaAnimais = new ArrayList<Animal>();	
+		if ((pessoa.getPerfil() == Perfil.MASTER.getCod())||(pessoa.getPerfil() == Perfil.USUARIO.getCod())) {
+			listaAnimais = repo.obterAnimaisPorFiltro();
+		}else {		
+			listaAnimais = repo.obterAnimaisPorFiltro(pessoa.getOng().getId());
+		}
+		List<Animal> AnimaisRemover =  new ArrayList<Animal>();		
 		if(!listaAnimais.isEmpty()) {
 			for (Animal animal : listaAnimais) {
 				if ((!animal.getNome().equals(nome)) &&(!nome.isEmpty())) {					
