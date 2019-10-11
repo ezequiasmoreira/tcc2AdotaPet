@@ -78,11 +78,32 @@ public class AcompanhamentoService {
 	public List<Acompanhamento> findAll() {
 		return repo.findAll();
 	}
+	
 	public List<Acompanhamento> getAcompamhamentosNaoFinalizado(){
 		return repo.getAcompamhamentosNaoFinalizado();
 	}
+	
 	public List<Acompanhamento> getAcompamhamentosAtendido(){
-		return repo.getAcompamhamentosAtendido();
+		Pessoa pessoa = pessoaService.getUserLogged();
+		
+		if (pessoa.getPerfil() == Perfil.MASTER.getCod()) {
+			return repo.getAcompamhamentosAtendido();
+		}
+		
+		List<Adocao> adocoes = adocaoService.getAdocoesPorOng(pessoa.getOng());
+		
+		List<Acompanhamento> acompanhamentos = new ArrayList<Acompanhamento>();				
+			for (Adocao adocao : adocoes) {
+				if (adocao.getStatus() == AdocaoStatus.APROVADO.getCod()) {
+					for (Acompanhamento acompanhamento : adocao.getAnimal().getAcompanhamentos()) {
+						if(acompanhamento.getStatus() == AcompanhamentoStatus.ATENDIDO.getCod()) {
+							acompanhamentos.add(acompanhamento);
+						}
+					}
+				}
+			}
+		
+		return acompanhamentos;
 	}
 	public List<Acompanhamento> getAcompamhamentosSolicitado(){
 		

@@ -19,6 +19,7 @@ import com.adotaPet.api.domain.Acompanhamento;
 import com.adotaPet.api.domain.Adocao;
 import com.adotaPet.api.domain.Animal;
 import com.adotaPet.api.domain.Doenca;
+import com.adotaPet.api.domain.Ong;
 import com.adotaPet.api.domain.Pessoa;
 import com.adotaPet.api.domain.enums.AcompanhamentoSituacao;
 import com.adotaPet.api.domain.enums.AcompanhamentoStatus;
@@ -63,6 +64,10 @@ public class AdocaoService {
 	}
 	public List<Adocao> getAdocoesPorPessoa(Pessoa pessoa) {		
 		return repo.getAdocoesPorPessoa(pessoa.getId());
+	}
+	
+	public List<Adocao> getAdocoesPorOng(Ong ong) {		
+		return repo.getAdocoesPorOng(ong.getId());
 	}
 	
 	public void delete(Integer id) {
