@@ -129,8 +129,12 @@ public class AnimalService {
 		return repo.findDistinctByNomeContainingAndDoencasIn(nome, doencas, pageRequest);	
 	}
 	public Page<Animal> findRacas(Integer id, Integer page, Integer linesPerPage, String orderBy, String direction) {
+		Pessoa  pessoa = pessoaService.getUserLogged();
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);		
-		return repo.findByRacaIdAndStatus(id, 1,pageRequest);	
+		if ((pessoa.getPerfil() == Perfil.MASTER.getCod())|| (pessoa.getPerfil() == Perfil.USUARIO.getCod())) {
+			return repo.findByRacaIdAndStatus(id,AnimalStatus.DISPONIVEL.getCod(),pageRequest);
+		}
+		return repo.findByRacaIdAndStatusAndOngId(id,AnimalStatus.DISPONIVEL.getCod(),pessoa.getOng().getId(),pageRequest);
 	}
 	public AnimalDTO validaCampos(AnimalDTO animalDTO,Animal animal) {
 		if(animalDTO.getPorte() == null) {

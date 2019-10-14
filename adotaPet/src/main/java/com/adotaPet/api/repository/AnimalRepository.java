@@ -37,6 +37,9 @@ public interface AnimalRepository extends JpaRepository<Animal, Integer> {
 	Page<Animal> findByRacaIdAndStatus(Integer raca_id,Integer status,Pageable pageRequest);
 	
 	@Transactional(readOnly=true)
+	Page<Animal> findByRacaIdAndStatusAndOngId(Integer raca_id,Integer status,Integer ong_id,Pageable pageRequest);
+	
+	@Transactional(readOnly=true)
 	@Query("SELECT obj FROM Animal obj  WHERE obj.status = 1 ")
 	List<Animal> obterAnimaisPorFiltro();
 	
