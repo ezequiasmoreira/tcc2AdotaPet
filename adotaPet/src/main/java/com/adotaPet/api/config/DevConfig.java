@@ -15,8 +15,8 @@ import com.adotaPet.api.service.SmtpEmailService;
 
 
 @Configuration
-//@Profile("dev")
-@Profile("devPgadm")
+@Profile("dev")
+//@Profile("devPgadm")
 public class DevConfig {
 	
 	@Autowired

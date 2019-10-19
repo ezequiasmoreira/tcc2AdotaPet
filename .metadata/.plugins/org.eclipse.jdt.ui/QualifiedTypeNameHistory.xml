@@ -6,4 +6,5 @@
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AdocaoStatus"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AcompanhamentoStatus"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Ong"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AnimalStatus"/>
 </qualifiedTypeNameHistroy>
