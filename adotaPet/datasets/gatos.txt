@@ -16,20 +16,11 @@ California Spangled Cat
 Chausie
 Cornish Rex
 Curl Americano Pelo Curto
-Curl Americano Pelo Longo
 Cymric
 Devon Rex
-Domestic Long-Haired
-Domestic Short-Haired
-Don Sphynx
-Egyptian Mau
 European
 Exotic Shorthair
 German Rex
-Havana
-Himalaio
-Khao Manee
-Korat
 Kurilian Bobtail Longhair
 Kurilian Bobtail Shorthair
 LaPerm Longhair
@@ -37,9 +28,6 @@ LaPerm Shorthair
 Maine Coon
 Manx
 Mekong Bobtail
-Munchkin Longhair
-Munchkin Shorthair
-Nebelung
 Norwegian Forest Cat
 Ocicat
 Ojos Azules Shorthair
@@ -47,27 +35,19 @@ Oriental Longhair
 Oriental Shorthair
 Persa
 Peterbald
-Pixiebob Longhair
-Pixiebob Shorthair
 Ragamuffin
 Ragdoll
 Russo Azul
 Sagrado da Birmânia
 Savannah Cat
 Scottish Fold
-Selkirk Rex Longhair
-Selkirk Rex Shorthair
 Serengeti
 Siamês
 Siberian
 Singapura
-Snowshoe
-Sokoke
-Somali
-Sphynx
 Thai
 Tonkinese Shorthair
 Toyger
 Turkish Angorá
 Turkish Van
-York Chocolate</ul>
+York Chocolate

@@ -133,19 +133,19 @@ public class DBService {
 		p3.addPerfil(Perfil.VOLUNTARIO);
 		p3.addPerfil(Perfil.ADMIN);
 		
-		Pessoa p4 = new Pessoa(null, 100, "Libano jose gomes", "785", "casa 45", "Santa luzia", "88806-620", c2, "Ezequias", Sexo.MASCULINO, Perfil.MASTER, "107.458.987-87", "789456123", "ezequiasmoreira@hotmail.com", pe.encode("0123"), "98410553",null);
+		Pessoa p4 = new Pessoa(null, 100, "Libano jose gomes", "785", "casa 45", "Santa luzia", "88806-620", c2, "André", Sexo.MASCULINO, Perfil.MASTER, "107.458.987-87", "789456123", "andré@hotmail.com", pe.encode("0123"), "98410553",null);
 		p4.addPerfil(Perfil.MASTER);
 		p4.addPerfil(Perfil.USUARIO);
 		p4.addPerfil(Perfil.VOLUNTARIO);
 		p4.addPerfil(Perfil.ADMIN);
 		
-		Pessoa p5 = new Pessoa(null, 100, "Rua de cocal", "78", null, "Centro", "88806-000", c4, "Gustavo", Sexo.MASCULINO, Perfil.MASTER, "107.458.987-85", "789856123", "gustavoluza@hotmail.com", pe.encode("0123"), "98410553",null);
+		Pessoa p5 = new Pessoa(null, 100, "Rua de cocal", "78", null, "Centro", "88806-000", c4, "Bruno", Sexo.MASCULINO, Perfil.MASTER, "107.458.987-85", "789856123", "bruno@hotmail.com", pe.encode("0123"), "98410553",null);
 		p5.addPerfil(Perfil.MASTER);
 		p5.addPerfil(Perfil.USUARIO);
 		p5.addPerfil(Perfil.VOLUNTARIO);
 		p5.addPerfil(Perfil.ADMIN);
 		
-		Pessoa p6 = new Pessoa(null, 100, "Rua do centro", "7", null, "Centro", "88000-000", c2, "Carlos", Sexo.MASCULINO, Perfil.MASTER, "107.798.987-85", "7898986123", "gabrieldfm13@gmail.com", pe.encode("0123"), "98410553",null);
+		Pessoa p6 = new Pessoa(null, 100, "Rua do centro", "7", null, "Centro", "88000-000", c2, "Daniel", Sexo.MASCULINO, Perfil.MASTER, "107.798.987-85", "7898986123", "daniel@hotmail.com", pe.encode("0123"), "98410553",null);
 		p5.addPerfil(Perfil.MASTER);
 		p5.addPerfil(Perfil.USUARIO);
 		p5.addPerfil(Perfil.VOLUNTARIO);
@@ -187,19 +187,19 @@ public class DBService {
 		Doenca doenca5 = listaDoencas.get(5);
 		Doenca doenca6 = listaDoencas.get(6);
 
-		Animal animal1 = new Animal(null, 5,"Belinha", AnimalGenero.FEMEA, Porte.PEQUENO, false, true, ong1, AnimalStatus.DISPONIVEL, raca1);
+		Animal animal1 = new Animal(null, 5,"Animal1", AnimalGenero.FEMEA, Porte.PEQUENO, false, true, ong1, AnimalStatus.DISPONIVEL, raca1);
 		animal1.getDoencas().addAll(Arrays.asList(doenca1,doenca4));
-		Animal animal2 = new Animal(null, 8,"Charopinho", AnimalGenero.MACHO, Porte.PEQUENO, true, false, ong1, AnimalStatus.PROCESSAMENTO, raca1);
+		Animal animal2 = new Animal(null, 8,"Animal2", AnimalGenero.MACHO, Porte.PEQUENO, true, false, ong1, AnimalStatus.PROCESSAMENTO, raca1);
 			
 		
-		Animal animal3 = new Animal(null, 9,"Chulinho", AnimalGenero.MACHO, Porte.MEDIO, false, true, ong2, AnimalStatus.ADOTADO, raca2);
+		Animal animal3 = new Animal(null, 9,"Animal3", AnimalGenero.MACHO, Porte.MEDIO, false, true, ong2, AnimalStatus.ADOTADO, raca2);
 		animal3.getDoencas().addAll(Arrays.asList(doenca2,doenca3,doenca5,doenca6));
 		animal3.getVacinas().addAll(Arrays.asList(vacinaItem4,vacinaItem5));
 		
 		
-		Animal animal4 = new Animal(null, 10,"Lindinha", AnimalGenero.FEMEA, Porte.MEDIO, true, false, ong2, AnimalStatus.ADOTADO, raca4);
+		Animal animal4 = new Animal(null, 10,"Animal4", AnimalGenero.FEMEA, Porte.MEDIO, true, false, ong2, AnimalStatus.ADOTADO, raca4);
 		animal4.getDoencas().addAll(Arrays.asList(doenca1,doenca2,doenca3,doenca4,doenca5));
-		Animal animal5 = new Animal(null, 15,"Cenorinha", AnimalGenero.MACHO, Porte.GRANDE, true, true, ong2, AnimalStatus.ADOTADO, raca5);
+		Animal animal5 = new Animal(null, 15,"Animal5", AnimalGenero.MACHO, Porte.GRANDE, true, true, ong2, AnimalStatus.ADOTADO, raca5);
 		animal5.getDoencas().addAll(Arrays.asList(doenca6));
 		animal5.getVacinas().addAll(Arrays.asList(vacinaItem1,vacinaItem2,vacinaItem3));
 		animalRepository.saveAll(Arrays.asList(animal1,animal2,animal3,animal4,animal5));
