@@ -24,11 +24,13 @@ import com.adotaPet.api.domain.Pessoa;
 import com.adotaPet.api.domain.enums.AcompanhamentoSituacao;
 import com.adotaPet.api.domain.enums.AcompanhamentoStatus;
 import com.adotaPet.api.domain.enums.AdocaoStatus;
+import com.adotaPet.api.domain.enums.AnimalStatus;
 import com.adotaPet.api.domain.enums.Perfil;
 import com.adotaPet.api.dto.AdocaoDTO;
 import com.adotaPet.api.repository.AdocaoRepository;
 import com.adotaPet.api.repository.PessoaRepository;
 import com.adotaPet.api.security.UserSS;
+import com.adotaPet.api.service.exceptions.AuthorizationException;
 import com.adotaPet.api.service.exceptions.DataIntegrityException;
 import com.adotaPet.api.service.exceptions.ObjectNotFoundException;
 
@@ -59,6 +61,9 @@ public class AdocaoService {
 	
 	public Adocao update(Adocao obj) {
 		Adocao newObj = find(obj.getId());
+		if ((newObj.getAnimal().getStatus() == AnimalStatus.ADOTADO.getCod()) && (obj.getStatus() == AdocaoStatus.APROVADO.getCod()) ) {
+			throw new AuthorizationException("Animal já foi adotado.");
+		}
 		updateData(newObj, obj);
 		return repo.save(newObj);
 	}
