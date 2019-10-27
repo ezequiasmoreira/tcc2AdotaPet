@@ -133,25 +133,13 @@ public class DBService {
 		p3.addPerfil(Perfil.VOLUNTARIO);
 		p3.addPerfil(Perfil.ADMIN);
 		
-		Pessoa p4 = new Pessoa(null, 100, "Libano jose gomes", "785", "casa 45", "Santa luzia", "88806-620", c2, "André", Sexo.MASCULINO, Perfil.MASTER, "107.458.987-87", "789456123", "andré@hotmail.com", pe.encode("0123"), "98410553",null);
+		Pessoa p4 = new Pessoa(null, 100, "Libano jose gomes", "785", "casa 45", "Santa luzia", "88806-620", c2, "Master", Sexo.MASCULINO, Perfil.MASTER, "107.458.987-87", "789456123", "master@hotmail.com", pe.encode("0123"), "98410553",null);
 		p4.addPerfil(Perfil.MASTER);
 		p4.addPerfil(Perfil.USUARIO);
 		p4.addPerfil(Perfil.VOLUNTARIO);
 		p4.addPerfil(Perfil.ADMIN);
 		
-		Pessoa p5 = new Pessoa(null, 100, "Rua de cocal", "78", null, "Centro", "88806-000", c4, "Bruno", Sexo.MASCULINO, Perfil.MASTER, "107.458.987-85", "789856123", "bruno@hotmail.com", pe.encode("0123"), "98410553",null);
-		p5.addPerfil(Perfil.MASTER);
-		p5.addPerfil(Perfil.USUARIO);
-		p5.addPerfil(Perfil.VOLUNTARIO);
-		p5.addPerfil(Perfil.ADMIN);
-		
-		Pessoa p6 = new Pessoa(null, 100, "Rua do centro", "7", null, "Centro", "88000-000", c2, "Daniel", Sexo.MASCULINO, Perfil.MASTER, "107.798.987-85", "7898986123", "daniel@hotmail.com", pe.encode("0123"), "98410553",null);
-		p5.addPerfil(Perfil.MASTER);
-		p5.addPerfil(Perfil.USUARIO);
-		p5.addPerfil(Perfil.VOLUNTARIO);
-		p5.addPerfil(Perfil.ADMIN);
-		
-		pessoaRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5,p6));
+		pessoaRepository.saveAll(Arrays.asList(p1,p2,p3,p4));
 		
 		Vacina vacina1 = new Vacina(null, "V8", "6 a 8 semanas", "Cinomose,hepatite", Especie.CAO);
 		Vacina vacina2 = new Vacina(null, "V10", "6 a 8 semanas", "Adenovírus,coronavírus", Especie.CAO);
@@ -187,7 +175,7 @@ public class DBService {
 		Doenca doenca5 = listaDoencas.get(5);
 		Doenca doenca6 = listaDoencas.get(6);
 
-		Animal animal1 = new Animal(null, 5,"Animal1", AnimalGenero.FEMEA, Porte.PEQUENO, false, true, ong1, AnimalStatus.DISPONIVEL, raca1);
+		/*Animal animal1 = new Animal(null, 5,"Animal1", AnimalGenero.FEMEA, Porte.PEQUENO, false, true, ong1, AnimalStatus.DISPONIVEL, raca1);
 		animal1.getDoencas().addAll(Arrays.asList(doenca1,doenca4));
 		Animal animal2 = new Animal(null, 8,"Animal2", AnimalGenero.MACHO, Porte.PEQUENO, true, false, ong1, AnimalStatus.PROCESSAMENTO, raca1);
 			
@@ -220,7 +208,7 @@ public class DBService {
 		animal3.getAcompanhamentos().addAll(Arrays.asList(acom1,acom2));
 		animal4.getAcompanhamentos().addAll(Arrays.asList(acom3));
 		animalRepository.saveAll(Arrays.asList(animal3,animal4));
-		 
+		 */
 	}
 
 	private void InsercaoEnderecos(){
