@@ -6,7 +6,8 @@ public enum AcompanhamentoSituacao {
 	REGULAR(3, "Regular"),
 	RUIM(4, "Ruim"),
 	ANALISE(5, "Analise"),
-	PROCESSOS(6, "Processos");
+	PROCESSOS(6, "Processos"),
+	GERADOAUTO(7, "Gerado automaticamente");
 	
 	private int cod;
 	private String descricao;

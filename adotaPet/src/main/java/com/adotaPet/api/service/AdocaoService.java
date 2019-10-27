@@ -163,7 +163,7 @@ public class AdocaoService {
 			acompanhamento.setCodigo(adocao.getAnimal().getCodigo());
 			acompanhamento.setDescricao("Adoção aprovada.");
 			acompanhamento.setStatus(AcompanhamentoStatus.FINALIZADO.getCod());
-			acompanhamento.setSituacao(AcompanhamentoSituacao.PROCESSOS.getCod());
+			acompanhamento.setSituacao(AcompanhamentoSituacao.GERADOAUTO.getCod());
 			acompanhamento.setObservacao("Acompanhamento gerado internamente");
 			acompanhamento.setDataAgendado(new Date());
 			acompanhamento.setDataCadastro(new Date());
