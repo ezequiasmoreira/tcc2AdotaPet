@@ -163,7 +163,7 @@ public class AdocaoService {
 			acompanhamento.setCodigo(adocao.getAnimal().getCodigo());
 			acompanhamento.setDescricao("Adoção aprovada.");
 			acompanhamento.setStatus(AcompanhamentoStatus.FINALIZADO.getCod());
-			acompanhamento.setSituacao(AcompanhamentoSituacao.PROCESSOS.getCod());
+			acompanhamento.setSituacao(AcompanhamentoSituacao.GERADOAUTO.getCod());
 			acompanhamento.setObservacao("Acompanhamento gerado internamente");
 			acompanhamento.setDataAgendado(new Date());
 			acompanhamento.setDataCadastro(new Date());
@@ -174,9 +174,11 @@ public class AdocaoService {
 		}
 	}
 	public List<Adocao> search(Integer codigo, Integer status,Date dataInicial, Date dataFinal, Integer page, Integer linesPerPage, String orderBy, String direction) {
-		List<Adocao> listaAdocoes = repo.obterAdocoesPorFiltro(dataInicial,dataFinal);
+		Pessoa usuariologado = pessoaService.getUserLogged();
+		List<Adocao> listaAdocoes = repo.obterAdocoesPorFiltro(dataInicial,dataFinal, usuariologado.getOng().getId());
 		List<Adocao> adocoesRemover =  new ArrayList<Adocao>();
 		if(!listaAdocoes.isEmpty()) {
+			System.out.println("entrou");
 			for (Adocao adocao : listaAdocoes) {
 				if ((adocao.getCodigo() != codigo)&&(codigo != 0)) {
 					adocoesRemover.add(adocao);
