@@ -6,5 +6,7 @@
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AdocaoStatus"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AcompanhamentoStatus"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.Ong"/>
+<fullyQualifiedTypeName name="org.springframework.security.access.prepost.PreAuthorize"/>
 <fullyQualifiedTypeName name="com.adotaPet.api.domain.enums.AnimalStatus"/>
+<fullyQualifiedTypeName name="com.adotaPet.api.service.exceptions.AuthorizationException"/>
 </qualifiedTypeNameHistroy>

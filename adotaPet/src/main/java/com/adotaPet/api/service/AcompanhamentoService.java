@@ -4,6 +4,8 @@ import java.net.URI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +18,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.adotaPet.api.Comparator.AcompanhamentoComparator;
 import com.adotaPet.api.domain.Acompanhamento;
 import com.adotaPet.api.domain.Adocao;
 import com.adotaPet.api.domain.Animal;
@@ -209,7 +212,12 @@ public class AcompanhamentoService {
 						
 			}
 			listaAcompanhamentos.removeAll(listaAcompanhamentosRemover);
-		}		
+		}	
+		
+		AcompanhamentoComparator acompanhamentoComparator = new AcompanhamentoComparator();
+		Collections.sort(listaAcompanhamentos, acompanhamentoComparator);
+		Collections.reverse(listaAcompanhamentos);
+		
 		return listaAcompanhamentos;
 	}
 	public URI uploadPicture(MultipartFile multipartFile, Integer id) {		
