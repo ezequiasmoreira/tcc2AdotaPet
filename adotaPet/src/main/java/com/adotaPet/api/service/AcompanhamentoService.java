@@ -218,10 +218,6 @@ public class AcompanhamentoService {
 		Collections.sort(listaAcompanhamentos, acompanhamentoComparator);
 		Collections.reverse(listaAcompanhamentos);
 		
-		for (Acompanhamento a : listaAcompanhamentos) {
-			System.out.println("passou - "+a.getDescricao());
-		}
-		
 		return listaAcompanhamentos;
 	}
 	public URI uploadPicture(MultipartFile multipartFile, Integer id) {		
