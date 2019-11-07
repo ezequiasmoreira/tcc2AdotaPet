@@ -4,23 +4,30 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 
 import javax.imageio.ImageIO;
 
 import org.apache.commons.io.FilenameUtils;
 import org.imgscalr.Scalr;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.adotaPet.api.domain.Pessoa;
+import com.adotaPet.api.service.exceptions.AuthorizationException;
 import com.adotaPet.api.service.exceptions.FileException;
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 @Service
 public class ImageService {
-
+	@Value("${img.prefix.pessoa.profile}")
+	private String prefix;
+	
 	public BufferedImage getJpgImageFromFile(MultipartFile uploadedFile) {
 		String ext = FilenameUtils.getExtension(uploadedFile.getOriginalFilename());
 		if (!"png".equals(ext) && !"jpg".equals(ext)) {
@@ -73,5 +80,15 @@ public class ImageService {
 	    JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(baos);
 	    encoder.encode(image);            
 	    return baos.toByteArray();
+	}
+	public Boolean validarImagemPessoa(Pessoa pessoa) {
+		final String dir = System.getProperty("user.dir");
+		String caminho = dir.replace("adotaPet", "img\\pessoa\\");
+		caminho = caminho + prefix + pessoa.getId() + ".jpg";	
+		
+		if(!new File(caminho).exists()) {
+			throw new FileException("Olá "+pessoa.getNome()+" que tal informar uma foto!");
+		}
+		return true;
 	}
 }

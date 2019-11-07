@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import org.hibernate.mapping.Array;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -78,6 +79,12 @@ public class PessoaResource {
 		return ResponseEntity.ok().body(listDto);
 	}
 	
+	@RequestMapping(value = "/validarImagem",method=RequestMethod.GET)
+	public ResponseEntity<Boolean> validarImagem() {
+		Boolean resposta = service.validarImagem(); 
+		
+		return ResponseEntity.ok().body(resposta);
+	}
 	
 	@RequestMapping(value="/ong/{id}",method=RequestMethod.GET)
 	public ResponseEntity<Page<PessoaDTO>> findPage(

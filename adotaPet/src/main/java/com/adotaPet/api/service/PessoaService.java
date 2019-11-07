@@ -42,6 +42,9 @@ public class PessoaService {
 	@Autowired
 	private UploadService uploadService;
 	
+	@Autowired
+	private ImageService imageService;
+	
 	public Pessoa find(Integer id) {
 		UserSS user = UserService.authenticated();
 		if (user==null || !user.hasRole(Perfil.MASTER) && !id.equals(user.getId())) {
@@ -118,7 +121,16 @@ public class PessoaService {
 		}
 		return repo.findAll();
 	}
-	
+	public Boolean validarImagem() {
+		UserSS user = UserService.authenticated();
+		Pessoa usuarioLogado = repo.findPessoaId(user.getId());
+		
+		Boolean resposta = imageService.validarImagemPessoa(usuarioLogado);
+		
+		
+		return resposta;
+		
+	}
 	public Page<Pessoa> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
